@@ -16,71 +16,71 @@ export const MyListingsView = {
     const userName = user.user_metadata?.full_name || user.email.split('@')[0];
 
     container.innerHTML = `
-      <div class="max-w-7xl mx-auto px-margin-sm lg:px-margin py-8 animate-fade-in">
+      <div class="max-w-6xl mx-auto px-4 sm:px-6 py-6 animate-fade-in">
         
         <!-- Landlord Summary Banner -->
-        <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-8 bg-surface-container-lowest p-6 rounded-DEFAULT shadow-sm border border-surface-container-high">
-          <div class="flex items-center gap-4">
-            <div class="w-16 h-16 rounded-full bg-primary-container/20 text-primary flex items-center justify-center font-black text-2xl shrink-0">
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6 bg-surface-container-lowest p-4 sm:p-5 rounded-xl shadow-xs border border-slate-200/80">
+          <div class="flex items-center gap-3">
+            <div class="w-11 h-11 rounded-full bg-primary/10 text-primary flex items-center justify-center font-bold text-base shrink-0">
               ${(userName[0] || 'L').toUpperCase()}
             </div>
             <div>
               <div class="flex items-center gap-2">
-                <h1 class="font-headline-md text-headline-md font-bold text-on-surface">${userName}</h1>
-                <span class="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-secondary-container text-on-secondary-container font-label-sm text-xs font-bold">
-                  <span class="material-symbols-outlined text-[13px]">verified</span> Verified Landlord
+                <h1 class="text-base sm:text-lg font-bold text-on-surface">${userName}</h1>
+                <span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-emerald-50 text-emerald-700 border border-emerald-200/60 text-[10px] font-semibold">
+                  <span class="material-symbols-outlined text-[12px]">verified</span> Verified Landlord
                 </span>
               </div>
-              <p class="font-body-sm text-body-sm text-on-surface-variant mt-0.5">${user.email}</p>
+              <p class="text-xs text-slate-500 mt-0.5">${user.email}</p>
             </div>
           </div>
 
-          <div class="flex items-center gap-3">
-            <a href="#/post" class="inline-flex items-center gap-2 px-6 py-2.5 rounded-full bg-primary hover:bg-surface-tint text-on-primary font-label-lg font-bold shadow-md transition-all">
-              <span class="material-symbols-outlined text-[20px]">add_circle</span>
+          <div class="flex items-center gap-2">
+            <a href="#/post" class="inline-flex items-center gap-1.5 px-4 py-2 rounded-lg bg-primary hover:bg-surface-tint text-on-primary text-xs font-semibold shadow-xs transition-all">
+              <span class="material-symbols-outlined text-[16px]">add_circle</span>
               <span>+ Post Another Rental</span>
             </a>
           </div>
         </div>
 
         <!-- Dashboard Stat Cards -->
-        <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-8">
-          <div class="p-5 rounded-DEFAULT bg-surface-container-lowest shadow-sm border border-surface-container-high flex flex-col justify-between">
-            <span class="font-label-sm text-label-sm text-on-surface-variant font-bold">Active Listings (सक्रिय घरभाडा)</span>
-            <div class="mt-2 flex items-baseline gap-2">
-              <span id="active-count" class="font-display-lg text-3xl font-black text-primary">...</span>
-              <span class="text-xs text-on-surface-variant">live on marketplace</span>
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 mb-6">
+          <div class="p-3.5 rounded-xl bg-surface-container-lowest shadow-xs border border-slate-200/80 flex flex-col justify-between">
+            <span class="text-[11px] font-semibold text-slate-500">Active Listings (सक्रिय घरभाडा)</span>
+            <div class="mt-1.5 flex items-baseline gap-2">
+              <span id="active-count" class="text-xl font-bold text-primary">...</span>
+              <span class="text-[11px] text-slate-400">live on marketplace</span>
             </div>
           </div>
 
-          <div class="p-5 rounded-DEFAULT bg-surface-container-lowest shadow-sm border border-surface-container-high flex flex-col justify-between">
-            <span class="font-label-sm text-label-sm text-on-surface-variant font-bold">Commission Saved</span>
-            <div class="mt-2 flex items-baseline gap-2">
-              <span class="font-display-lg text-3xl font-black text-secondary">रु ०</span>
-              <span class="text-xs text-on-surface-variant">100% Direct to Tenant</span>
+          <div class="p-3.5 rounded-xl bg-surface-container-lowest shadow-xs border border-slate-200/80 flex flex-col justify-between">
+            <span class="text-[11px] font-semibold text-slate-500">Commission Saved</span>
+            <div class="mt-1.5 flex items-baseline gap-2">
+              <span class="text-xl font-bold text-secondary">रु ०</span>
+              <span class="text-[11px] text-slate-400">100% Direct to Tenant</span>
             </div>
           </div>
 
-          <div class="p-5 rounded-DEFAULT bg-surface-container-lowest shadow-sm border border-surface-container-high flex flex-col justify-between">
-            <span class="font-label-sm text-label-sm text-on-surface-variant font-bold">Tenant Inquiries Channel</span>
-            <div class="mt-2 flex items-center gap-3 text-on-surface text-sm">
-              <span class="flex items-center gap-1 text-[#25D366] font-bold"><span class="material-symbols-outlined text-[16px]">chat</span> WhatsApp</span>
-              <span class="flex items-center gap-1 text-[#7360F2] font-bold"><span class="material-symbols-outlined text-[16px]">forum</span> Viber</span>
-              <span class="flex items-center gap-1 text-secondary font-bold"><span class="material-symbols-outlined text-[16px]">call</span> Call</span>
+          <div class="p-3.5 rounded-xl bg-surface-container-lowest shadow-xs border border-slate-200/80 flex flex-col justify-between">
+            <span class="text-[11px] font-semibold text-slate-500">Tenant Inquiries Channel</span>
+            <div class="mt-1.5 flex items-center gap-3 text-slate-700 text-xs font-semibold">
+              <span class="flex items-center gap-1 text-[#25D366]"><span class="material-symbols-outlined text-[15px]">chat</span> WhatsApp</span>
+              <span class="flex items-center gap-1 text-[#7360F2]"><span class="material-symbols-outlined text-[15px]">forum</span> Viber</span>
+              <span class="flex items-center gap-1 text-secondary"><span class="material-symbols-outlined text-[15px]">call</span> Call</span>
             </div>
           </div>
         </div>
 
         <!-- Listings Section -->
-        <div class="flex items-center justify-between mb-4">
-          <h2 class="font-headline-sm text-headline-sm font-bold text-on-surface">Your Properties (तपाईंका लिस्टिङहरू)</h2>
-          <span class="text-xs text-on-surface-variant">Manage, edit, or remove listings</span>
+        <div class="flex items-center justify-between mb-3.5">
+          <h2 class="text-sm sm:text-base font-bold text-slate-800">Your Properties (तपाईंका लिस्टिङहरू)</h2>
+          <span class="text-xs text-slate-500">Manage, edit, or remove listings</span>
         </div>
 
-        <div id="my-listings-container" class="flex flex-col gap-4">
-          <div class="py-16 text-center text-on-surface-variant">
-            <div class="w-10 h-10 border-4 border-primary border-t-transparent rounded-full animate-spin mx-auto mb-3"></div>
-            <p>Loading your listings...</p>
+        <div id="my-listings-container" class="flex flex-col gap-3">
+          <div class="py-12 text-center text-slate-400">
+            <div class="w-8 h-8 border-2 border-primary border-t-transparent rounded-full animate-spin mx-auto mb-2"></div>
+            <p class="text-xs">Loading your listings...</p>
           </div>
         </div>
       </div>
@@ -99,7 +99,7 @@ export const MyListingsView = {
 
       if (error) {
         containerEl.innerHTML = `
-          <div class="p-6 bg-error-container text-error rounded-DEFAULT text-center">
+          <div class="p-4 bg-error-container/30 border border-error/20 text-error rounded-xl text-center text-xs">
             Failed to load listings: ${error.message}
           </div>
         `;
@@ -112,12 +112,12 @@ export const MyListingsView = {
 
       if (!listings || listings.length === 0) {
         containerEl.innerHTML = `
-          <div class="p-12 text-center bg-surface-container-lowest rounded-DEFAULT border border-dashed border-outline-variant/50">
-            <span class="material-symbols-outlined text-5xl text-on-surface-variant mb-2">real_estate_agent</span>
-            <h3 class="font-headline-sm text-headline-sm font-bold text-on-surface mb-1">You have no listings posted yet</h3>
-            <p class="font-body-sm text-body-sm text-on-surface-variant mb-6">Start connecting with verified tenants by listing your room, flat, shutter, or land.</p>
-            <a href="#/post" class="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-primary text-on-primary font-label-lg font-bold shadow-md hover:shadow-lg transition-all">
-              <span class="material-symbols-outlined text-[20px]">add_circle</span>
+          <div class="p-8 text-center bg-surface-container-lowest rounded-xl border border-dashed border-slate-300">
+            <span class="material-symbols-outlined text-4xl text-slate-300 mb-1.5">real_estate_agent</span>
+            <h3 class="text-sm font-bold text-slate-800 mb-1">You have no listings posted yet</h3>
+            <p class="text-xs text-slate-500 mb-4">Start connecting with verified tenants by listing your room, flat, shutter, or land.</p>
+            <a href="#/post" class="inline-flex items-center gap-1.5 px-4 py-2 rounded-lg bg-primary text-on-primary text-xs font-semibold shadow-xs hover:shadow transition-all">
+              <span class="material-symbols-outlined text-[16px]">add_circle</span>
               <span>Post Your First Rental (+ पोस्ट गर्नुहोस्)</span>
             </a>
           </div>
@@ -131,61 +131,61 @@ export const MyListingsView = {
         const isActive = item.status === 'active';
 
         return `
-          <article class="p-4 sm:p-5 rounded-DEFAULT bg-surface-container-lowest shadow-sm border border-surface-container-high flex flex-col md:flex-row gap-5 items-start">
+          <article class="p-3.5 sm:p-4 rounded-xl bg-surface-container-lowest shadow-xs border border-slate-200/80 flex flex-col md:flex-row gap-4 items-start">
             <!-- Thumbnail -->
-            <a href="#/listing/${item.id}" class="relative w-full md:w-56 h-40 rounded-DEFAULT overflow-hidden flex-shrink-0 bg-surface-container block cursor-pointer">
+            <a href="#/listing/${item.id}" class="relative w-full md:w-48 h-32 rounded-lg overflow-hidden flex-shrink-0 bg-surface-container block cursor-pointer">
               <img src="${photo}" class="w-full h-full object-cover"/>
-              <span class="absolute top-2 left-2 px-2.5 py-0.5 rounded-full text-xs font-bold shadow-sm ${isActive ? 'bg-emerald-100 text-emerald-800' : 'bg-surface-container-high text-on-surface-variant'}">
-                ${isActive ? '● Active & Live' : '● Rented Out'}
+              <span class="absolute top-2 left-2 px-2 py-0.5 rounded-md text-[10px] font-bold shadow-xs ${isActive ? 'bg-emerald-600 text-white' : 'bg-slate-700 text-white'}">
+                ${isActive ? '● Active' : '● Rented'}
               </span>
             </a>
 
             <!-- Info & Actions -->
             <div class="flex flex-col justify-between flex-1 min-w-0 w-full h-full">
               <div>
-                <div class="flex flex-col sm:flex-row sm:items-start justify-between gap-2">
+                <div class="flex flex-col sm:flex-row sm:items-start justify-between gap-1.5">
                   <div>
-                    <div class="inline-flex items-center gap-1 text-secondary font-label-sm text-xs mb-0.5">
-                      <span class="material-symbols-outlined text-[15px]">location_on</span>
+                    <div class="inline-flex items-center gap-1 text-secondary text-[11px] font-medium mb-0.5">
+                      <span class="material-symbols-outlined text-[13px]">location_on</span>
                       <span>${item.location_area}, ${item.location_city}</span>
                     </div>
                     <a href="#/listing/${item.id}" class="hover:text-primary transition-colors">
-                      <h3 class="font-headline-sm text-headline-sm text-on-surface font-bold truncate">${item.title}</h3>
+                      <h3 class="text-sm sm:text-base text-on-surface font-bold truncate">${item.title}</h3>
                     </a>
                   </div>
                   <div class="text-left sm:text-right shrink-0">
-                    <span class="font-headline-md text-headline-md text-primary font-extrabold block">रु ${formattedPrice}</span>
-                    <span class="font-label-sm text-xs text-on-surface-variant">/ month</span>
+                    <span class="text-base font-bold text-primary block">रु ${formattedPrice}</span>
+                    <span class="text-[10px] text-slate-400">/ month</span>
                   </div>
                 </div>
 
-                <div class="flex flex-wrap items-center gap-2 mt-2 text-xs text-on-surface-variant">
-                  <span class="px-2.5 py-0.5 rounded-full bg-surface-container-low text-on-surface">${item.category.toUpperCase()}</span>
-                  <span class="px-2.5 py-0.5 rounded-full bg-surface-container-low text-on-surface">${item.bedrooms || 1} Bed / ${item.bathrooms || 1} Bath</span>
-                  <span class="px-2.5 py-0.5 rounded-full bg-surface-container-low text-on-surface">${item.water_facility || '24/7 Water'}</span>
-                  <span class="text-on-surface-variant ml-1">Phone: ${item.contact_phone}</span>
+                <div class="flex flex-wrap items-center gap-1.5 mt-2 text-[11px] text-slate-500">
+                  <span class="px-2 py-0.5 rounded-md bg-slate-100 text-slate-700 font-medium">${item.category.toUpperCase()}</span>
+                  <span class="px-2 py-0.5 rounded-md bg-slate-100 text-slate-700 font-medium">${item.bedrooms || 1} Bed / ${item.bathrooms || 1} Bath</span>
+                  <span class="px-2 py-0.5 rounded-md bg-slate-100 text-slate-700 font-medium">${item.water_facility || '24/7 Water'}</span>
+                  <span class="text-slate-400 ml-1">Phone: ${item.contact_phone}</span>
                 </div>
               </div>
 
               <!-- Action Buttons -->
-              <div class="flex flex-wrap items-center gap-2 mt-4 pt-3 border-t border-surface-container-high">
-                <a href="#/edit/${item.id}" class="inline-flex items-center gap-1 px-4 py-1.5 rounded-full bg-surface-container-high hover:bg-surface-container text-on-surface font-label-md text-sm transition-colors">
-                  <span class="material-symbols-outlined text-[16px]">edit</span>
-                  <span>Edit Details</span>
+              <div class="flex flex-wrap items-center gap-2 mt-3 pt-2.5 border-t border-slate-100">
+                <a href="#/edit/${item.id}" class="inline-flex items-center gap-1 px-3 py-1.5 rounded-lg bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-semibold transition-colors">
+                  <span class="material-symbols-outlined text-[14px]">edit</span>
+                  <span>Edit</span>
                 </a>
 
-                <button type="button" class="toggle-status-btn inline-flex items-center gap-1 px-4 py-1.5 rounded-full font-label-md text-sm transition-colors ${isActive ? 'bg-secondary text-white hover:opacity-90' : 'bg-surface-container text-on-surface hover:bg-surface-container-high'}" data-id="${item.id}" data-status="${item.status}">
-                  <span class="material-symbols-outlined text-[16px]">${isActive ? 'check_circle' : 'replay'}</span>
-                  <span>${isActive ? 'Mark as Rented (भाडामा लाग्यो)' : 'Mark as Available'}</span>
+                <button type="button" class="toggle-status-btn inline-flex items-center gap-1 px-3 py-1.5 rounded-lg text-xs font-semibold transition-colors ${isActive ? 'bg-secondary/10 text-secondary hover:bg-secondary/20' : 'bg-slate-100 text-slate-700 hover:bg-slate-200'}" data-id="${item.id}" data-status="${item.status}">
+                  <span class="material-symbols-outlined text-[14px]">${isActive ? 'check_circle' : 'replay'}</span>
+                  <span>${isActive ? 'Mark as Rented' : 'Mark as Available'}</span>
                 </button>
 
-                <a href="#/listing/${item.id}" class="inline-flex items-center gap-1 px-4 py-1.5 rounded-full hover:bg-surface-container-low text-secondary font-label-md text-sm transition-colors">
-                  <span class="material-symbols-outlined text-[16px]">visibility</span>
-                  <span>View Public Page</span>
+                <a href="#/listing/${item.id}" class="inline-flex items-center gap-1 px-2.5 py-1.5 rounded-lg hover:bg-slate-100 text-slate-600 text-xs font-semibold transition-colors">
+                  <span class="material-symbols-outlined text-[14px]">visibility</span>
+                  <span>View</span>
                 </a>
 
-                <button type="button" class="delete-listing-btn inline-flex items-center gap-1 px-3 py-1.5 rounded-full hover:bg-error-container text-error font-label-md text-sm transition-colors ml-auto" data-id="${item.id}" data-title="${item.title}">
-                  <span class="material-symbols-outlined text-[16px]">delete</span>
+                <button type="button" class="delete-listing-btn inline-flex items-center gap-1 px-2.5 py-1.5 rounded-lg hover:bg-rose-50 text-rose-600 text-xs font-semibold transition-colors ml-auto" data-id="${item.id}" data-title="${item.title}">
+                  <span class="material-symbols-outlined text-[14px]">delete</span>
                   <span>Delete</span>
                 </button>
               </div>

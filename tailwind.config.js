@@ -74,18 +74,20 @@ export default {
         "gutter": "1.5rem"
       },
       fontFamily: {
-        "body-sm": ["Manrope", "sans-serif"],
-        "label-md": ["Manrope", "sans-serif"],
-        "display-lg": ["Plus Jakarta Sans", "sans-serif"],
-        "display-lg-mobile": ["Plus Jakarta Sans", "sans-serif"],
-        "headline-lg-mobile": ["Plus Jakarta Sans", "sans-serif"],
-        "label-sm": ["Manrope", "sans-serif"],
-        "label-lg": ["Manrope", "sans-serif"],
-        "body-lg": ["Manrope", "sans-serif"],
-        "headline-lg": ["Plus Jakarta Sans", "sans-serif"],
-        "headline-sm": ["Plus Jakarta Sans", "sans-serif"],
-        "headline-md": ["Plus Jakarta Sans", "sans-serif"],
-        "body-md": ["Manrope", "sans-serif"]
+        sans: ['Inter', 'system-ui', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'sans-serif'],
+        heading: ['Inter', 'system-ui', '-apple-system', 'sans-serif'],
+      },
+      fontSize: {
+        '2xs': ['10px', { lineHeight: '14px' }],
+        xs: ['12px', { lineHeight: '16px' }],
+        sm: ['13px', { lineHeight: '18px' }],
+        base: ['14px', { lineHeight: '21px' }],
+        md: ['15px', { lineHeight: '22px' }],
+        lg: ['16px', { lineHeight: '24px' }],
+        xl: ['18px', { lineHeight: '26px' }],
+        '2xl': ['22px', { lineHeight: '28px' }],
+        '3xl': ['26px', { lineHeight: '32px' }],
+        '4xl': ['32px', { lineHeight: '38px' }],
       }
     }
   },

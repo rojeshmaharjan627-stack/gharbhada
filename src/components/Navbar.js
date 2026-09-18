@@ -11,88 +11,86 @@ export function renderNavbar() {
   const userInitial = (userName[0] || 'U').toUpperCase();
 
   container.innerHTML = `
-    <header class="fixed top-0 left-0 right-0 z-50 bg-surface/90 backdrop-blur-xl shadow-[0_1px_8px_rgba(38,70,83,0.06)]">
-      <div class="h-20 max-w-7xl mx-auto px-margin-sm lg:px-margin flex items-center justify-between gap-space-md">
+    <header class="fixed top-0 left-0 right-0 z-50 bg-surface/95 backdrop-blur-md border-b border-slate-200/60 shadow-[0_1px_2px_rgba(0,0,0,0.02)]">
+      <div class="h-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between gap-4">
         
         <!-- Brand Logo -->
-        <div class="flex items-center gap-space-md shrink-0">
-          <a class="flex items-center gap-space-sm cursor-pointer" id="nav-brand" href="#/">
-            <div class="w-10 h-10 rounded-full bg-primary-container/20 flex items-center justify-center text-primary font-black text-xl">
+        <div class="flex items-center gap-4 shrink-0">
+          <a class="flex items-center gap-2 cursor-pointer group" id="nav-brand" href="#/">
+            <div class="w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center text-primary text-base group-hover:scale-105 transition-transform">
               🏠
             </div>
             <div class="flex flex-col leading-none">
-              <span class="font-headline-sm text-headline-sm text-primary tracking-tight font-extrabold">GharBhada</span>
-              <span class="font-label-sm text-label-sm text-on-surface-variant font-medium">घरभाडा नेपाल</span>
+              <span class="text-base text-primary tracking-tight font-bold">GharBhada</span>
+              <span class="text-[10px] text-on-surface-variant font-medium">घरभाडा नेपाल</span>
             </div>
           </a>
 
-          <!-- Location Indicator -->
-          <div class="relative group hidden sm:block">
-            <button class="flex items-center gap-space-xs px-space-md py-space-xs bg-surface-container-low hover:bg-surface-container-high rounded-full transition-colors text-on-surface" type="button">
-              <span class="material-symbols-outlined text-[18px] text-primary">location_on</span>
-              <span class="font-label-lg text-label-lg">Nepal / नेपाल</span>
-            </button>
+          <!-- Location Badge -->
+          <div class="hidden sm:flex items-center gap-1 px-2.5 py-1 bg-surface-container-low rounded-full text-on-surface-variant text-xs font-medium">
+            <span class="material-symbols-outlined text-[15px] text-primary">location_on</span>
+            <span>Nepal / नेपाल</span>
           </div>
         </div>
 
         <!-- Center Nav Links -->
-        <nav class="hidden md:flex items-center gap-space-sm">
-          <a class="px-space-md py-space-xs rounded-full font-label-lg text-label-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors cursor-pointer" href="#/">
-            Browse Rentals (हेर्नुहोस्)
+        <nav class="hidden md:flex items-center gap-1">
+          <a class="px-3.5 py-1.5 rounded-full text-xs font-medium text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition-colors cursor-pointer" href="#/">
+            Browse Rentals (भाडामा)
           </a>
           ${user ? `
-            <a class="px-space-md py-space-xs rounded-full font-label-lg text-label-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors cursor-pointer" href="#/my-listings">
-              My Listings (मेरो घरभाडा)
+            <a class="px-3.5 py-1.5 rounded-full text-xs font-medium text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition-colors cursor-pointer" href="#/my-listings">
+              My Listings (मेरो लिस्टिङ)
             </a>
           ` : ''}
         </nav>
 
         <!-- Right Side Actions -->
-        <div class="flex items-center gap-space-sm shrink-0">
+        <div class="flex items-center gap-2.5 shrink-0">
           
           <!-- Post a Rental Button -->
-          <a class="inline-flex items-center gap-space-xs px-space-lg py-space-sm bg-primary-container hover:bg-primary text-on-primary rounded-full font-label-lg text-label-lg shadow-[0_2px_8px_-1px_rgba(231,111,81,0.25)] transition-all cursor-pointer" href="#/post">
-            <span class="material-symbols-outlined text-[18px]">add_circle</span>
-            <span class="hidden md:inline">Post a Rental (+ पोस्ट गर्नुहोस्)</span>
-            <span class="md:hidden">+ Post</span>
+          <a class="inline-flex items-center gap-1.5 px-3.5 py-1.5 bg-primary hover:bg-primary/90 text-on-primary rounded-full text-xs font-semibold shadow-sm transition-all cursor-pointer hover:shadow" href="#/post">
+            <span class="material-symbols-outlined text-[16px]">add_circle</span>
+            <span class="hidden sm:inline">Post a Rental (+ पोस्ट)</span>
+            <span class="sm:hidden">+ Post</span>
           </a>
 
           ${user ? `
             <!-- User Menu -->
             <div class="relative">
-              <button id="user-menu-btn" class="flex items-center gap-space-xs p-space-xs pr-space-sm rounded-full bg-surface-container-low hover:bg-surface-container-high transition-colors" type="button">
-                <div class="w-8 h-8 rounded-full bg-secondary text-on-secondary flex items-center justify-center font-bold text-sm">
+              <button id="user-menu-btn" class="flex items-center gap-1.5 p-1 pr-2 rounded-full bg-surface-container-low hover:bg-surface-container transition-colors" type="button">
+                <div class="w-7 h-7 rounded-full bg-secondary text-on-secondary flex items-center justify-center font-bold text-xs">
                   ${userInitial}
                 </div>
-                <span class="hidden lg:inline font-label-md text-label-md text-on-surface font-semibold max-w-[120px] truncate">
+                <span class="hidden lg:inline text-xs text-on-surface font-semibold max-w-[110px] truncate">
                   ${userName}
                 </span>
-                <span class="material-symbols-outlined text-[16px] text-on-surface-variant">arrow_drop_down</span>
+                <span class="material-symbols-outlined text-[14px] text-on-surface-variant">arrow_drop_down</span>
               </button>
 
-              <div id="user-dropdown" class="hidden absolute right-0 mt-space-xs w-60 bg-surface-container-lowest rounded-DEFAULT shadow-[0_12px_24px_-4px_rgba(38,70,83,0.15)] p-space-xs z-50 flex-col gap-1 border border-surface-container-high">
-                <div class="px-space-sm py-space-xs border-b border-surface-container-high mb-1">
-                  <p class="font-label-md text-label-md text-on-surface font-bold truncate">${userName}</p>
-                  <p class="font-label-sm text-label-sm text-on-surface-variant truncate">${user.email}</p>
+              <div id="user-dropdown" class="hidden absolute right-0 mt-1.5 w-56 bg-surface-container-lowest rounded-xl shadow-[0_8px_20px_-4px_rgba(0,0,0,0.08)] p-1.5 z-50 flex-col gap-0.5 border border-slate-200/80">
+                <div class="px-3 py-2 border-b border-slate-100 mb-1">
+                  <p class="text-xs text-on-surface font-bold truncate">${userName}</p>
+                  <p class="text-[11px] text-on-surface-variant truncate">${user.email}</p>
                 </div>
-                <a class="flex items-center gap-space-sm px-space-sm py-2 rounded-full hover:bg-surface-container text-on-surface-variant hover:text-on-surface font-label-md text-label-md transition-colors" href="#/my-listings">
-                  <span class="material-symbols-outlined text-[18px] text-secondary">real_estate_agent</span>
+                <a class="flex items-center gap-2 px-3 py-1.5 rounded-lg hover:bg-surface-container text-on-surface-variant hover:text-on-surface text-xs transition-colors" href="#/my-listings">
+                  <span class="material-symbols-outlined text-[16px] text-secondary">real_estate_agent</span>
                   My Listings (मेरो लिस्टिङ)
                 </a>
-                <a class="flex items-center gap-space-sm px-space-sm py-2 rounded-full hover:bg-surface-container text-on-surface-variant hover:text-on-surface font-label-md text-label-md transition-colors" href="#/post">
-                  <span class="material-symbols-outlined text-[18px] text-primary">add_circle</span>
+                <a class="flex items-center gap-2 px-3 py-1.5 rounded-lg hover:bg-surface-container text-on-surface-variant hover:text-on-surface text-xs transition-colors" href="#/post">
+                  <span class="material-symbols-outlined text-[16px] text-primary">add_circle</span>
                   Post a Rental (+ पोस्ट)
                 </a>
-                <button id="signout-btn" class="w-full flex items-center gap-space-sm px-space-sm py-2 rounded-full hover:bg-error-container hover:text-error text-on-surface-variant font-label-md text-label-md transition-colors text-left" type="button">
-                  <span class="material-symbols-outlined text-[18px]">logout</span>
+                <button id="signout-btn" class="w-full flex items-center gap-2 px-3 py-1.5 rounded-lg hover:bg-error-container/40 hover:text-error text-on-surface-variant text-xs transition-colors text-left" type="button">
+                  <span class="material-symbols-outlined text-[16px]">logout</span>
                   Sign Out (बाहिरिनुहोस्)
                 </button>
               </div>
             </div>
           ` : `
             <!-- Sign In CTA -->
-            <a class="inline-flex items-center gap-space-xs px-space-md py-space-sm rounded-full bg-surface-container-low hover:bg-surface-container-high text-on-surface font-label-md text-label-md transition-colors cursor-pointer" href="#/login">
-              <span class="material-symbols-outlined text-[18px]">account_circle</span>
+            <a class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-surface-container-low hover:bg-surface-container text-on-surface text-xs font-medium transition-colors cursor-pointer border border-slate-200/60" href="#/login">
+              <span class="material-symbols-outlined text-[16px]">account_circle</span>
               <span>Sign In / Login</span>
             </a>
           `}

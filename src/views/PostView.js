@@ -35,32 +35,32 @@ export const PostView = {
     let uploadedPhotoUrls = existingListing?.photos ? [...existingListing.photos] : [];
 
     container.innerHTML = `
-      <div class="max-w-4xl mx-auto px-margin-sm lg:px-margin py-8 animate-fade-in">
+      <div class="max-w-3xl mx-auto px-4 sm:px-6 py-6 animate-fade-in">
         <!-- Header -->
-        <div class="mb-8">
-          <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-primary/10 text-primary font-label-sm font-bold mb-2">
+        <div class="mb-6">
+          <div class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-primary/10 text-primary text-[11px] font-semibold mb-2">
             <span>🇳🇵</span>
             <span>${editId ? 'Edit Your Rental Listing (लिस्टिङ सम्पादन)' : 'Direct Owner Listing • Zero Broker Commission'}</span>
           </div>
-          <h1 class="font-headline-lg text-headline-lg lg:text-[32px] font-black text-on-surface">
+          <h1 class="text-xl sm:text-2xl font-bold tracking-tight text-on-surface">
             ${editId ? 'Edit Rental Listing' : 'Post a Rental Property (घरभाडा पोस्ट गर्नुहोस्)'}
           </h1>
-          <p class="font-body-md text-on-surface-variant mt-1">
+          <p class="text-xs sm:text-sm text-slate-500 mt-1">
             Connect directly with verified tenants across Nepal. No brokerage charges or intermediaries.
           </p>
         </div>
 
         <!-- Form -->
-        <form id="post-rental-form" class="flex flex-col gap-8">
+        <form id="post-rental-form" class="flex flex-col gap-5">
           
           <!-- 1. Category Selection -->
-          <section class="bg-surface-container-lowest p-space-lg rounded-DEFAULT shadow-sm flex flex-col gap-4">
+          <section class="bg-surface-container-lowest p-5 rounded-xl border border-slate-200/80 shadow-xs flex flex-col gap-3.5">
             <div class="flex items-center gap-2">
-              <span class="w-3 h-3 rounded-full bg-primary"></span>
-              <h2 class="font-headline-sm text-headline-sm font-bold text-on-surface">1. Property Category (सम्पत्तिको प्रकार)</h2>
+              <span class="w-2.5 h-2.5 rounded-full bg-primary"></span>
+              <h2 class="text-sm font-bold text-slate-800">1. Property Category (सम्पत्तिको प्रकार)</h2>
             </div>
             
-            <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-3">
+            <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-2.5">
               ${[
                 { id: 'room', label: 'Room (कोठा)', emoji: '🛏️' },
                 { id: 'flat', label: 'Flat (फ्ल्याट)', emoji: '🏢' },
@@ -73,9 +73,9 @@ export const PostView = {
                 return `
                   <label class="group relative cursor-pointer">
                     <input type="radio" name="category" value="${cat.id}" class="peer sr-only" ${isChecked ? 'checked' : ''}/>
-                    <div class="p-3 py-4 rounded-DEFAULT bg-surface-container-low peer-checked:bg-surface-container peer-checked:border-2 peer-checked:border-primary border-2 border-transparent transition-all flex flex-col items-center text-center gap-1.5 hover:bg-surface-container-high">
-                      <span class="text-2xl">${cat.emoji}</span>
-                      <span class="font-label-sm text-label-sm font-bold text-on-surface">${cat.label}</span>
+                    <div class="p-2.5 rounded-lg bg-surface-container-low peer-checked:bg-primary/5 peer-checked:border-primary peer-checked:text-primary border border-slate-200/80 hover:border-slate-300 transition-all flex flex-col items-center text-center gap-1 hover:bg-surface-container">
+                      <span class="text-xl">${cat.emoji}</span>
+                      <span class="text-xs font-semibold text-on-surface">${cat.label}</span>
                     </div>
                   </label>
                 `;
@@ -84,40 +84,40 @@ export const PostView = {
           </section>
 
           <!-- 2. Listing Title & Description -->
-          <section class="bg-surface-container-lowest p-space-lg rounded-DEFAULT shadow-sm flex flex-col gap-4">
+          <section class="bg-surface-container-lowest p-5 rounded-xl border border-slate-200/80 shadow-xs flex flex-col gap-3.5">
             <div class="flex items-center gap-2">
-              <span class="w-3 h-3 rounded-full bg-primary"></span>
-              <h2 class="font-headline-sm text-headline-sm font-bold text-on-surface">2. Title & Narrative (शीर्षक र विवरण)</h2>
+              <span class="w-2.5 h-2.5 rounded-full bg-primary"></span>
+              <h2 class="text-sm font-bold text-slate-800">2. Title & Narrative (शीर्षक र विवरण)</h2>
             </div>
 
             <div class="flex flex-col gap-1.5">
-              <label class="font-label-md text-label-md text-on-surface font-bold" for="listing-title">
+              <label class="text-xs font-semibold text-slate-700" for="listing-title">
                 Catchy Listing Title <span class="text-primary">*</span>
               </label>
-              <input id="listing-title" required maxlength="100" class="w-full px-4 py-3 rounded-full bg-surface-container-low text-on-surface placeholder:text-on-surface-variant/60 focus:bg-surface-container-lowest focus:outline-none focus:ring-2 focus:ring-primary transition-all font-body-md" placeholder="e.g., 2 BHK Sunny Flat near Shankhamul Bridge with Car Parking" value="${existingListing?.title || ''}"/>
+              <input id="listing-title" required maxlength="100" class="w-full px-3.5 py-2 rounded-lg bg-surface-container-low border border-slate-200/80 text-on-surface placeholder:text-slate-400 focus:bg-surface-container-lowest focus:border-primary focus:ring-1 focus:ring-primary focus:outline-none transition-all text-xs sm:text-sm" placeholder="e.g., 2 BHK Sunny Flat near Shankhamul Bridge with Car Parking" value="${existingListing?.title || ''}"/>
             </div>
 
             <div class="flex flex-col gap-1.5">
-              <label class="font-label-md text-label-md text-on-surface font-bold" for="listing-description">
+              <label class="text-xs font-semibold text-slate-700" for="listing-description">
                 Comprehensive Description (नेपाली वा English मा लेख्नुहोस्)
               </label>
-              <textarea id="listing-description" rows="5" class="w-full p-4 rounded-2xl bg-surface-container-low text-on-surface placeholder:text-on-surface-variant/60 focus:bg-surface-container-lowest focus:outline-none focus:ring-2 focus:ring-primary transition-all font-body-md" placeholder="Mention floor details, sunlight, water facility (Melamchi/Boring), electricity sub-meter, preferred tenant (family/bachelor), and nearby landmarks...">${existingListing?.description || ''}</textarea>
+              <textarea id="listing-description" rows="4" class="w-full p-3 rounded-lg bg-surface-container-low border border-slate-200/80 text-on-surface placeholder:text-slate-400 focus:bg-surface-container-lowest focus:border-primary focus:ring-1 focus:ring-primary focus:outline-none transition-all text-xs sm:text-sm leading-relaxed" placeholder="Mention floor details, sunlight, water facility (Melamchi/Boring), electricity sub-meter, preferred tenant (family/bachelor), and nearby landmarks...">${existingListing?.description || ''}</textarea>
             </div>
           </section>
 
           <!-- 3. Location -->
-          <section class="bg-surface-container-lowest p-space-lg rounded-DEFAULT shadow-sm flex flex-col gap-4">
+          <section class="bg-surface-container-lowest p-5 rounded-xl border border-slate-200/80 shadow-xs flex flex-col gap-3.5">
             <div class="flex items-center gap-2">
-              <span class="w-3 h-3 rounded-full bg-primary"></span>
-              <h2 class="font-headline-sm text-headline-sm font-bold text-on-surface">3. Location (स्थान / ठेगाना)</h2>
+              <span class="w-2.5 h-2.5 rounded-full bg-primary"></span>
+              <h2 class="text-sm font-bold text-slate-800">3. Location (स्थान / ठेगाना)</h2>
             </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
               <div class="flex flex-col gap-1.5">
-                <label class="font-label-md text-label-md text-on-surface font-bold" for="location-city">
+                <label class="text-xs font-semibold text-slate-700" for="location-city">
                   District / City <span class="text-primary">*</span>
                 </label>
-                <select id="location-city" required class="w-full px-4 py-3 rounded-full bg-surface-container-low text-on-surface focus:outline-none focus:ring-2 focus:ring-primary font-body-md cursor-pointer">
+                <select id="location-city" required class="w-full px-3.5 py-2 rounded-lg bg-surface-container-low border border-slate-200/80 text-on-surface focus:bg-surface-container-lowest focus:border-primary focus:ring-1 focus:ring-primary focus:outline-none text-xs sm:text-sm cursor-pointer">
                   ${['Kathmandu', 'Lalitpur', 'Bhaktapur', 'Pokhara', 'Chitwan', 'Butwal', 'Dharan', 'Other'].map(city => `
                     <option value="${city}" ${(existingListing?.location_city || 'Kathmandu') === city ? 'selected' : ''}>${city}</option>
                   `).join('')}
@@ -125,160 +125,160 @@ export const PostView = {
               </div>
 
               <div class="flex flex-col gap-1.5">
-                <label class="font-label-md text-label-md text-on-surface font-bold" for="location-area">
+                <label class="text-xs font-semibold text-slate-700" for="location-area">
                   Neighborhood / Area (टोल / ठाउँ) <span class="text-primary">*</span>
                 </label>
-                <input id="location-area" required class="w-full px-4 py-3 rounded-full bg-surface-container-low text-on-surface placeholder:text-on-surface-variant/60 focus:bg-surface-container-lowest focus:outline-none focus:ring-2 focus:ring-primary font-body-md" placeholder="e.g. New Baneshwor, Jhamsikhel, Pulchowk" value="${existingListing?.location_area || ''}"/>
+                <input id="location-area" required class="w-full px-3.5 py-2 rounded-lg bg-surface-container-low border border-slate-200/80 text-on-surface placeholder:text-slate-400 focus:bg-surface-container-lowest focus:border-primary focus:ring-1 focus:ring-primary focus:outline-none text-xs sm:text-sm" placeholder="e.g. New Baneshwor, Jhamsikhel, Pulchowk" value="${existingListing?.location_area || ''}"/>
               </div>
             </div>
 
             <div class="flex flex-col gap-1.5">
-              <label class="font-label-md text-label-md text-on-surface font-bold" for="location-landmark">
+              <label class="text-xs font-semibold text-slate-700" for="location-landmark">
                 Nearby Landmark / Street Access
               </label>
-              <input id="location-landmark" class="w-full px-4 py-3 rounded-full bg-surface-container-low text-on-surface placeholder:text-on-surface-variant/60 focus:bg-surface-container-lowest focus:outline-none focus:ring-2 focus:ring-primary font-body-md" placeholder="e.g. Near Shankhamul Bridge, 50m inside ring road" value="${existingListing?.landmark || ''}"/>
+              <input id="location-landmark" class="w-full px-3.5 py-2 rounded-lg bg-surface-container-low border border-slate-200/80 text-on-surface placeholder:text-slate-400 focus:bg-surface-container-lowest focus:border-primary focus:ring-1 focus:ring-primary focus:outline-none text-xs sm:text-sm" placeholder="e.g. Near Shankhamul Bridge, 50m inside ring road" value="${existingListing?.landmark || ''}"/>
             </div>
           </section>
 
           <!-- 4. Pricing & Specs -->
-          <section class="bg-surface-container-lowest p-space-lg rounded-DEFAULT shadow-sm flex flex-col gap-4">
+          <section class="bg-surface-container-lowest p-5 rounded-xl border border-slate-200/80 shadow-xs flex flex-col gap-3.5">
             <div class="flex items-center gap-2">
-              <span class="w-3 h-3 rounded-full bg-primary"></span>
-              <h2 class="font-headline-sm text-headline-sm font-bold text-on-surface">4. Pricing & Details (भाडा र विवरण)</h2>
+              <span class="w-2.5 h-2.5 rounded-full bg-primary"></span>
+              <h2 class="text-sm font-bold text-slate-800">4. Pricing & Details (भाडा र विवरण)</h2>
             </div>
 
-            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
               <div class="flex flex-col gap-1.5">
-                <label class="font-label-md text-label-md text-on-surface font-bold" for="rental-price">
+                <label class="text-xs font-semibold text-slate-700" for="rental-price">
                   Monthly Rent in NPR (नेपाली रुपैयाँ) <span class="text-primary">*</span>
                 </label>
-                <div class="flex items-center bg-surface-container-low rounded-full px-4 py-2.5 focus-within:ring-2 focus-within:ring-primary">
-                  <span class="font-bold text-primary mr-2">रु (Rs.)</span>
-                  <input id="rental-price" required type="number" min="0" step="500" class="w-full bg-transparent text-on-surface font-bold text-lg focus:outline-none" placeholder="25000" value="${existingListing?.price || ''}"/>
+                <div class="flex items-center bg-surface-container-low rounded-lg border border-slate-200/80 px-3 py-2 focus-within:bg-surface-container-lowest focus-within:border-primary focus-within:ring-1 focus-within:ring-primary transition-all">
+                  <span class="font-bold text-primary mr-2 text-xs">रु (Rs.)</span>
+                  <input id="rental-price" required type="number" min="0" step="500" class="w-full bg-transparent text-on-surface font-bold text-sm focus:outline-none" placeholder="25000" value="${existingListing?.price || ''}"/>
                 </div>
               </div>
 
               <div class="flex flex-col gap-1.5">
-                <label class="font-label-md text-label-md text-on-surface font-bold" for="water-facility">
+                <label class="text-xs font-semibold text-slate-700" for="water-facility">
                   Water Facility (खानेपानी)
                 </label>
-                <input id="water-facility" class="w-full px-4 py-3 rounded-full bg-surface-container-low text-on-surface focus:outline-none focus:ring-2 focus:ring-primary font-body-md" placeholder="e.g. 24/7 Melamchi + Deep Boring" value="${existingListing?.water_facility || '24/7 Supply'}"/>
+                <input id="water-facility" class="w-full px-3.5 py-2 rounded-lg bg-surface-container-low border border-slate-200/80 text-on-surface focus:bg-surface-container-lowest focus:border-primary focus:ring-1 focus:ring-primary focus:outline-none text-xs sm:text-sm" placeholder="e.g. 24/7 Melamchi + Deep Boring" value="${existingListing?.water_facility || '24/7 Supply'}"/>
               </div>
             </div>
 
-            <div class="grid grid-cols-3 gap-4">
+            <div class="grid grid-cols-3 gap-3">
               <div class="flex flex-col gap-1.5">
-                <label class="font-label-md text-label-md text-on-surface font-bold" for="bedrooms-input">Bedrooms</label>
-                <input id="bedrooms-input" type="number" min="0" max="20" class="w-full px-4 py-2.5 rounded-full bg-surface-container-low text-on-surface focus:outline-none font-body-md" value="${existingListing?.bedrooms || 1}"/>
+                <label class="text-xs font-semibold text-slate-700" for="bedrooms-input">Bedrooms</label>
+                <input id="bedrooms-input" type="number" min="0" max="20" class="w-full px-3 py-2 rounded-lg bg-surface-container-low border border-slate-200/80 text-on-surface focus:bg-surface-container-lowest focus:border-primary focus:ring-1 focus:ring-primary focus:outline-none text-xs sm:text-sm" value="${existingListing?.bedrooms || 1}"/>
               </div>
 
               <div class="flex flex-col gap-1.5">
-                <label class="font-label-md text-label-md text-on-surface font-bold" for="bathrooms-input">Bathrooms</label>
-                <input id="bathrooms-input" type="number" min="0" max="10" class="w-full px-4 py-2.5 rounded-full bg-surface-container-low text-on-surface focus:outline-none font-body-md" value="${existingListing?.bathrooms || 1}"/>
+                <label class="text-xs font-semibold text-slate-700" for="bathrooms-input">Bathrooms</label>
+                <input id="bathrooms-input" type="number" min="0" max="10" class="w-full px-3 py-2 rounded-lg bg-surface-container-low border border-slate-200/80 text-on-surface focus:bg-surface-container-lowest focus:border-primary focus:ring-1 focus:ring-primary focus:outline-none text-xs sm:text-sm" value="${existingListing?.bathrooms || 1}"/>
               </div>
 
-              <div class="flex items-center pt-6">
+              <div class="flex items-center pt-5">
                 <label class="flex items-center gap-2 cursor-pointer select-none">
-                  <input id="is-negotiable" type="checkbox" class="w-5 h-5 accent-primary rounded cursor-pointer" ${existingListing?.is_negotiable !== false ? 'checked' : ''}/>
-                  <span class="font-label-md text-label-md font-bold text-on-surface">Price Negotiable</span>
+                  <input id="is-negotiable" type="checkbox" class="w-4 h-4 accent-primary rounded cursor-pointer" ${existingListing?.is_negotiable !== false ? 'checked' : ''}/>
+                  <span class="text-xs font-semibold text-slate-700">Price Negotiable</span>
                 </label>
               </div>
             </div>
           </section>
 
           <!-- 5. Property Photos (Supabase Storage) -->
-          <section class="bg-surface-container-lowest p-space-lg rounded-DEFAULT shadow-sm flex flex-col gap-4">
+          <section class="bg-surface-container-lowest p-5 rounded-xl border border-slate-200/80 shadow-xs flex flex-col gap-3.5">
             <div class="flex items-center justify-between">
               <div class="flex items-center gap-2">
-                <span class="w-3 h-3 rounded-full bg-primary"></span>
-                <h2 class="font-headline-sm text-headline-sm font-bold text-on-surface">5. Property Photos (फोटोहरू)</h2>
+                <span class="w-2.5 h-2.5 rounded-full bg-primary"></span>
+                <h2 class="text-sm font-bold text-slate-800">5. Property Photos (फोटोहरू)</h2>
               </div>
-              <span class="font-label-sm text-label-sm text-secondary font-semibold">Supabase Storage</span>
+              <span class="text-[11px] text-slate-500 font-medium">Supabase Storage</span>
             </div>
 
             <!-- Upload Dropzone -->
-            <div id="dropzone" class="border-2 border-dashed border-primary/30 hover:border-primary rounded-2xl p-6 text-center cursor-pointer bg-surface-container-low/50 hover:bg-surface-container-low transition-all">
+            <div id="dropzone" class="border border-dashed border-primary/40 hover:border-primary rounded-xl p-5 text-center cursor-pointer bg-primary/[0.02] hover:bg-primary/[0.05] transition-all">
               <input type="file" id="photo-file-input" multiple accept="image/*" class="hidden"/>
-              <span class="material-symbols-outlined text-4xl text-primary mb-2">cloud_upload</span>
-              <p class="font-label-lg text-label-lg font-bold text-on-surface">Click or Drag & Drop Property Images</p>
-              <p class="font-body-sm text-xs text-on-surface-variant mt-1">Upload high-res JPG, PNG, or WebP photos (Max 10MB each)</p>
+              <span class="material-symbols-outlined text-3xl text-primary mb-1">cloud_upload</span>
+              <p class="text-xs sm:text-sm font-semibold text-slate-800">Click or Drag & Drop Property Images</p>
+              <p class="text-[11px] text-slate-500 mt-0.5">Upload JPG, PNG, or WebP photos (Max 10MB each)</p>
             </div>
 
             <!-- Upload progress bar -->
-            <div id="upload-status" class="hidden font-label-sm text-label-sm text-primary flex items-center gap-2">
-              <div class="w-4 h-4 border-2 border-primary border-t-transparent rounded-full animate-spin"></div>
+            <div id="upload-status" class="hidden text-xs text-primary flex items-center gap-2">
+              <div class="w-3.5 h-3.5 border-2 border-primary border-t-transparent rounded-full animate-spin"></div>
               <span id="upload-status-text">Uploading photos to Supabase Storage...</span>
             </div>
 
             <!-- Thumbnails Container -->
-            <div id="thumbnails-grid" class="grid grid-cols-2 sm:grid-cols-4 gap-3">
+            <div id="thumbnails-grid" class="grid grid-cols-2 sm:grid-cols-4 gap-2.5">
               <!-- Rendered dynamically -->
             </div>
           </section>
 
           <!-- 6. Direct Contact Channels -->
-          <section class="bg-surface-container-lowest p-space-lg rounded-DEFAULT shadow-sm flex flex-col gap-4">
+          <section class="bg-surface-container-lowest p-5 rounded-xl border border-slate-200/80 shadow-xs flex flex-col gap-3.5">
             <div class="flex items-center justify-between">
               <div class="flex items-center gap-2">
-                <span class="w-3 h-3 rounded-full bg-primary"></span>
-                <h2 class="font-headline-sm text-headline-sm font-bold text-on-surface">6. Direct Contact Channels (सम्पर्क विवरण)</h2>
+                <span class="w-2.5 h-2.5 rounded-full bg-primary"></span>
+                <h2 class="text-sm font-bold text-slate-800">6. Direct Contact Channels (सम्पर्क विवरण)</h2>
               </div>
-              <span class="font-label-sm text-label-sm text-secondary font-semibold">Tenants contact you directly</span>
+              <span class="text-[11px] text-slate-500 font-medium">Direct tenant connection</span>
             </div>
 
-            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
               <div class="flex flex-col gap-1.5">
-                <label class="font-label-md text-label-md text-on-surface font-bold" for="contact-name">
+                <label class="text-xs font-semibold text-slate-700" for="contact-name">
                   Contact Person / Owner Name <span class="text-primary">*</span>
                 </label>
-                <input id="contact-name" required class="w-full px-4 py-3 rounded-full bg-surface-container-low text-on-surface focus:outline-none focus:ring-2 focus:ring-primary font-body-md" placeholder="e.g. Rameshwor Karki" value="${defaultContactName}"/>
+                <input id="contact-name" required class="w-full px-3.5 py-2 rounded-lg bg-surface-container-low border border-slate-200/80 text-on-surface focus:bg-surface-container-lowest focus:border-primary focus:ring-1 focus:ring-primary focus:outline-none text-xs sm:text-sm" placeholder="e.g. Rameshwor Karki" value="${defaultContactName}"/>
               </div>
 
               <div class="flex flex-col gap-1.5">
-                <label class="font-label-md text-label-md text-on-surface font-bold" for="contact-phone">
+                <label class="text-xs font-semibold text-slate-700" for="contact-phone">
                   Primary Mobile Number <span class="text-primary">*</span>
                 </label>
-                <div class="flex items-center bg-surface-container-low rounded-full px-4 py-2.5 focus-within:ring-2 focus-within:ring-primary">
-                  <span class="font-bold text-secondary mr-2">+977</span>
-                  <input id="contact-phone" required type="tel" maxlength="10" class="w-full bg-transparent text-on-surface font-body-md focus:outline-none" placeholder="98XXXXXXXX" value="${defaultPhone}"/>
+                <div class="flex items-center bg-surface-container-low rounded-lg border border-slate-200/80 px-3 py-2 focus-within:bg-surface-container-lowest focus-within:border-primary focus-within:ring-1 focus-within:ring-primary transition-all">
+                  <span class="font-bold text-slate-600 mr-2 text-xs">+977</span>
+                  <input id="contact-phone" required type="tel" maxlength="10" class="w-full bg-transparent text-on-surface text-xs sm:text-sm focus:outline-none" placeholder="98XXXXXXXX" value="${defaultPhone}"/>
                 </div>
               </div>
             </div>
 
-            <div class="flex flex-col gap-2 pt-2">
-              <label class="font-label-md text-label-md text-on-surface font-bold">Preferred Contact Method</label>
+            <div class="flex flex-col gap-2 pt-1">
+              <label class="text-xs font-semibold text-slate-700">Preferred Contact Method</label>
               <div class="flex flex-wrap gap-4">
-                <label class="flex items-center gap-2 cursor-pointer">
+                <label class="flex items-center gap-1.5 cursor-pointer">
                   <input type="radio" name="contact_method" value="call" class="accent-primary" ${(existingListing?.contact_method || 'call') === 'call' ? 'checked' : ''}/>
-                  <span class="font-label-md text-label-md">Direct Call (फोन कल)</span>
+                  <span class="text-xs font-medium text-slate-700">Direct Call (फोन कल)</span>
                 </label>
-                <label class="flex items-center gap-2 cursor-pointer">
+                <label class="flex items-center gap-1.5 cursor-pointer">
                   <input type="radio" name="contact_method" value="whatsapp" class="accent-primary" ${existingListing?.contact_method === 'whatsapp' ? 'checked' : ''}/>
-                  <span class="font-label-md text-label-md">WhatsApp</span>
+                  <span class="text-xs font-medium text-slate-700">WhatsApp</span>
                 </label>
-                <label class="flex items-center gap-2 cursor-pointer">
+                <label class="flex items-center gap-1.5 cursor-pointer">
                   <input type="radio" name="contact_method" value="viber" class="accent-primary" ${existingListing?.contact_method === 'viber' ? 'checked' : ''}/>
-                  <span class="font-label-md text-label-md">Viber</span>
+                  <span class="text-xs font-medium text-slate-700">Viber</span>
                 </label>
               </div>
             </div>
           </section>
 
           <!-- 7. Confirmation & Submit -->
-          <section class="bg-surface-container-lowest p-space-lg rounded-DEFAULT shadow-sm flex flex-col gap-4">
-            <label class="flex items-start gap-3 cursor-pointer select-none">
-              <input type="checkbox" required class="mt-1 w-5 h-5 accent-primary rounded cursor-pointer" checked/>
-              <span class="font-body-sm text-body-sm text-on-surface">
+          <section class="bg-surface-container-lowest p-5 rounded-xl border border-slate-200/80 shadow-xs flex flex-col gap-3.5">
+            <label class="flex items-start gap-2.5 cursor-pointer select-none">
+              <input type="checkbox" required class="mt-0.5 w-4 h-4 accent-primary rounded cursor-pointer" checked/>
+              <span class="text-xs text-slate-600 leading-relaxed">
                 I solemnly confirm that I am the authorized owner or representative of this property. All information and NPR rates are accurate according to Nepal Tenancy guidelines. (म यो सम्पत्तिको आधिकारिक धनी भएको प्रमाणित गर्दछु।)
               </span>
             </label>
 
-            <div class="flex flex-col sm:flex-row items-center justify-between gap-4 pt-4 border-t border-surface-container-high">
-              <a href="#/my-listings" class="w-full sm:w-auto px-6 py-2.5 rounded-full bg-surface-container hover:bg-surface-container-high text-on-surface font-label-md text-center">
+            <div class="flex flex-col sm:flex-row items-center justify-between gap-3 pt-3 border-t border-slate-100">
+              <a href="#/my-listings" class="w-full sm:w-auto px-4 py-2 rounded-lg bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-semibold text-center transition-colors">
                 Cancel
               </a>
-              <button id="submit-btn" type="submit" class="w-full sm:w-auto px-8 py-3.5 rounded-full bg-primary hover:bg-surface-tint text-on-primary font-headline-sm text-headline-sm shadow-md hover:shadow-lg transition-all flex items-center justify-center gap-2">
-                <span class="material-symbols-outlined text-[22px]">rocket_launch</span>
+              <button id="submit-btn" type="submit" class="w-full sm:w-auto px-6 py-2.5 rounded-lg bg-primary hover:bg-surface-tint text-on-primary text-xs sm:text-sm font-semibold shadow-xs hover:shadow transition-all flex items-center justify-center gap-1.5">
+                <span class="material-symbols-outlined text-[18px]">rocket_launch</span>
                 <span>${editId ? 'Save Changes (अपडेट गर्नुहोस्)' : 'Publish Listing Now (पोस्ट गर्नुहोस्)'}</span>
               </button>
             </div>
