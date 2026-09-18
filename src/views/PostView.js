@@ -36,17 +36,17 @@ export const PostView = {
     let uploadedPhotoUrls = existingListing?.photos ? [...existingListing.photos] : [];
 
     container.innerHTML = `
-      <div class="max-w-3xl mx-auto px-4 sm:px-6 py-6 animate-fade-in">
+      <div class="max-w-3xl mx-auto px-4 sm:px-6 py-6 page-transition">
         <!-- Header -->
         <div class="mb-6">
-          <div class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-primary-light text-primary text-[11px] font-semibold mb-2 border border-primary/20">
+          <div class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-[8px] bg-[#FDF0EC] text-[#D97757] text-xs font-semibold mb-2 border border-[#D97757]/20">
             <span>🇳🇵</span>
             <span>${editId ? 'Edit Your Rental Listing (लिस्टिङ सम्पादन)' : 'Direct Owner Listing • Zero Broker Commission'}</span>
           </div>
-          <h1 class="text-xl sm:text-2xl font-bold tracking-tight text-slate-900">
+          <h1 class="text-xl sm:text-2xl font-semibold tracking-tight text-[#1F1B16]">
             ${editId ? 'Edit Rental Listing' : 'Post a Rental Property (घरभाडा पोस्ट गर्नुहोस्)'}
           </h1>
-          <p class="text-xs sm:text-sm text-slate-500 mt-1">
+          <p class="text-sm text-[#6B6258] mt-1">
             Connect directly with verified tenants across Nepal. No brokerage charges or intermediaries.
           </p>
         </div>
@@ -55,17 +55,17 @@ export const PostView = {
         <form id="post-rental-form" class="flex flex-col gap-5">
           
           <!-- 1. Category Selection -->
-          <section class="bg-white p-5 rounded-xl border border-slate-200/80 shadow-xs flex flex-col gap-3.5">
+          <section class="bg-white p-5 rounded-[12px] border border-[#F0EBE3] shadow-card flex flex-col gap-3.5">
             <div class="flex items-center gap-2">
-              <span class="w-2.5 h-2.5 rounded-full bg-primary"></span>
-              <h2 class="text-sm font-bold text-slate-800">1. Property Category (सम्पत्तिको प्रकार)</h2>
+              <span class="w-2 h-2 rounded-full bg-[#D97757]"></span>
+              <h2 class="text-sm font-semibold text-[#1F1B16]">1. Property Category (सम्पत्तिको प्रकार)</h2>
             </div>
             
             <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-2.5">
               ${[
                 { id: 'room', label: 'Room (कोठा)', emoji: '🛏️' },
                 { id: 'flat', label: 'Flat (फ्ल्याट)', emoji: '🏢' },
-                { id: 'house', label: 'Full House (घर)', emoji: '🏠' },
+                { id: 'house', label: 'House (घर)', emoji: '🏠' },
                 { id: 'commercial', label: 'Shutter (सटर)', emoji: '🏬' },
                 { id: 'land', label: 'Land (जग्गा)', emoji: '🏞️' },
                 { id: 'vehicle', label: 'Vehicle (सवारी)', emoji: '🏍️' }
@@ -74,9 +74,9 @@ export const PostView = {
                 return `
                   <label class="group relative cursor-pointer">
                     <input type="radio" name="category" value="${cat.id}" class="peer sr-only" ${isChecked ? 'checked' : ''}/>
-                    <div class="p-2.5 rounded-lg bg-slate-50 peer-checked:bg-primary-light peer-checked:border-primary peer-checked:text-primary border border-slate-200/80 hover:border-slate-300 transition-all flex flex-col items-center text-center gap-1 hover:bg-slate-100">
+                    <div class="p-2.5 rounded-[8px] bg-[#FDFBF7] peer-checked:bg-[#FDF0EC] peer-checked:border-[#D97757] peer-checked:text-[#D97757] border border-[#F0EBE3] hover:border-[#D97757]/40 transition-all flex flex-col items-center text-center gap-1">
                       <span class="text-xl">${cat.emoji}</span>
-                      <span class="text-xs font-semibold text-slate-800">${cat.label}</span>
+                      <span class="text-xs font-semibold text-[#1F1B16] peer-checked:text-[#D97757]">${cat.label}</span>
                     </div>
                   </label>
                 `;
@@ -85,40 +85,40 @@ export const PostView = {
           </section>
 
           <!-- 2. Listing Title & Description -->
-          <section class="bg-white p-5 rounded-xl border border-slate-200/80 shadow-xs flex flex-col gap-3.5">
+          <section class="bg-white p-5 rounded-[12px] border border-[#F0EBE3] shadow-card flex flex-col gap-3.5">
             <div class="flex items-center gap-2">
-              <span class="w-2.5 h-2.5 rounded-full bg-primary"></span>
-              <h2 class="text-sm font-bold text-slate-800">2. Title & Narrative (शीर्षक र विवरण)</h2>
+              <span class="w-2 h-2 rounded-full bg-[#D97757]"></span>
+              <h2 class="text-sm font-semibold text-[#1F1B16]">2. Title & Narrative (शीर्षक र विवरण)</h2>
             </div>
 
             <div class="flex flex-col gap-1.5">
-              <label class="text-xs font-semibold text-slate-700" for="listing-title">
-                Catchy Listing Title <span class="text-primary">*</span>
+              <label class="text-xs font-semibold text-[#1F1B16]" for="listing-title">
+                Listing Title <span class="text-[#D97757]">*</span>
               </label>
-              <input id="listing-title" required maxlength="100" class="input-interactive w-full px-3.5 py-2 rounded-lg bg-slate-50 border border-slate-200/80 text-slate-900 placeholder:text-slate-400 text-xs sm:text-sm" placeholder="e.g., 2 BHK Sunny Flat near Shankhamul Bridge with Car Parking" value="${existingListing?.title || ''}"/>
+              <input id="listing-title" required maxlength="100" class="input-focus w-full px-3.5 py-2 text-[#1F1B16] placeholder:text-[#6B6258]/60 text-sm" placeholder="e.g., 2 BHK Sunny Flat near Shankhamul Bridge with Car Parking" value="${existingListing?.title || ''}"/>
             </div>
 
             <div class="flex flex-col gap-1.5">
-              <label class="text-xs font-semibold text-slate-700" for="listing-description">
+              <label class="text-xs font-semibold text-[#1F1B16]" for="listing-description">
                 Comprehensive Description (नेपाली वा English मा लेख्नुहोस्)
               </label>
-              <textarea id="listing-description" rows="4" class="input-interactive w-full p-3 rounded-lg bg-slate-50 border border-slate-200/80 text-slate-900 placeholder:text-slate-400 text-xs sm:text-sm leading-relaxed" placeholder="Mention floor details, sunlight, water facility (Melamchi/Boring), electricity sub-meter, preferred tenant (family/bachelor), and nearby landmarks...">${existingListing?.description || ''}</textarea>
+              <textarea id="listing-description" rows="4" class="input-focus w-full p-3 text-[#1F1B16] placeholder:text-[#6B6258]/60 text-sm leading-relaxed" placeholder="Mention floor details, sunlight, water facility (Melamchi/Boring), electricity sub-meter, preferred tenant (family/bachelor), and nearby landmarks...">${existingListing?.description || ''}</textarea>
             </div>
           </section>
 
           <!-- 3. Location -->
-          <section class="bg-white p-5 rounded-xl border border-slate-200/80 shadow-xs flex flex-col gap-3.5">
+          <section class="bg-white p-5 rounded-[12px] border border-[#F0EBE3] shadow-card flex flex-col gap-3.5">
             <div class="flex items-center gap-2">
-              <span class="w-2.5 h-2.5 rounded-full bg-primary"></span>
-              <h2 class="text-sm font-bold text-slate-800">3. Location (स्थान / ठेगाना)</h2>
+              <span class="w-2 h-2 rounded-full bg-[#D97757]"></span>
+              <h2 class="text-sm font-semibold text-[#1F1B16]">3. Location (स्थान / ठेगाना)</h2>
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
               <div class="flex flex-col gap-1.5">
-                <label class="text-xs font-semibold text-slate-700" for="location-city">
-                  District / City <span class="text-primary">*</span>
+                <label class="text-xs font-semibold text-[#1F1B16]" for="location-city">
+                  District / City <span class="text-[#D97757]">*</span>
                 </label>
-                <select id="location-city" required class="input-interactive w-full px-3.5 py-2 rounded-lg bg-slate-50 border border-slate-200/80 text-slate-900 text-xs sm:text-sm cursor-pointer">
+                <select id="location-city" required class="input-focus w-full px-3.5 py-2 text-[#1F1B16] text-sm cursor-pointer">
                   ${['Kathmandu', 'Lalitpur', 'Bhaktapur', 'Pokhara', 'Chitwan', 'Butwal', 'Dharan', 'Other'].map(city => `
                     <option value="${city}" ${(existingListing?.location_city || 'Kathmandu') === city ? 'selected' : ''}>${city}</option>
                   `).join('')}
@@ -126,90 +126,90 @@ export const PostView = {
               </div>
 
               <div class="flex flex-col gap-1.5">
-                <label class="text-xs font-semibold text-slate-700" for="location-area">
-                  Neighborhood / Area (टोल / ठाउँ) <span class="text-primary">*</span>
+                <label class="text-xs font-semibold text-[#1F1B16]" for="location-area">
+                  Neighborhood / Area (टोल / ठाउँ) <span class="text-[#D97757]">*</span>
                 </label>
-                <input id="location-area" required class="input-interactive w-full px-3.5 py-2 rounded-lg bg-slate-50 border border-slate-200/80 text-slate-900 placeholder:text-slate-400 text-xs sm:text-sm" placeholder="e.g. New Baneshwor, Jhamsikhel, Pulchowk" value="${existingListing?.location_area || ''}"/>
+                <input id="location-area" required class="input-focus w-full px-3.5 py-2 text-[#1F1B16] placeholder:text-[#6B6258]/60 text-sm" placeholder="e.g. New Baneshwor, Jhamsikhel, Pulchowk" value="${existingListing?.location_area || ''}"/>
               </div>
             </div>
 
             <div class="flex flex-col gap-1.5">
-              <label class="text-xs font-semibold text-slate-700" for="location-landmark">
+              <label class="text-xs font-semibold text-[#1F1B16]" for="location-landmark">
                 Nearby Landmark / Street Access
               </label>
-              <input id="location-landmark" class="input-interactive w-full px-3.5 py-2 rounded-lg bg-slate-50 border border-slate-200/80 text-slate-900 placeholder:text-slate-400 text-xs sm:text-sm" placeholder="e.g. Near Shankhamul Bridge, 50m inside ring road" value="${existingListing?.landmark || ''}"/>
+              <input id="location-landmark" class="input-focus w-full px-3.5 py-2 text-[#1F1B16] placeholder:text-[#6B6258]/60 text-sm" placeholder="e.g. Near Shankhamul Bridge, 50m inside ring road" value="${existingListing?.landmark || ''}"/>
             </div>
           </section>
 
           <!-- 4. Pricing & Specs -->
-          <section class="bg-white p-5 rounded-xl border border-slate-200/80 shadow-xs flex flex-col gap-3.5">
+          <section class="bg-white p-5 rounded-[12px] border border-[#F0EBE3] shadow-card flex flex-col gap-3.5">
             <div class="flex items-center gap-2">
-              <span class="w-2.5 h-2.5 rounded-full bg-primary"></span>
-              <h2 class="text-sm font-bold text-slate-800">4. Pricing & Details (भाडा र विवरण)</h2>
+              <span class="w-2 h-2 rounded-full bg-[#D97757]"></span>
+              <h2 class="text-sm font-semibold text-[#1F1B16]">4. Pricing & Details (भाडा र विवरण)</h2>
             </div>
 
             <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
               <div class="flex flex-col gap-1.5">
-                <label class="text-xs font-semibold text-slate-700" for="rental-price">
-                  Monthly Rent in NPR (नेपाली रुपैयाँ) <span class="text-primary">*</span>
+                <label class="text-xs font-semibold text-[#1F1B16]" for="rental-price">
+                  Monthly Rent in NPR (नेपाली रुपैयाँ) <span class="text-[#D97757]">*</span>
                 </label>
-                <div class="flex items-center bg-slate-50 rounded-lg border border-slate-200/80 px-3 py-2 focus-within:bg-white focus-within:border-primary focus-within:ring-2 focus-within:ring-primary/20 transition-all">
-                  <span class="font-bold text-primary mr-2 text-xs">रु (Rs.)</span>
-                  <input id="rental-price" required type="number" min="0" step="500" class="w-full bg-transparent text-slate-900 font-bold text-sm focus:outline-none" placeholder="25000" value="${existingListing?.price || ''}"/>
+                <div class="flex items-center bg-[#FDFBF7] rounded-[8px] border border-[#F0EBE3] px-3.5 py-2 focus-within:border-[#D97757] focus-within:ring-2 focus-within:ring-[#D97757]/20 transition-all">
+                  <span class="font-bold text-[#D97757] mr-2 text-xs">रु (Rs.)</span>
+                  <input id="rental-price" required type="number" min="0" step="500" class="w-full bg-transparent text-[#1F1B16] font-semibold text-sm focus:outline-none" placeholder="25000" value="${existingListing?.price || ''}"/>
                 </div>
               </div>
 
               <div class="flex flex-col gap-1.5">
-                <label class="text-xs font-semibold text-slate-700" for="water-facility">
+                <label class="text-xs font-semibold text-[#1F1B16]" for="water-facility">
                   Water Facility (खानेपानी)
                 </label>
-                <input id="water-facility" class="input-interactive w-full px-3.5 py-2 rounded-lg bg-slate-50 border border-slate-200/80 text-slate-900 text-xs sm:text-sm" placeholder="e.g. 24/7 Melamchi + Deep Boring" value="${existingListing?.water_facility || '24/7 Supply'}"/>
+                <input id="water-facility" class="input-focus w-full px-3.5 py-2 text-[#1F1B16] text-sm" placeholder="e.g. 24/7 Melamchi + Deep Boring" value="${existingListing?.water_facility || '24/7 Supply'}"/>
               </div>
             </div>
 
             <div class="grid grid-cols-3 gap-3">
               <div class="flex flex-col gap-1.5">
-                <label class="text-xs font-semibold text-slate-700" for="bedrooms-input">Bedrooms</label>
-                <input id="bedrooms-input" type="number" min="0" max="20" class="input-interactive w-full px-3 py-2 rounded-lg bg-slate-50 border border-slate-200/80 text-slate-900 text-xs sm:text-sm" value="${existingListing?.bedrooms || 1}"/>
+                <label class="text-xs font-semibold text-[#1F1B16]" for="bedrooms-input">Bedrooms</label>
+                <input id="bedrooms-input" type="number" min="0" max="20" class="input-focus w-full px-3 py-2 text-[#1F1B16] text-sm" value="${existingListing?.bedrooms || 1}"/>
               </div>
 
               <div class="flex flex-col gap-1.5">
-                <label class="text-xs font-semibold text-slate-700" for="bathrooms-input">Bathrooms</label>
-                <input id="bathrooms-input" type="number" min="0" max="10" class="input-interactive w-full px-3 py-2 rounded-lg bg-slate-50 border border-slate-200/80 text-slate-900 text-xs sm:text-sm" value="${existingListing?.bathrooms || 1}"/>
+                <label class="text-xs font-semibold text-[#1F1B16]" for="bathrooms-input">Bathrooms</label>
+                <input id="bathrooms-input" type="number" min="0" max="10" class="input-focus w-full px-3 py-2 text-[#1F1B16] text-sm" value="${existingListing?.bathrooms || 1}"/>
               </div>
 
               <div class="flex items-center pt-5">
                 <label class="flex items-center gap-2 cursor-pointer select-none">
-                  <input id="is-negotiable" type="checkbox" class="w-4 h-4 accent-primary rounded cursor-pointer" ${existingListing?.is_negotiable !== false ? 'checked' : ''}/>
-                  <span class="text-xs font-semibold text-slate-700">Price Negotiable</span>
+                  <input id="is-negotiable" type="checkbox" class="w-4 h-4 accent-[#D97757] rounded cursor-pointer" ${existingListing?.is_negotiable !== false ? 'checked' : ''}/>
+                  <span class="text-xs font-semibold text-[#1F1B16]">Price Negotiable</span>
                 </label>
               </div>
             </div>
           </section>
 
           <!-- 5. Property Photos (Supabase Storage) -->
-          <section class="bg-white p-5 rounded-xl border border-slate-200/80 shadow-xs flex flex-col gap-3.5">
+          <section class="bg-white p-5 rounded-[12px] border border-[#F0EBE3] shadow-card flex flex-col gap-3.5">
             <div class="flex items-center justify-between">
               <div class="flex items-center gap-2">
-                <span class="w-2.5 h-2.5 rounded-full bg-primary"></span>
-                <h2 class="text-sm font-bold text-slate-800">5. Property Photos (फोटोहरू)</h2>
+                <span class="w-2 h-2 rounded-full bg-[#D97757]"></span>
+                <h2 class="text-sm font-semibold text-[#1F1B16]">5. Property Photos (फोटोहरू)</h2>
               </div>
-              <span class="text-[11px] text-slate-500 font-medium">Supabase Storage</span>
+              <span class="text-[11px] text-[#6B6258] font-medium">Supabase Storage</span>
             </div>
 
             <!-- Upload Dropzone -->
-            <div id="dropzone" class="border border-dashed border-primary/40 hover:border-primary rounded-xl p-6 text-center cursor-pointer bg-primary-light/40 hover:bg-primary-light/80 transition-all">
+            <div id="dropzone" class="border border-dashed border-[#D97757]/40 hover:border-[#D97757] rounded-[12px] p-6 text-center cursor-pointer bg-[#FDF0EC]/30 hover:bg-[#FDF0EC]/60 transition-all">
               <input type="file" id="photo-file-input" multiple accept="image/*" class="hidden"/>
-              <div class="text-primary mb-1">
+              <div class="text-[#D97757] mb-1.5">
                 ${getIcon('upload-cloud', { class: 'w-8 h-8 mx-auto' })}
               </div>
-              <p class="text-xs sm:text-sm font-semibold text-slate-800">Click or Drag & Drop Property Images</p>
-              <p class="text-[11px] text-slate-500 mt-0.5">Upload JPG, PNG, or WebP photos (Max 10MB each)</p>
+              <p class="text-sm font-semibold text-[#1F1B16]">Click or Drag & Drop Property Images</p>
+              <p class="text-[11px] text-[#6B6258] mt-0.5">Upload JPG, PNG, or WebP photos (Max 10MB each)</p>
             </div>
 
             <!-- Upload progress bar -->
-            <div id="upload-status" class="hidden text-xs text-primary flex items-center gap-2">
-              <div class="w-3.5 h-3.5 border-2 border-primary border-t-transparent rounded-full animate-spin"></div>
+            <div id="upload-status" class="hidden text-xs text-[#D97757] flex items-center gap-2">
+              <div class="w-3.5 h-3.5 border-2 border-[#D97757] border-t-transparent rounded-full animate-spin"></div>
               <span id="upload-status-text">Uploading photos to Supabase Storage...</span>
             </div>
 
@@ -220,67 +220,67 @@ export const PostView = {
           </section>
 
           <!-- 6. Direct Contact Channels -->
-          <section class="bg-white p-5 rounded-xl border border-slate-200/80 shadow-xs flex flex-col gap-3.5">
+          <section class="bg-white p-5 rounded-[12px] border border-[#F0EBE3] shadow-card flex flex-col gap-3.5">
             <div class="flex items-center justify-between">
               <div class="flex items-center gap-2">
-                <span class="w-2.5 h-2.5 rounded-full bg-primary"></span>
-                <h2 class="text-sm font-bold text-slate-800">6. Direct Contact Channels (सम्पर्क विवरण)</h2>
+                <span class="w-2 h-2 rounded-full bg-[#D97757]"></span>
+                <h2 class="text-sm font-semibold text-[#1F1B16]">6. Direct Contact Channels (सम्पर्क विवरण)</h2>
               </div>
-              <span class="text-[11px] text-slate-500 font-medium">Direct tenant connection</span>
+              <span class="text-[11px] text-[#7C9885] font-medium">Direct tenant connection</span>
             </div>
 
             <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
               <div class="flex flex-col gap-1.5">
-                <label class="text-xs font-semibold text-slate-700" for="contact-name">
-                  Contact Person / Owner Name <span class="text-primary">*</span>
+                <label class="text-xs font-semibold text-[#1F1B16]" for="contact-name">
+                  Contact Person / Owner Name <span class="text-[#D97757]">*</span>
                 </label>
-                <input id="contact-name" required class="input-interactive w-full px-3.5 py-2 rounded-lg bg-slate-50 border border-slate-200/80 text-slate-900 text-xs sm:text-sm" placeholder="e.g. Rameshwor Karki" value="${defaultContactName}"/>
+                <input id="contact-name" required class="input-focus w-full px-3.5 py-2 text-[#1F1B16] text-sm" placeholder="e.g. Rameshwor Karki" value="${defaultContactName}"/>
               </div>
 
               <div class="flex flex-col gap-1.5">
-                <label class="text-xs font-semibold text-slate-700" for="contact-phone">
-                  Primary Mobile Number <span class="text-primary">*</span>
+                <label class="text-xs font-semibold text-[#1F1B16]" for="contact-phone">
+                  Primary Mobile Number <span class="text-[#D97757]">*</span>
                 </label>
-                <div class="flex items-center bg-slate-50 rounded-lg border border-slate-200/80 px-3 py-2 focus-within:bg-white focus-within:border-primary focus-within:ring-2 focus-within:ring-primary/20 transition-all">
-                  <span class="font-bold text-slate-500 mr-2 text-xs">+977</span>
-                  <input id="contact-phone" required type="tel" maxlength="10" class="w-full bg-transparent text-slate-900 text-xs sm:text-sm focus:outline-none" placeholder="98XXXXXXXX" value="${defaultPhone}"/>
+                <div class="flex items-center bg-[#FDFBF7] rounded-[8px] border border-[#F0EBE3] px-3 py-2 focus-within:border-[#D97757] focus-within:ring-2 focus-within:ring-[#D97757]/20 transition-all">
+                  <span class="font-medium text-[#6B6258] mr-2 text-xs">+977</span>
+                  <input id="contact-phone" required type="tel" maxlength="10" class="w-full bg-transparent text-[#1F1B16] text-sm focus:outline-none" placeholder="98XXXXXXXX" value="${defaultPhone}"/>
                 </div>
               </div>
             </div>
 
             <div class="flex flex-col gap-2 pt-1">
-              <label class="text-xs font-semibold text-slate-700">Preferred Contact Method</label>
+              <label class="text-xs font-semibold text-[#1F1B16]">Preferred Contact Method</label>
               <div class="flex flex-wrap gap-4">
                 <label class="flex items-center gap-1.5 cursor-pointer">
-                  <input type="radio" name="contact_method" value="call" class="accent-primary" ${(existingListing?.contact_method || 'call') === 'call' ? 'checked' : ''}/>
-                  <span class="text-xs font-medium text-slate-700">Direct Call (फोन कल)</span>
+                  <input type="radio" name="contact_method" value="call" class="accent-[#D97757]" ${(existingListing?.contact_method || 'call') === 'call' ? 'checked' : ''}/>
+                  <span class="text-xs font-medium text-[#1F1B16]">Direct Call (फोन कल)</span>
                 </label>
                 <label class="flex items-center gap-1.5 cursor-pointer">
-                  <input type="radio" name="contact_method" value="whatsapp" class="accent-primary" ${existingListing?.contact_method === 'whatsapp' ? 'checked' : ''}/>
-                  <span class="text-xs font-medium text-slate-700">WhatsApp</span>
+                  <input type="radio" name="contact_method" value="whatsapp" class="accent-[#D97757]" ${existingListing?.contact_method === 'whatsapp' ? 'checked' : ''}/>
+                  <span class="text-xs font-medium text-[#1F1B16]">WhatsApp</span>
                 </label>
                 <label class="flex items-center gap-1.5 cursor-pointer">
-                  <input type="radio" name="contact_method" value="viber" class="accent-primary" ${existingListing?.contact_method === 'viber' ? 'checked' : ''}/>
-                  <span class="text-xs font-medium text-slate-700">Viber</span>
+                  <input type="radio" name="contact_method" value="viber" class="accent-[#D97757]" ${existingListing?.contact_method === 'viber' ? 'checked' : ''}/>
+                  <span class="text-xs font-medium text-[#1F1B16]">Viber</span>
                 </label>
               </div>
             </div>
           </section>
 
           <!-- 7. Confirmation & Submit -->
-          <section class="bg-white p-5 rounded-xl border border-slate-200/80 shadow-xs flex flex-col gap-3.5">
+          <section class="bg-white p-5 rounded-[12px] border border-[#F0EBE3] shadow-card flex flex-col gap-3.5">
             <label class="flex items-start gap-2.5 cursor-pointer select-none">
-              <input type="checkbox" required class="mt-0.5 w-4 h-4 accent-primary rounded cursor-pointer" checked/>
-              <span class="text-xs text-slate-600 leading-relaxed">
+              <input type="checkbox" required class="mt-0.5 w-4 h-4 accent-[#D97757] rounded cursor-pointer" checked/>
+              <span class="text-xs text-[#6B6258] leading-relaxed">
                 I solemnly confirm that I am the authorized owner or representative of this property. All information and NPR rates are accurate according to Nepal Tenancy guidelines. (म यो सम्पत्तिको आधिकारिक धनी भएको प्रमाणित गर्दछु।)
               </span>
             </label>
 
-            <div class="flex flex-col sm:flex-row items-center justify-between gap-3 pt-3 border-t border-slate-100">
-              <a href="#/my-listings" class="btn-interactive w-full sm:w-auto px-4 py-2 rounded-lg bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-semibold text-center transition-colors">
+            <div class="flex flex-col sm:flex-row items-center justify-between gap-3 pt-3 border-t border-[#F0EBE3]">
+              <a href="#/my-listings" class="btn-press w-full sm:w-auto px-4 py-2 rounded-[8px] bg-[#FDFBF7] hover:bg-[#F7F3EC] text-[#6B6258] text-xs font-medium text-center transition-colors border border-[#F0EBE3]">
                 Cancel
               </a>
-              <button id="submit-btn" type="submit" class="btn-interactive w-full sm:w-auto px-6 py-2.5 rounded-lg bg-primary hover:bg-primary-hover text-white text-xs sm:text-sm font-semibold shadow-xs hover:shadow transition-all flex items-center justify-center gap-1.5 cursor-pointer">
+              <button id="submit-btn" type="submit" class="btn-press w-full sm:w-auto px-6 py-2.5 rounded-[8px] bg-[#D97757] hover:bg-[#c66849] text-white text-sm font-semibold shadow-card transition-all flex items-center justify-center gap-1.5 cursor-pointer">
                 ${getIcon('send', { class: 'w-4 h-4' })}
                 <span>${editId ? 'Save Changes (अपडेट गर्नुहोस्)' : 'Publish Listing Now (पोस्ट गर्नुहोस्)'}</span>
               </button>
@@ -296,17 +296,17 @@ export const PostView = {
       if (!grid) return;
 
       if (uploadedPhotoUrls.length === 0) {
-        grid.innerHTML = '<p class="col-span-full text-xs text-on-surface-variant italic">No photos added yet. Upload at least one photo of the room/flat.</p>';
+        grid.innerHTML = '<p class="col-span-full text-xs text-[#6B6258] italic">No photos added yet. Upload at least one photo of the room/flat.</p>';
         return;
       }
 
       grid.innerHTML = uploadedPhotoUrls.map((url, idx) => `
-        <div class="relative group aspect-[4/3] rounded-lg overflow-hidden bg-slate-100 shadow-xs border border-slate-200/80">
-          <img src="${url}" class="w-full h-full object-cover"/>
-          <button type="button" class="remove-photo-btn btn-interactive absolute top-1.5 right-1.5 w-6 h-6 rounded-full bg-slate-900/80 hover:bg-rose-600 text-white flex items-center justify-center text-xs opacity-90 hover:opacity-100 shadow-xs transition-colors" data-index="${idx}" title="Remove photo">
+        <div class="relative group aspect-[4/3] rounded-[8px] overflow-hidden bg-[#FDFBF7] shadow-card border border-[#F0EBE3]">
+          <img src="${url}" class="w-full h-full object-cover" alt="Photo ${idx + 1}"/>
+          <button type="button" class="remove-photo-btn btn-press absolute top-1.5 right-1.5 w-6 h-6 rounded-full bg-[#1F1B16]/80 hover:bg-[#C1543D] text-white flex items-center justify-center text-xs opacity-90 hover:opacity-100 shadow-card transition-colors" data-index="${idx}" title="Remove photo">
             ${getIcon('x', { class: 'w-3 h-3' })}
           </button>
-          ${idx === 0 ? '<span class="absolute bottom-1.5 left-1.5 px-2 py-0.5 rounded-md bg-white/90 text-primary font-bold text-[10px] shadow-xs">Cover</span>' : ''}
+          ${idx === 0 ? '<span class="absolute bottom-1.5 left-1.5 px-2 py-0.5 rounded-[6px] bg-white/90 text-[#D97757] font-semibold text-[10px] shadow-card">Cover</span>' : ''}
         </div>
       `).join('');
 
@@ -332,16 +332,16 @@ export const PostView = {
 
     dropzone?.addEventListener('dragover', (e) => {
       e.preventDefault();
-      dropzone.classList.add('border-primary', 'bg-surface-container');
+      dropzone.classList.add('border-[#D97757]', 'bg-[#FDF0EC]/60');
     });
 
     dropzone?.addEventListener('dragleave', () => {
-      dropzone.classList.remove('border-primary', 'bg-surface-container');
+      dropzone.classList.remove('border-[#D97757]', 'bg-[#FDF0EC]/60');
     });
 
     dropzone?.addEventListener('drop', (e) => {
       e.preventDefault();
-      dropzone.classList.remove('border-primary', 'bg-surface-container');
+      dropzone.classList.remove('border-[#D97757]', 'bg-[#FDF0EC]/60');
       if (e.dataTransfer.files?.length) {
         handleFileUpload(e.dataTransfer.files);
       }
@@ -396,7 +396,7 @@ export const PostView = {
       const submitBtn = document.getElementById('submit-btn');
       submitBtn.disabled = true;
       submitBtn.innerHTML = `
-        <div class="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
+        <div class="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
         <span>Saving...</span>
       `;
 
@@ -470,7 +470,7 @@ export const PostView = {
         showToast(err.message || 'Failed to save listing', 'error');
         submitBtn.disabled = false;
         submitBtn.innerHTML = `
-          <span class="material-symbols-outlined text-[22px]">rocket_launch</span>
+          ${getIcon('send', { class: 'w-4 h-4' })}
           <span>${editId ? 'Save Changes' : 'Publish Listing Now'}</span>
         `;
       }

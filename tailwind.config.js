@@ -8,93 +8,68 @@ export default {
   theme: {
     extend: {
       colors: {
-        // Refined modern palette: single primary accent + neutral slate scale
+        // Exact palette specified by design
+        bg: "#FDFBF7",
+        surface: "#FFFFFF",
+        border: "#F0EBE3",
+        "border-hover": "#E2D9CD",
+        text: {
+          primary: "#1F1B16",
+          secondary: "#6B6258",
+          muted: "#94897E",
+        },
         primary: {
-          DEFAULT: "#E76F51",
-          hover: "#D65D3F",
-          light: "#FFF5F2",
-          dark: "#C34A2C",
+          DEFAULT: "#D97757",
+          hover: "#C86646",
+          light: "#FBF0EB",
+          active: "#B85535",
         },
-        // Secondary accent for trust/location tags
-        secondary: {
-          DEFAULT: "#0F4C5C",
-          hover: "#09333E",
-          light: "#F0F7F9",
+        sage: {
+          DEFAULT: "#7C9885",
+          hover: "#6A8773",
+          light: "#EDF3EE",
         },
-        // Specific chat app tokens
+        success: {
+          DEFAULT: "#5B8266",
+          light: "#EAF2EC",
+        },
+        error: {
+          DEFAULT: "#C1543D",
+          light: "#FCEFEF",
+        },
         whatsapp: "#25D366",
         viber: "#7360F2",
-        // Semantic surfaces & neutrals
-        surface: "#F8FAFC",
-        "surface-card": "#FFFFFF",
-        "surface-subtle": "#F1F5F9",
-        "surface-muted": "#E2E8F0",
-        "on-surface": "#0F172A",
-        "on-surface-variant": "#475569",
-        "on-primary": "#FFFFFF",
-        // Backward compatibility mappings
-        "primary-container": "#FFF5F2",
-        "secondary-container": "#F0F7F9",
-        "on-secondary-container": "#0F4C5C",
-        "surface-container-lowest": "#FFFFFF",
-        "surface-container-low": "#F8FAFC",
-        "surface-container": "#F1F5F9",
-        "surface-container-high": "#E2E8F0",
-        "surface-container-highest": "#CBD5E1",
-        "error-container": "#FEE2E2",
-        error: "#DC2626",
       },
       borderRadius: {
         none: "0px",
-        sm: "0.25rem", // 4px
-        DEFAULT: "0.5rem", // 8px
-        md: "0.5rem", // 8px
-        lg: "0.625rem", // 10px
-        xl: "0.75rem", // 12px
-        "2xl": "1rem", // 16px
+        sm: "4px",
+        btn: "8px",
+        input: "8px",
+        DEFAULT: "8px",
+        lg: "8px",
+        xl: "12px",
+        card: "12px",
+        "2xl": "12px",
         full: "9999px",
       },
       boxShadow: {
-        xs: "0 1px 2px 0 rgba(15, 23, 42, 0.04)",
-        sm: "0 1px 3px 0 rgba(15, 23, 42, 0.06), 0 1px 2px -1px rgba(15, 23, 42, 0.04)",
-        md: "0 4px 12px -2px rgba(15, 23, 42, 0.08), 0 2px 6px -2px rgba(15, 23, 42, 0.04)",
-        lg: "0 10px 24px -4px rgba(15, 23, 42, 0.1), 0 4px 8px -2px rgba(15, 23, 42, 0.04)",
-        nav: "0 1px 4px 0 rgba(15, 23, 42, 0.05)",
+        card: "0 1px 3px rgba(0, 0, 0, 0.06)",
+        "card-hover": "0 6px 16px -2px rgba(31, 27, 22, 0.08), 0 2px 4px -2px rgba(31, 27, 22, 0.04)",
+        nav: "0 1px 2px rgba(0, 0, 0, 0.03)",
+        modal: "0 12px 32px -4px rgba(31, 27, 22, 0.12)",
       },
       fontFamily: {
-        sans: ['Inter', 'system-ui', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'sans-serif'],
-        heading: ['Inter', 'system-ui', '-apple-system', 'sans-serif'],
+        sans: ['Plus Jakarta Sans', 'Inter', 'system-ui', '-apple-system', 'sans-serif'],
       },
       fontSize: {
-        '2xs': ['11px', { lineHeight: '15px' }],
         xs: ['12px', { lineHeight: '16px' }],
-        sm: ['13px', { lineHeight: '19px' }],
-        base: ['14px', { lineHeight: '21px' }],
-        md: ['15px', { lineHeight: '22px' }],
-        lg: ['16px', { lineHeight: '24px' }],
-        xl: ['18px', { lineHeight: '26px' }],
-        '2xl': ['22px', { lineHeight: '28px' }],
-        '3xl': ['26px', { lineHeight: '32px' }],
-        '4xl': ['30px', { lineHeight: '36px' }],
-      },
-      animation: {
-        shimmer: "shimmer 1.5s infinite linear",
-        "fade-in": "fadeIn 0.2s cubic-bezier(0.16, 1, 0.3, 1) forwards",
-        "slide-up": "slideUp 0.25s cubic-bezier(0.16, 1, 0.3, 1) forwards",
-      },
-      keyframes: {
-        shimmer: {
-          "0%": { backgroundPosition: "-200% 0" },
-          "100%": { backgroundPosition: "200% 0" },
-        },
-        fadeIn: {
-          "0%": { opacity: "0" },
-          "100%": { opacity: "1" },
-        },
-        slideUp: {
-          "0%": { opacity: "0", transform: "translateY(8px)" },
-          "100%": { opacity: "1", transform: "translateY(0)" },
-        },
+        sm: ['13px', { lineHeight: '18px' }],
+        base: ['15px', { lineHeight: '1.5' }],
+        md: ['16px', { lineHeight: '1.4' }],
+        lg: ['18px', { lineHeight: '1.3' }],
+        xl: ['20px', { lineHeight: '1.25' }],
+        '2xl': ['24px', { lineHeight: '1.2' }],
+        '3xl': ['28px', { lineHeight: '1.2' }],
       },
     },
   },

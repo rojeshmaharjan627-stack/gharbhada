@@ -10,34 +10,34 @@ export const DetailView = {
 
     if (!listingId) {
       container.innerHTML = `
-        <div class="max-w-xl mx-auto my-16 p-8 text-center bg-white rounded-xl shadow-xs border border-slate-200">
-          <p class="text-rose-600 font-bold mb-4">No listing specified.</p>
-          <a href="#/" class="btn-interactive px-4 py-2 bg-primary text-white rounded-lg text-xs font-semibold">Back to Browse</a>
+        <div class="max-w-xl mx-auto my-16 p-8 text-center bg-white rounded-[12px] shadow-card border border-[#F0EBE3]">
+          <p class="text-[#C1543D] font-medium mb-4">No listing specified.</p>
+          <a href="#/" class="btn-press inline-flex items-center px-4 py-2 bg-[#D97757] text-white rounded-[8px] text-sm font-medium">Back to Browse</a>
         </div>
       `;
       return;
     }
 
-    // Animated Skeleton Loader while fetching
+    // World-Class Warm Shimmer Skeleton Loader
     container.innerHTML = `
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 w-full animate-fade-in">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 w-full page-transition">
         <!-- Skeleton Header -->
-        <div class="flex flex-col gap-2 mb-6">
-          <div class="h-4 w-48 skeleton rounded"></div>
-          <div class="h-7 w-3/4 skeleton rounded"></div>
-          <div class="h-4 w-1/3 skeleton rounded"></div>
+        <div class="flex flex-col gap-2.5 mb-6">
+          <div class="h-4 w-48 skeleton-shimmer rounded-[6px]"></div>
+          <div class="h-8 w-2/3 skeleton-shimmer rounded-[8px]"></div>
+          <div class="h-4 w-1/3 skeleton-shimmer rounded-[6px]"></div>
         </div>
 
-        <!-- Skeleton Image Gallery -->
-        <div class="w-full h-72 sm:h-96 skeleton rounded-xl mb-6"></div>
+        <!-- Skeleton Carousel -->
+        <div class="w-full h-72 sm:h-[420px] skeleton-shimmer rounded-[12px] mb-6"></div>
 
         <!-- Skeleton Content Grid -->
         <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
           <div class="lg:col-span-8 flex flex-col gap-4">
-            <div class="h-28 w-full skeleton rounded-xl"></div>
-            <div class="h-40 w-full skeleton rounded-xl"></div>
+            <div class="h-28 w-full skeleton-shimmer rounded-[12px]"></div>
+            <div class="h-44 w-full skeleton-shimmer rounded-[12px]"></div>
           </div>
-          <div class="lg:col-span-4 h-64 skeleton rounded-xl"></div>
+          <div class="lg:col-span-4 h-72 skeleton-shimmer rounded-[12px]"></div>
         </div>
       </div>
     `;
@@ -50,13 +50,13 @@ export const DetailView = {
 
     if (error || !listing) {
       container.innerHTML = `
-        <div class="max-w-xl mx-auto my-16 p-8 text-center bg-white rounded-xl shadow-xs border border-slate-200">
-          <div class="w-12 h-12 rounded-full bg-rose-50 text-rose-500 flex items-center justify-center mx-auto mb-3">
+        <div class="max-w-xl mx-auto my-16 p-8 text-center bg-white rounded-[12px] shadow-card border border-[#F0EBE3]">
+          <div class="w-12 h-12 rounded-full bg-[#FDF0EC] text-[#C1543D] flex items-center justify-center mx-auto mb-3">
             ${getIcon('alert-triangle', { class: 'w-6 h-6' })}
           </div>
-          <h2 class="text-base font-bold text-slate-800 mb-1">Listing Not Found</h2>
-          <p class="text-xs text-slate-500 mb-4">This listing may have been rented out or removed by the landlord.</p>
-          <a href="#/" class="btn-interactive px-4 py-2 bg-primary hover:bg-primary-hover text-white rounded-lg text-xs font-semibold inline-block">Browse All Rentals</a>
+          <h2 class="text-base font-semibold text-[#1F1B16] mb-1">Listing Not Found</h2>
+          <p class="text-sm text-[#6B6258] mb-5">This listing may have been rented out or removed by the landlord.</p>
+          <a href="#/" class="btn-press inline-flex items-center px-4 py-2 bg-[#D97757] hover:bg-[#c66849] text-white rounded-[8px] text-sm font-medium">Browse All Rentals</a>
         </div>
       `;
       return;
@@ -89,27 +89,27 @@ export const DetailView = {
     };
 
     container.innerHTML = `
-      <div class="w-full min-h-screen pb-16">
+      <div class="w-full min-h-screen pb-16 page-transition">
         <!-- Top Breadcrumbs & Actions -->
         <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-5 pb-3">
           <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 text-xs">
-            <nav class="flex items-center gap-1.5 text-slate-500">
-              <a href="#/" class="hover:text-primary transition-colors">Home (गृहपृष्ठ)</a>
-              ${getIcon('chevron-right', { class: 'w-3 h-3 text-slate-400' })}
-              <a href="#/?cat=${listing.category}" class="hover:text-primary transition-colors">${categoryLabels[listing.category] || listing.category}</a>
-              ${getIcon('chevron-right', { class: 'w-3 h-3 text-slate-400' })}
-              <span class="text-slate-800 font-semibold truncate max-w-[200px]">${listing.location_area}</span>
+            <nav class="flex items-center gap-1.5 text-[#6B6258]">
+              <a href="#/" class="hover:text-[#D97757] transition-colors">Home (गृहपृष्ठ)</a>
+              ${getIcon('chevron-right', { class: 'w-3 h-3 text-[#6B6258]/60' })}
+              <a href="#/?cat=${listing.category}" class="hover:text-[#D97757] transition-colors">${categoryLabels[listing.category] || listing.category}</a>
+              ${getIcon('chevron-right', { class: 'w-3 h-3 text-[#6B6258]/60' })}
+              <span class="text-[#1F1B16] font-medium truncate max-w-[200px]">${listing.location_area}</span>
             </nav>
 
             <div class="flex items-center gap-2">
               ${isOwner ? `
-                <a href="#/edit/${listing.id}" class="btn-interactive inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-semibold transition-colors border border-slate-200/80">
-                  ${getIcon('edit', { class: 'w-3.5 h-3.5 text-slate-600' })}
+                <a href="#/edit/${listing.id}" class="btn-press inline-flex items-center gap-1.5 px-3 py-1.5 rounded-[8px] bg-white hover:bg-[#FDFBF7] text-[#1F1B16] text-xs font-medium transition-colors border border-[#F0EBE3] shadow-card">
+                  ${getIcon('edit', { class: 'w-3.5 h-3.5 text-[#6B6258]' })}
                   <span>Edit Listing</span>
                 </a>
               ` : ''}
-              <button id="share-btn" class="btn-interactive inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-semibold transition-colors border border-slate-200/80">
-                ${getIcon('share-2', { class: 'w-3.5 h-3.5 text-slate-600' })}
+              <button id="share-btn" class="btn-press inline-flex items-center gap-1.5 px-3 py-1.5 rounded-[8px] bg-white hover:bg-[#FDFBF7] text-[#1F1B16] text-xs font-medium transition-colors border border-[#F0EBE3] shadow-card">
+                ${getIcon('share-2', { class: 'w-3.5 h-3.5 text-[#6B6258]' })}
                 <span>Share</span>
               </button>
             </div>
@@ -118,46 +118,46 @@ export const DetailView = {
           <!-- Title & Area Header -->
           <div class="mt-3 flex flex-col md:flex-row md:items-center justify-between gap-4">
             <div>
-              <div class="flex items-center gap-2 mb-1">
-                <span class="px-2.5 py-0.5 rounded-md bg-primary-light text-primary text-[11px] font-semibold border border-primary/20">
+              <div class="flex items-center gap-2 mb-1.5">
+                <span class="px-2.5 py-0.5 rounded-[8px] bg-[#F7F3EC] text-[#7C9885] text-[11px] font-semibold border border-[#7C9885]/20">
                   ${categoryLabels[listing.category] || 'Rental Space'}
                 </span>
-                <span class="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-md bg-emerald-50 text-emerald-700 border border-emerald-200/60 text-[11px] font-semibold">
-                  ${getIcon('check-circle', { class: 'w-3 h-3 text-emerald-600' })} Verified Owner
+                <span class="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-[8px] bg-[#EEF4F0] text-[#5B8266] border border-[#5B8266]/20 text-[11px] font-semibold">
+                  ${getIcon('check-circle', { class: 'w-3 h-3 text-[#5B8266]' })} Verified Owner
                 </span>
-                <span class="text-slate-400 text-[11px]">
+                <span class="text-[#6B6258] text-[11px]">
                   Listed ${new Date(listing.created_at).toLocaleDateString('en-GB')}
                 </span>
               </div>
-              <h1 class="text-xl sm:text-2xl font-bold text-slate-900 tracking-tight leading-snug">
+              <h1 class="text-xl sm:text-2xl font-semibold text-[#1F1B16] tracking-tight leading-tight">
                 ${listing.title}
               </h1>
-              <p class="text-xs text-slate-500 flex items-center gap-1 mt-1">
-                ${getIcon('map-pin', { class: 'w-3.5 h-3.5 text-primary shrink-0' })}
+              <p class="text-sm text-[#6B6258] flex items-center gap-1 mt-1">
+                ${getIcon('map-pin', { class: 'w-3.5 h-3.5 text-[#D97757] shrink-0' })}
                 <span>${listing.location_area}, ${listing.location_city}</span>
-                ${listing.landmark ? `<span class="text-slate-300">•</span> <span class="text-secondary font-medium">${listing.landmark}</span>` : ''}
+                ${listing.landmark ? `<span class="text-[#F0EBE3]">•</span> <span class="text-[#7C9885] font-medium">${listing.landmark}</span>` : ''}
               </p>
             </div>
 
             <!-- Price Card Header (Desktop) -->
-            <div class="hidden md:flex flex-col items-end bg-white p-3 px-5 rounded-xl border border-slate-200/80 shadow-xs">
-              <span class="text-[10px] uppercase font-semibold text-slate-500 tracking-wider">Monthly Rental</span>
+            <div class="hidden md:flex flex-col items-end bg-white p-3 px-5 rounded-[12px] border border-[#F0EBE3] shadow-card">
+              <span class="text-[10px] uppercase font-semibold text-[#6B6258] tracking-wider">Monthly Rental</span>
               <div class="flex items-baseline gap-1">
-                <span class="text-2xl font-bold text-primary">रु ${formattedPrice}</span>
-                <span class="text-xs text-slate-500">/ month</span>
+                <span class="text-2xl font-bold text-[#D97757]">रु ${formattedPrice}</span>
+                <span class="text-xs text-[#6B6258]">/ month</span>
               </div>
-              ${listing.is_negotiable ? '<span class="text-[11px] text-secondary font-medium">Price Negotiable (छलफल गर्न सकिने)</span>' : ''}
+              ${listing.is_negotiable ? '<span class="text-[11px] text-[#7C9885] font-medium">Price Negotiable (छलफल गर्न सकिने)</span>' : ''}
             </div>
           </div>
         </section>
 
-        <!-- Interactive Image Carousel with Smooth Transitions -->
+        <!-- Interactive Image Carousel with Smooth Slide Transition -->
         <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-6">
-          <div class="relative rounded-xl overflow-hidden border border-slate-200/80 shadow-xs bg-slate-900 group select-none">
+          <div class="relative rounded-[12px] overflow-hidden border border-[#F0EBE3] shadow-card bg-[#1F1B16] group select-none">
             <!-- Main Slide Viewport -->
             <div id="carousel-viewport" class="relative w-full h-[280px] sm:h-[380px] md:h-[460px] overflow-hidden">
               ${photos.map((src, idx) => `
-                <div class="carousel-slide absolute inset-0 transition-opacity duration-300 ease-out ${idx === 0 ? 'opacity-100 z-10' : 'opacity-0 z-0 pointer-events-none'}" data-slide-index="${idx}">
+                <div class="carousel-slide absolute inset-0 transition-opacity duration-200 ease-out ${idx === 0 ? 'opacity-100 z-10' : 'opacity-0 z-0 pointer-events-none'}" data-slide-index="${idx}">
                   <img src="${src}" class="w-full h-full object-cover" alt="${listing.title} - photo ${idx + 1}"/>
                   <div class="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent pointer-events-none"></div>
                 </div>
@@ -166,20 +166,20 @@ export const DetailView = {
 
             <!-- Left & Right Arrow Controls -->
             ${photos.length > 1 ? `
-              <button id="carousel-prev-btn" class="btn-interactive absolute left-3 top-1/2 -translate-y-1/2 z-20 w-9 h-9 rounded-full bg-white/90 hover:bg-white text-slate-800 flex items-center justify-center shadow-md transition-transform" aria-label="Previous photo">
+              <button id="carousel-prev-btn" class="btn-press absolute left-3 top-1/2 -translate-y-1/2 z-20 w-9 h-9 rounded-full bg-white/95 hover:bg-white text-[#1F1B16] flex items-center justify-center shadow-md transition-transform" aria-label="Previous photo">
                 ${getIcon('chevron-left', { class: 'w-5 h-5' })}
               </button>
-              <button id="carousel-next-btn" class="btn-interactive absolute right-3 top-1/2 -translate-y-1/2 z-20 w-9 h-9 rounded-full bg-white/90 hover:bg-white text-slate-800 flex items-center justify-center shadow-md transition-transform" aria-label="Next photo">
+              <button id="carousel-next-btn" class="btn-press absolute right-3 top-1/2 -translate-y-1/2 z-20 w-9 h-9 rounded-full bg-white/95 hover:bg-white text-[#1F1B16] flex items-center justify-center shadow-md transition-transform" aria-label="Next photo">
                 ${getIcon('chevron-right', { class: 'w-5 h-5' })}
               </button>
             ` : ''}
 
             <!-- Slide Counter Badge -->
-            <div class="absolute bottom-3 right-3 z-20 px-2.5 py-1 rounded-full bg-black/60 backdrop-blur-sm text-white text-xs font-medium">
+            <div class="absolute bottom-3 right-3 z-20 px-2.5 py-1 rounded-[8px] bg-black/60 backdrop-blur-sm text-white text-xs font-medium">
               <span id="carousel-active-index">1</span> / ${photos.length} Photos
             </div>
 
-            <!-- Dot Indicators (for quick navigation) -->
+            <!-- Dot Indicators -->
             ${photos.length > 1 ? `
               <div class="absolute bottom-3 left-1/2 -translate-x-1/2 z-20 flex items-center gap-1.5">
                 ${photos.map((_, idx) => `
@@ -191,10 +191,10 @@ export const DetailView = {
 
           <!-- Thumbnail Strip (Smooth Slide Selection) -->
           ${photos.length > 1 ? `
-            <div class="flex items-center gap-2 mt-2 overflow-x-auto pb-1 no-scrollbar" id="thumbnail-strip">
+            <div class="flex items-center gap-2 mt-2.5 overflow-x-auto pb-1 no-scrollbar" id="thumbnail-strip">
               ${photos.map((src, idx) => `
-                <button type="button" class="thumbnail-item shrink-0 w-16 h-12 rounded-lg overflow-hidden border-2 transition-all cursor-pointer ${idx === 0 ? 'border-primary shadow-xs' : 'border-transparent opacity-70 hover:opacity-100'}" data-thumb-target="${idx}">
-                  <img src="${src}" class="w-full h-full object-cover"/>
+                <button type="button" class="thumbnail-item shrink-0 w-16 h-12 rounded-[8px] overflow-hidden border-2 transition-all cursor-pointer ${idx === 0 ? 'border-[#D97757] shadow-card' : 'border-transparent opacity-70 hover:opacity-100'}" data-thumb-target="${idx}">
+                  <img src="${src}" class="w-full h-full object-cover" alt="Thumb ${idx + 1}"/>
                 </button>
               `).join('')}
             </div>
@@ -206,112 +206,112 @@ export const DetailView = {
           <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
             
             <!-- Left 8 Columns: Details, Description, Specs -->
-            <div class="lg:col-span-8 flex flex-col gap-4 min-w-0">
+            <div class="lg:col-span-8 flex flex-col gap-5 min-w-0">
               
-              <!-- Quick Overview Bento Bar -->
-              <div class="bg-white rounded-xl p-4 sm:p-5 border border-slate-200/80 shadow-xs">
-                <p class="text-[11px] font-bold text-primary uppercase tracking-wider mb-3">Property Overview (मुख्य विवरण)</p>
+              <!-- Quick Overview Bar -->
+              <div class="bg-white rounded-[12px] p-5 border border-[#F0EBE3] shadow-card">
+                <p class="text-[11px] font-semibold text-[#D97757] uppercase tracking-wider mb-3">Property Overview (मुख्य विवरण)</p>
                 <div class="grid grid-cols-2 sm:grid-cols-4 gap-3">
                   <div class="flex items-center gap-2.5">
-                    <div class="w-8 h-8 rounded-lg bg-slate-100 flex items-center justify-center text-primary">
+                    <div class="w-9 h-9 rounded-[8px] bg-[#FDF0EC] flex items-center justify-center text-[#D97757]">
                       ${getIcon('bed', { class: 'w-4 h-4' })}
                     </div>
                     <div>
-                      <span class="text-[10px] text-slate-500 block">Bedrooms</span>
-                      <span class="text-xs font-bold text-slate-900">${listing.bedrooms || 1} Bed${(listing.bedrooms || 1) > 1 ? 's' : ''}</span>
+                      <span class="text-[11px] text-[#6B6258] block">Bedrooms</span>
+                      <span class="text-sm font-semibold text-[#1F1B16]">${listing.bedrooms || 1} Bed${(listing.bedrooms || 1) > 1 ? 's' : ''}</span>
                     </div>
                   </div>
 
                   <div class="flex items-center gap-2.5">
-                    <div class="w-8 h-8 rounded-lg bg-slate-100 flex items-center justify-center text-secondary">
+                    <div class="w-9 h-9 rounded-[8px] bg-[#EEF4F0] flex items-center justify-center text-[#7C9885]">
                       ${getIcon('bath', { class: 'w-4 h-4' })}
                     </div>
                     <div>
-                      <span class="text-[10px] text-slate-500 block">Bathrooms</span>
-                      <span class="text-xs font-bold text-slate-900">${listing.bathrooms || 1} Bath</span>
+                      <span class="text-[11px] text-[#6B6258] block">Bathrooms</span>
+                      <span class="text-sm font-semibold text-[#1F1B16]">${listing.bathrooms || 1} Bath</span>
                     </div>
                   </div>
 
                   <div class="flex items-center gap-2.5">
-                    <div class="w-8 h-8 rounded-lg bg-slate-100 flex items-center justify-center text-sky-600">
+                    <div class="w-9 h-9 rounded-[8px] bg-[#F7F3EC] flex items-center justify-center text-[#7C9885]">
                       ${getIcon('droplet', { class: 'w-4 h-4' })}
                     </div>
                     <div>
-                      <span class="text-[10px] text-slate-500 block">Water Supply</span>
-                      <span class="text-xs font-bold text-slate-900 truncate">${listing.water_facility || '24/7 Supply'}</span>
+                      <span class="text-[11px] text-[#6B6258] block">Water Supply</span>
+                      <span class="text-sm font-semibold text-[#1F1B16] truncate">${listing.water_facility || '24/7 Supply'}</span>
                     </div>
                   </div>
 
                   <div class="flex items-center gap-2.5">
-                    <div class="w-8 h-8 rounded-lg bg-slate-100 flex items-center justify-center text-primary">
+                    <div class="w-9 h-9 rounded-[8px] bg-[#FDF0EC] flex items-center justify-center text-[#D97757]">
                       ${getIcon('handshake', { class: 'w-4 h-4' })}
                     </div>
                     <div>
-                      <span class="text-[10px] text-slate-500 block">Negotiable</span>
-                      <span class="text-xs font-bold text-slate-900">${listing.is_negotiable ? 'Yes (छलफल)' : 'Fixed'}</span>
+                      <span class="text-[11px] text-[#6B6258] block">Negotiable</span>
+                      <span class="text-sm font-semibold text-[#1F1B16]">${listing.is_negotiable ? 'Yes (छलफल)' : 'Fixed'}</span>
                     </div>
                   </div>
                 </div>
               </div>
 
               <!-- Description Narrative -->
-              <div class="bg-white rounded-xl p-4 sm:p-5 border border-slate-200/80 shadow-xs flex flex-col gap-2.5">
-                <div class="flex items-center justify-between border-b border-slate-100 pb-2">
-                  <h2 class="text-sm font-bold text-slate-900">About This Space (सम्पत्ति विवरण)</h2>
-                  <span class="text-xs text-secondary font-medium">Direct from Landlord</span>
+              <div class="bg-white rounded-[12px] p-5 border border-[#F0EBE3] shadow-card flex flex-col gap-3">
+                <div class="flex items-center justify-between border-b border-[#F0EBE3] pb-3">
+                  <h2 class="text-base font-semibold text-[#1F1B16]">About This Space (सम्पत्ति विवरण)</h2>
+                  <span class="text-xs text-[#7C9885] font-medium">Direct from Landlord</span>
                 </div>
                 
-                <div class="text-xs sm:text-sm text-slate-700 leading-relaxed whitespace-pre-line space-y-2">
+                <div class="text-sm text-[#1F1B16] leading-relaxed whitespace-pre-line">
                   ${listing.description || 'No detailed description provided.'}
                 </div>
               </div>
 
               <!-- Key Amenities Grid -->
-              <div class="bg-white rounded-xl p-4 sm:p-5 border border-slate-200/80 shadow-xs flex flex-col gap-3">
-                <div class="flex items-center justify-between border-b border-slate-100 pb-2">
-                  <h2 class="text-sm font-bold text-slate-900">Amenities & Features (सुविधाहरू)</h2>
-                  <span class="text-xs text-secondary font-semibold">Verified Highlights</span>
+              <div class="bg-white rounded-[12px] p-5 border border-[#F0EBE3] shadow-card flex flex-col gap-3.5">
+                <div class="flex items-center justify-between border-b border-[#F0EBE3] pb-3">
+                  <h2 class="text-base font-semibold text-[#1F1B16]">Amenities & Features (सुविधाहरू)</h2>
+                  <span class="text-xs text-[#7C9885] font-medium">Verified Highlights</span>
                 </div>
 
-                <div class="grid grid-cols-2 sm:grid-cols-4 gap-2.5">
-                  <div class="flex flex-col items-center text-center p-2.5 rounded-lg bg-slate-50 border border-slate-200/60">
-                    <div class="text-primary mb-1">${getIcon('droplet', { class: 'w-4 h-4' })}</div>
-                    <span class="text-xs font-bold text-slate-800">24/7 Water</span>
-                    <span class="text-[10px] text-slate-500">बोरिङ + मेलम्ची</span>
+                <div class="grid grid-cols-2 sm:grid-cols-4 gap-3">
+                  <div class="flex flex-col items-center text-center p-3 rounded-[8px] bg-[#FDFBF7] border border-[#F0EBE3]">
+                    <div class="text-[#D97757] mb-1.5">${getIcon('droplet', { class: 'w-4 h-4' })}</div>
+                    <span class="text-xs font-semibold text-[#1F1B16]">24/7 Water</span>
+                    <span class="text-[10px] text-[#6B6258]">बोरिङ + मेलम्ची</span>
                   </div>
 
-                  <div class="flex flex-col items-center text-center p-2.5 rounded-lg bg-slate-50 border border-slate-200/60">
-                    <div class="text-secondary mb-1">${getIcon('shield', { class: 'w-4 h-4' })}</div>
-                    <span class="text-xs font-bold text-slate-800">Parking</span>
-                    <span class="text-[10px] text-slate-500">Bike / Car Slot</span>
+                  <div class="flex flex-col items-center text-center p-3 rounded-[8px] bg-[#FDFBF7] border border-[#F0EBE3]">
+                    <div class="text-[#7C9885] mb-1.5">${getIcon('shield', { class: 'w-4 h-4' })}</div>
+                    <span class="text-xs font-semibold text-[#1F1B16]">Parking</span>
+                    <span class="text-[10px] text-[#6B6258]">Bike / Car Slot</span>
                   </div>
 
-                  <div class="flex flex-col items-center text-center p-2.5 rounded-lg bg-slate-50 border border-slate-200/60">
-                    <div class="text-amber-600 mb-1">${getIcon('sun', { class: 'w-4 h-4' })}</div>
-                    <span class="text-xs font-bold text-slate-800">Solar Hot Water</span>
-                    <span class="text-[10px] text-slate-500">तातो पानी सुविधा</span>
+                  <div class="flex flex-col items-center text-center p-3 rounded-[8px] bg-[#FDFBF7] border border-[#F0EBE3]">
+                    <div class="text-[#D97757] mb-1.5">${getIcon('sun', { class: 'w-4 h-4' })}</div>
+                    <span class="text-xs font-semibold text-[#1F1B16]">Solar Hot Water</span>
+                    <span class="text-[10px] text-[#6B6258]">तातो पानी सुविधा</span>
                   </div>
 
-                  <div class="flex flex-col items-center text-center p-2.5 rounded-lg bg-slate-50 border border-slate-200/60">
-                    <div class="text-sky-600 mb-1">${getIcon('wifi', { class: 'w-4 h-4' })}</div>
-                    <span class="text-xs font-bold text-slate-800">Fiber Internet</span>
-                    <span class="text-[10px] text-slate-500">High Speed Ready</span>
+                  <div class="flex flex-col items-center text-center p-3 rounded-[8px] bg-[#FDFBF7] border border-[#F0EBE3]">
+                    <div class="text-[#5B8266] mb-1.5">${getIcon('wifi', { class: 'w-4 h-4' })}</div>
+                    <span class="text-xs font-semibold text-[#1F1B16]">Fiber Internet</span>
+                    <span class="text-[10px] text-[#6B6258]">High Speed Ready</span>
                   </div>
                 </div>
               </div>
 
               <!-- Location Map Notice -->
-              <div class="bg-white rounded-xl p-4 sm:p-5 border border-slate-200/80 shadow-xs">
-                <div class="flex items-center justify-between mb-2">
-                  <h3 class="text-sm font-bold text-slate-900">Location & Neighborhood</h3>
-                  <span class="text-xs text-primary font-bold">${listing.location_area}</span>
+              <div class="bg-white rounded-[12px] p-5 border border-[#F0EBE3] shadow-card">
+                <div class="flex items-center justify-between mb-3">
+                  <h3 class="text-base font-semibold text-[#1F1B16]">Location & Neighborhood</h3>
+                  <span class="text-xs text-[#D97757] font-semibold">${listing.location_area}</span>
                 </div>
-                <div class="w-full h-36 bg-slate-50 rounded-xl flex flex-col items-center justify-center p-4 text-center border border-slate-200/80">
-                  ${getIcon('map-pin', { class: 'w-6 h-6 text-primary mb-1' })}
-                  <p class="text-xs sm:text-sm font-bold text-slate-900">${listing.location_area}, ${listing.location_city}</p>
-                  ${listing.landmark ? `<p class="text-xs text-slate-500 mt-0.5">Landmark: ${listing.landmark}</p>` : ''}
-                  <a href="https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(`${listing.location_area}, ${listing.location_city}, Nepal`)}" target="_blank" rel="noopener noreferrer" class="btn-interactive mt-2.5 inline-flex items-center gap-1.5 px-3 py-1 rounded-lg bg-slate-100 text-slate-700 text-xs font-semibold hover:bg-slate-200 transition-colors border border-slate-200/80">
-                    ${getIcon('external-link', { class: 'w-3.5 h-3.5 text-slate-500' })}
+                <div class="w-full h-36 bg-[#FDFBF7] rounded-[12px] flex flex-col items-center justify-center p-4 text-center border border-[#F0EBE3]">
+                  ${getIcon('map-pin', { class: 'w-6 h-6 text-[#D97757] mb-1.5' })}
+                  <p class="text-sm font-semibold text-[#1F1B16]">${listing.location_area}, ${listing.location_city}</p>
+                  ${listing.landmark ? `<p class="text-xs text-[#6B6258] mt-0.5">Landmark: ${listing.landmark}</p>` : ''}
+                  <a href="https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(`${listing.location_area}, ${listing.location_city}, Nepal`)}" target="_blank" rel="noopener noreferrer" class="btn-press mt-3 inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-[8px] bg-white text-[#1F1B16] text-xs font-medium hover:bg-[#FDFBF7] transition-colors border border-[#F0EBE3] shadow-card">
+                    ${getIcon('external-link', { class: 'w-3.5 h-3.5 text-[#6B6258]' })}
                     <span>Open in Google Maps</span>
                   </a>
                 </div>
@@ -322,29 +322,29 @@ export const DetailView = {
             <div class="lg:col-span-4 lg:sticky lg:top-20 flex flex-col gap-4">
               
               <!-- Contact Card -->
-              <div class="bg-white rounded-xl p-4 sm:p-5 border border-slate-200/80 shadow-sm flex flex-col gap-3.5">
+              <div class="bg-white rounded-[12px] p-5 border border-[#F0EBE3] shadow-card flex flex-col gap-4">
                 
                 <!-- Price Display -->
-                <div class="flex items-center justify-between pb-3 border-b border-slate-100">
+                <div class="flex items-center justify-between pb-3 border-b border-[#F0EBE3]">
                   <div>
-                    <span class="text-[10px] text-slate-500 uppercase tracking-wide block">Monthly Rent</span>
-                    <span class="text-2xl font-bold text-primary">रु ${formattedPrice}</span>
+                    <span class="text-[10px] text-[#6B6258] uppercase tracking-wide block font-medium">Monthly Rent</span>
+                    <span class="text-2xl font-bold text-[#D97757]">रु ${formattedPrice}</span>
                   </div>
-                  <span class="px-2.5 py-0.5 rounded-full bg-emerald-50 text-emerald-700 text-xs font-bold border border-emerald-200/60">
+                  <span class="px-2.5 py-1 rounded-[8px] bg-[#EEF4F0] text-[#5B8266] text-xs font-semibold border border-[#5B8266]/20">
                     तुरुन्त खाली
                   </span>
                 </div>
 
                 <!-- Landlord Profile Summary -->
                 <div class="flex items-center gap-3">
-                  <div class="w-10 h-10 rounded-full bg-primary-light text-primary flex items-center justify-center font-bold text-base shrink-0 border border-primary/20">
+                  <div class="w-10 h-10 rounded-full bg-[#FDF0EC] text-[#D97757] flex items-center justify-center font-bold text-base shrink-0 border border-[#D97757]/20">
                     ${contactName[0].toUpperCase()}
                   </div>
                   <div class="min-w-0 flex-1">
-                    <h4 class="text-sm font-bold text-slate-900 truncate">${contactName}</h4>
-                    <p class="text-xs text-primary font-medium">घरधनी (Property Owner)</p>
-                    <p class="text-[11px] text-slate-500 flex items-center gap-1 mt-0.5">
-                      ${getIcon('shield-check', { class: 'w-3.5 h-3.5 text-emerald-600' })}
+                    <h4 class="text-sm font-semibold text-[#1F1B16] truncate">${contactName}</h4>
+                    <p class="text-xs text-[#D97757] font-medium">घरधनी (Property Owner)</p>
+                    <p class="text-[11px] text-[#6B6258] flex items-center gap-1 mt-0.5">
+                      ${getIcon('shield-check', { class: 'w-3.5 h-3.5 text-[#5B8266]' })}
                       <span>ID & Phone Verified</span>
                     </p>
                   </div>
@@ -353,30 +353,30 @@ export const DetailView = {
                 <!-- Direct Communication Channels -->
                 <div class="flex flex-col gap-2 pt-1">
                   <!-- WhatsApp -->
-                  <a href="${waUrl}" target="_blank" rel="noopener noreferrer" class="btn-interactive w-full py-2.5 px-3 rounded-lg bg-[#25D366] hover:brightness-105 text-white text-xs font-semibold flex items-center justify-center gap-1.5 shadow-xs">
+                  <a href="${waUrl}" target="_blank" rel="noopener noreferrer" class="btn-press w-full py-2.5 px-3 rounded-[8px] bg-[#25D366] hover:brightness-105 text-white text-xs font-semibold flex items-center justify-center gap-1.5 shadow-card">
                     ${getIcon('message-circle', { class: 'w-4 h-4' })}
                     <span>Chat on WhatsApp (${listing.contact_phone})</span>
                   </a>
 
                   <!-- Viber -->
-                  <a href="${viberUrl}" class="btn-interactive w-full py-2.5 px-3 rounded-lg bg-[#7360F2] hover:brightness-105 text-white text-xs font-semibold flex items-center justify-center gap-1.5 shadow-xs">
+                  <a href="${viberUrl}" class="btn-press w-full py-2.5 px-3 rounded-[8px] bg-[#7360F2] hover:brightness-105 text-white text-xs font-semibold flex items-center justify-center gap-1.5 shadow-card">
                     ${getIcon('phone', { class: 'w-4 h-4' })}
                     <span>Connect on Viber</span>
                   </a>
 
                   <!-- Phone Call -->
-                  <a href="${telUrl}" class="btn-interactive w-full py-2.5 px-3 rounded-lg bg-secondary hover:bg-secondary-hover text-white text-xs font-semibold flex items-center justify-center gap-1.5 shadow-xs">
+                  <a href="${telUrl}" class="btn-press w-full py-2.5 px-3 rounded-[8px] bg-[#7C9885] hover:bg-[#6e8876] text-white text-xs font-semibold flex items-center justify-center gap-1.5 shadow-card">
                     ${getIcon('phone-call', { class: 'w-4 h-4' })}
                     <span>Call Now: ${listing.contact_phone}</span>
                   </a>
                 </div>
 
                 <!-- Renter Safety Box -->
-                <div class="p-3 rounded-lg bg-slate-50 text-slate-700 flex flex-col gap-1 text-[11px] border border-slate-200/60">
-                  <div class="flex items-center gap-1 text-primary font-bold">
+                <div class="p-3.5 rounded-[8px] bg-[#FDFBF7] text-[#1F1B16] flex flex-col gap-1 text-[11px] border border-[#F0EBE3]">
+                  <div class="flex items-center gap-1 text-[#D97757] font-semibold">
                     <span>🇳🇵</span> Renter Safety Tip:
                   </div>
-                  <p class="text-slate-500 leading-relaxed">
+                  <p class="text-[#6B6258] leading-relaxed">
                     Never pay advance booking charges online without inspecting the property and meeting the owner in person. GharBhada has 100% zero broker charges.
                   </p>
                 </div>
@@ -400,7 +400,6 @@ export const DetailView = {
       if (index >= photos.length) index = 0;
       activeIndex = index;
 
-      // Update slide opacity
       slides.forEach((slide, idx) => {
         if (idx === activeIndex) {
           slide.classList.remove('opacity-0', 'z-0', 'pointer-events-none');
@@ -411,7 +410,6 @@ export const DetailView = {
         }
       });
 
-      // Update dots
       dots.forEach((dot, idx) => {
         if (idx === activeIndex) {
           dot.className = 'carousel-dot w-2 h-2 rounded-full transition-all bg-white scale-125';
@@ -420,17 +418,15 @@ export const DetailView = {
         }
       });
 
-      // Update thumbnails
       thumbs.forEach((thumb, idx) => {
         if (idx === activeIndex) {
-          thumb.className = 'thumbnail-item shrink-0 w-16 h-12 rounded-lg overflow-hidden border-2 border-primary shadow-xs transition-all cursor-pointer';
+          thumb.className = 'thumbnail-item shrink-0 w-16 h-12 rounded-[8px] overflow-hidden border-2 border-[#D97757] shadow-card transition-all cursor-pointer';
           thumb.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
         } else {
-          thumb.className = 'thumbnail-item shrink-0 w-16 h-12 rounded-lg overflow-hidden border-2 border-transparent opacity-70 hover:opacity-100 transition-all cursor-pointer';
+          thumb.className = 'thumbnail-item shrink-0 w-16 h-12 rounded-[8px] overflow-hidden border-2 border-transparent opacity-70 hover:opacity-100 transition-all cursor-pointer';
         }
       });
 
-      // Update counter
       if (counterEl) counterEl.textContent = activeIndex + 1;
     }
 
@@ -465,9 +461,9 @@ export const DetailView = {
       const diff = touchStartX - touchEndX;
       if (Math.abs(diff) > 40) {
         if (diff > 0) {
-          goToSlide(activeIndex + 1); // Swipe left -> next
+          goToSlide(activeIndex + 1);
         } else {
-          goToSlide(activeIndex - 1); // Swipe right -> prev
+          goToSlide(activeIndex - 1);
         }
       }
     }, { passive: true });
