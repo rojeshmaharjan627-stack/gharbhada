@@ -1,4 +1,5 @@
 import { supabase } from '../lib/supabase.js';
+import { getIcon } from '../lib/icons.js';
 
 export const BrowseView = {
   async render(container, { queryParams }) {
@@ -8,48 +9,47 @@ export const BrowseView = {
     const initialSort = queryParams.get('sort') || 'newest';
 
     container.innerHTML = `
-      <div class="flex flex-col w-full animate-fade-in">
-        <!-- Ambient Decor -->
+      <div class="flex flex-col w-full">
+        <!-- Ambient subtle glow -->
         <div class="relative w-full overflow-hidden">
-          <div class="absolute -top-32 -left-32 w-80 h-80 rounded-full bg-primary/5 blur-3xl pointer-events-none"></div>
-          <div class="absolute top-48 -right-32 w-80 h-80 rounded-full bg-secondary-container/30 blur-3xl pointer-events-none"></div>
+          <div class="absolute -top-32 -left-32 w-72 h-72 rounded-full bg-primary/5 blur-3xl pointer-events-none"></div>
 
-          <!-- Search Hero Section -->
-          <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-6 pb-6 w-full">
-            <!-- Tagline -->
+          <!-- Hero Search Section -->
+          <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-6 pb-4 w-full">
+            <!-- Header Headline -->
             <div class="flex flex-col md:flex-row md:items-end justify-between gap-3 mb-5">
               <div>
-                <div class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-surface-container text-secondary text-xs font-medium mb-2 border border-slate-200/60">
+                <div class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-primary-light text-primary text-xs font-semibold mb-2 border border-primary/20">
                   <span class="inline-block w-1.5 h-1.5 rounded-full bg-primary animate-pulse"></span>
                   <span>प्रत्यक्ष घरधनीसँग सम्पर्क • 100% Zero Broker Commission</span>
                 </div>
-                <h1 class="text-2xl sm:text-3xl font-bold text-on-surface tracking-tight leading-tight">
+                <h1 class="text-2xl sm:text-3xl font-bold text-slate-900 tracking-tight leading-tight">
                   Find Your Next Rental Space in <span class="text-primary underline decoration-primary/30 decoration-wavy underline-offset-4">Nepal</span>
                 </h1>
               </div>
-              <p class="text-xs sm:text-sm text-on-surface-variant max-w-md leading-relaxed">
+              <p class="text-xs sm:text-sm text-slate-600 max-w-md leading-relaxed">
                 Verified rooms, flats, shutters, and properties across Kathmandu Valley, Pokhara, and major cities with direct owner contact.
               </p>
             </div>
 
-            <!-- Main Modern Search Shell -->
-            <div class="bg-surface-container-lowest rounded-2xl shadow-[0_4px_16px_rgba(0,0,0,0.04)] border border-slate-200/80 p-1.5 sm:p-2">
+            <!-- Modern Search Shell -->
+            <div class="bg-white rounded-xl shadow-xs border border-slate-200/80 p-1.5 sm:p-2">
               <form id="search-form" class="grid grid-cols-1 md:grid-cols-12 gap-1.5 items-center">
-                <!-- Location / Keyword Input -->
-                <div class="md:col-span-5 flex items-center gap-2.5 px-3.5 py-1.5 rounded-xl bg-surface hover:bg-surface-container-low transition-colors group">
-                  <span class="material-symbols-outlined text-primary text-[20px] group-focus-within:scale-105 transition-transform">location_on</span>
+                <!-- Location Input -->
+                <div class="md:col-span-5 flex items-center gap-2.5 px-3 py-2 rounded-lg bg-slate-50 hover:bg-slate-100/80 transition-colors group">
+                  ${getIcon('map-pin', { class: 'w-4 h-4 text-primary shrink-0 group-focus-within:scale-105 transition-transform' })}
                   <div class="flex flex-col w-full min-w-0">
-                    <label class="text-[10px] uppercase font-semibold text-on-surface-variant tracking-wider">Location / ठेगाना</label>
-                    <input id="search-input" class="w-full bg-transparent text-xs sm:text-sm text-on-surface placeholder:text-slate-400 focus:outline-none truncate font-normal" placeholder="Neighborhood e.g. Baneshwor, Jhamsikhel, Lakeside..." type="text" value="${initialQuery}"/>
+                    <label class="text-[10px] uppercase font-semibold text-slate-500 tracking-wider">Location / ठेगाना</label>
+                    <input id="search-input" class="w-full bg-transparent text-xs sm:text-sm text-slate-900 placeholder:text-slate-400 focus:outline-none truncate font-normal" placeholder="Area e.g. Baneshwor, Jhamsikhel, Lakeside..." type="text" value="${initialQuery}"/>
                   </div>
                 </div>
 
-                <!-- Category Select -->
-                <div class="md:col-span-3 flex items-center gap-2 px-3.5 py-1.5 rounded-xl bg-surface hover:bg-surface-container-low transition-colors">
-                  <span class="material-symbols-outlined text-secondary text-[20px]">category</span>
+                <!-- Category Selector -->
+                <div class="md:col-span-3 flex items-center gap-2 px-3 py-2 rounded-lg bg-slate-50 hover:bg-slate-100/80 transition-colors">
+                  ${getIcon('layers', { class: 'w-4 h-4 text-slate-500 shrink-0' })}
                   <div class="flex flex-col w-full min-w-0">
-                    <label class="text-[10px] uppercase font-semibold text-on-surface-variant tracking-wider">Category / वर्ग</label>
-                    <select id="category-select" class="w-full bg-transparent text-xs sm:text-sm text-on-surface focus:outline-none cursor-pointer font-normal">
+                    <label class="text-[10px] uppercase font-semibold text-slate-500 tracking-wider">Category / वर्ग</label>
+                    <select id="category-select" class="w-full bg-transparent text-xs sm:text-sm text-slate-900 focus:outline-none cursor-pointer font-normal">
                       <option value="all" ${initialCategory === 'all' ? 'selected' : ''}>All Categories (सबै)</option>
                       <option value="room" ${initialCategory === 'room' ? 'selected' : ''}>1 BHK / Room (कोठा)</option>
                       <option value="flat" ${initialCategory === 'flat' ? 'selected' : ''}>Full Flat / Apartment (फ्ल्याट)</option>
@@ -60,12 +60,12 @@ export const BrowseView = {
                   </div>
                 </div>
 
-                <!-- Price Range Filter -->
-                <div class="md:col-span-3 flex items-center gap-2 px-3.5 py-1.5 rounded-xl bg-surface hover:bg-surface-container-low transition-colors">
-                  <span class="material-symbols-outlined text-tertiary text-[20px]">payments</span>
+                <!-- Budget Range Filter -->
+                <div class="md:col-span-3 flex items-center gap-2 px-3 py-2 rounded-lg bg-slate-50 hover:bg-slate-100/80 transition-colors">
+                  ${getIcon('sliders-horizontal', { class: 'w-4 h-4 text-slate-500 shrink-0' })}
                   <div class="flex flex-col w-full min-w-0">
-                    <label class="text-[10px] uppercase font-semibold text-on-surface-variant tracking-wider">Price Range (मासिक भाडा)</label>
-                    <select id="price-select" class="w-full bg-transparent text-xs sm:text-sm text-on-surface focus:outline-none cursor-pointer font-normal">
+                    <label class="text-[10px] uppercase font-semibold text-slate-500 tracking-wider">Price Range (मासिक भाडा)</label>
+                    <select id="price-select" class="w-full bg-transparent text-xs sm:text-sm text-slate-900 focus:outline-none cursor-pointer font-normal">
                       <option value="any" ${initialPrice === 'any' ? 'selected' : ''}>Any Budget</option>
                       <option value="15000" ${initialPrice === '15000' ? 'selected' : ''}>Up to Rs. 15,000</option>
                       <option value="30000" ${initialPrice === '30000' ? 'selected' : ''}>Rs. 15,000 - 30,000</option>
@@ -76,9 +76,9 @@ export const BrowseView = {
                 </div>
 
                 <!-- Submit Button -->
-                <div class="md:col-span-1 flex items-center justify-center p-1">
-                  <button type="submit" class="w-full md:w-10 h-10 rounded-xl md:rounded-full bg-primary hover:bg-primary/90 text-on-primary flex items-center justify-center shadow-sm hover:shadow transition-all cursor-pointer" title="Search Rentals">
-                    <span class="material-symbols-outlined text-[20px]">search</span>
+                <div class="md:col-span-1 flex items-center justify-center p-0.5">
+                  <button type="submit" class="btn-interactive w-full md:w-10 h-10 rounded-lg bg-primary hover:bg-primary-hover text-white flex items-center justify-center shadow-xs cursor-pointer" title="Search Rentals">
+                    ${getIcon('search', { class: 'w-4 h-4' })}
                   </button>
                 </div>
               </form>
@@ -86,11 +86,11 @@ export const BrowseView = {
 
             <!-- Quick Area Shortcuts -->
             <div class="flex flex-wrap items-center gap-1.5 mt-3 pt-1">
-              <span class="text-xs text-on-surface-variant font-semibold uppercase tracking-wider mr-1 flex items-center gap-1">
-                <span class="material-symbols-outlined text-[14px] text-primary">local_fire_department</span> Hot Areas:
+              <span class="text-xs text-slate-500 font-semibold uppercase tracking-wider mr-1 flex items-center gap-1">
+                ${getIcon('flame', { class: 'w-3.5 h-3.5 text-primary' })} Hot Areas:
               </span>
               ${['New Baneshwor', 'Jhamsikhel', 'Lakeside Pokhara', 'Pulchowk', 'Baluwatar', 'Koteshwor', 'Thamel', 'Sanepa'].map(area => `
-                <button type="button" class="quick-area-chip px-2.5 py-1 rounded-full bg-surface-container-lowest hover:bg-surface-container text-on-surface-variant hover:text-on-surface text-xs shadow-none border border-slate-200/70 transition-all cursor-pointer" data-area="${area}">
+                <button type="button" class="quick-area-chip btn-interactive px-2.5 py-1 rounded-full bg-white hover:bg-slate-100 text-slate-600 hover:text-slate-900 text-xs border border-slate-200/80 transition-all cursor-pointer" data-area="${area}">
                   ${area}
                 </button>
               `).join('')}
@@ -99,7 +99,7 @@ export const BrowseView = {
             <!-- Category Pills Filter Carousel -->
             <div class="flex items-center gap-1.5 mt-4 overflow-x-auto pb-1 no-scrollbar" id="category-pills">
               ${[
-                { id: 'all', label: 'All (सबै)', icon: 'apps', isEmoji: false },
+                { id: 'all', label: 'All (सबै)', icon: 'layout-grid', isEmoji: false },
                 { id: 'room', label: 'Rooms (कोठा)', icon: '🛏️', isEmoji: true },
                 { id: 'flat', label: 'Flats (फ्ल्याट)', icon: '🏢', isEmoji: true },
                 { id: 'commercial', label: 'Commercial / Shutter', icon: '🏬', isEmoji: true },
@@ -108,11 +108,11 @@ export const BrowseView = {
               ].map(cat => {
                 const isActive = (initialCategory === cat.id);
                 const activeClass = isActive 
-                  ? 'bg-primary text-on-primary shadow-sm' 
-                  : 'bg-surface-container-lowest hover:bg-surface-container text-on-surface border border-slate-200/70';
+                  ? 'bg-primary text-white shadow-xs' 
+                  : 'bg-white hover:bg-slate-100 text-slate-700 border border-slate-200/80';
                 return `
-                  <button type="button" class="category-pill-btn shrink-0 inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-medium transition-all cursor-pointer ${activeClass}" data-cat="${cat.id}">
-                    ${cat.isEmoji ? `<span class="text-[14px]">${cat.icon}</span>` : `<span class="material-symbols-outlined text-[16px]">${cat.icon}</span>`}
+                  <button type="button" class="category-pill-btn btn-interactive shrink-0 inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-medium transition-all cursor-pointer ${activeClass}" data-cat="${cat.id}">
+                    ${cat.isEmoji ? `<span class="text-[13px]">${cat.icon}</span>` : getIcon(cat.icon, { class: 'w-3.5 h-3.5' })}
                     <span>${cat.label}</span>
                   </button>
                 `;
@@ -125,28 +125,47 @@ export const BrowseView = {
         <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full pb-16">
           <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 mb-6 pb-3 border-b border-slate-200/60">
             <div>
-              <h2 class="text-lg sm:text-xl font-bold text-on-surface">Featured Rentals Across Nepal</h2>
-              <p id="results-count" class="text-xs text-on-surface-variant mt-0.5">
+              <h2 class="text-base sm:text-lg font-bold text-slate-900">Featured Rentals Across Nepal</h2>
+              <p id="results-count" class="text-xs text-slate-500 mt-0.5">
                 Loading verified listings...
               </p>
             </div>
             
             <div class="flex items-center gap-2 self-end sm:self-auto">
-              <label class="text-xs text-on-surface-variant hidden md:inline" for="sort-dropdown">Sort by:</label>
+              <label class="text-xs text-slate-500 hidden md:inline" for="sort-dropdown">Sort by:</label>
               <div class="relative">
-                <select id="sort-dropdown" class="appearance-none pl-3 pr-7 py-1.5 bg-surface-container-lowest rounded-full text-xs font-medium text-on-surface border border-slate-200/70 focus:outline-none cursor-pointer">
+                <select id="sort-dropdown" class="appearance-none pl-3 pr-7 py-1.5 bg-white rounded-lg text-xs font-medium text-slate-700 border border-slate-200/80 focus:outline-none cursor-pointer">
                   <option value="newest" ${initialSort === 'newest' ? 'selected' : ''}>Newest First (नयाँ)</option>
                   <option value="price_asc" ${initialSort === 'price_asc' ? 'selected' : ''}>Price: Low to High (सस्तो देखि)</option>
                   <option value="price_desc" ${initialSort === 'price_desc' ? 'selected' : ''}>Price: High to Low (महँगो देखि)</option>
                 </select>
-                <span class="material-symbols-outlined pointer-events-none absolute right-2.5 top-1/2 -translate-y-1/2 text-on-surface-variant text-[16px]">expand_more</span>
+                <span class="pointer-events-none absolute right-2 top-1/2 -translate-y-1/2 text-slate-400">
+                  ${getIcon('chevron-down', { class: 'w-3.5 h-3.5' })}
+                </span>
               </div>
             </div>
           </div>
 
-          <!-- Listings Grid -->
-          <div id="listings-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-space-lg">
-            <!-- Rendered dynamically -->
+          <!-- Listings Grid (Rendered dynamically) -->
+          <div id="listings-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+            <!-- Animated Skeleton Loader displayed by default -->
+            ${[1, 2, 3, 4, 5, 6].map(() => `
+              <div class="flex flex-col bg-white rounded-xl border border-slate-200/80 overflow-hidden shadow-xs">
+                <div class="aspect-[4/3] w-full skeleton"></div>
+                <div class="p-3.5 flex flex-col gap-2.5">
+                  <div class="h-4 w-3/4 skeleton rounded"></div>
+                  <div class="h-3 w-1/2 skeleton rounded"></div>
+                  <div class="flex gap-1.5 pt-1">
+                    <div class="h-5 w-16 skeleton rounded"></div>
+                    <div class="h-5 w-20 skeleton rounded"></div>
+                  </div>
+                  <div class="pt-2.5 border-t border-slate-100 flex gap-2">
+                    <div class="h-7 flex-1 skeleton rounded-lg"></div>
+                    <div class="h-7 flex-1 skeleton rounded-lg"></div>
+                  </div>
+                </div>
+              </div>
+            `).join('')}
           </div>
         </section>
       </div>
@@ -163,12 +182,24 @@ export const BrowseView = {
       const countEl = document.getElementById('results-count');
       if (!grid) return;
 
-      grid.innerHTML = `
-        <div class="col-span-full py-16 flex flex-col items-center justify-center text-on-surface-variant">
-          <div class="w-10 h-10 border-4 border-primary border-t-transparent rounded-full animate-spin mb-4"></div>
-          <p class="font-label-lg text-label-lg">Fetching rental spaces...</p>
+      // Show animated skeleton while fetching
+      grid.innerHTML = [1, 2, 3, 4, 5, 6].map(() => `
+        <div class="flex flex-col bg-white rounded-xl border border-slate-200/80 overflow-hidden shadow-xs">
+          <div class="aspect-[4/3] w-full skeleton"></div>
+          <div class="p-3.5 flex flex-col gap-2.5">
+            <div class="h-4 w-3/4 skeleton rounded"></div>
+            <div class="h-3 w-1/2 skeleton rounded"></div>
+            <div class="flex gap-1.5 pt-1">
+              <div class="h-5 w-16 skeleton rounded"></div>
+              <div class="h-5 w-20 skeleton rounded"></div>
+            </div>
+            <div class="pt-2.5 border-t border-slate-100 flex gap-2">
+              <div class="h-7 flex-1 skeleton rounded-lg"></div>
+              <div class="h-7 flex-1 skeleton rounded-lg"></div>
+            </div>
+          </div>
         </div>
-      `;
+      `).join('');
 
       let query = supabase.from('listings').select('*').eq('status', 'active');
 
@@ -203,31 +234,38 @@ export const BrowseView = {
 
       if (error) {
         grid.innerHTML = `
-          <div class="col-span-full p-8 text-center bg-error-container/30 rounded-DEFAULT text-error">
+          <div class="col-span-full p-6 text-center bg-rose-50 border border-rose-200 rounded-xl text-rose-600 text-xs">
             Failed to load listings: ${error.message}
           </div>
         `;
         return;
       }
 
-      countEl.textContent = `Showing ${listings?.length || 0} curated listings available for immediate move-in • No broker markup`;
+      if (countEl) {
+        countEl.textContent = `Showing ${listings?.length || 0} curated listings available for immediate move-in • No broker markup`;
+      }
 
       if (!listings || listings.length === 0) {
         grid.innerHTML = `
-          <div class="col-span-full py-16 text-center bg-surface-container-lowest rounded-DEFAULT p-8 shadow-sm">
-            <span class="material-symbols-outlined text-5xl text-on-surface-variant mb-2">search_off</span>
-            <h3 class="font-headline-sm text-headline-sm font-bold text-on-surface mb-1">No listings found</h3>
-            <p class="font-body-sm text-body-sm text-on-surface-variant mb-4">Try clearing filters or searching for another neighborhood like "Baneshwor" or "Jhamsikhel".</p>
-            <button id="reset-filters-btn" class="px-6 py-2 rounded-full bg-primary text-on-primary font-label-md">Clear Filters</button>
+          <div class="col-span-full py-12 text-center bg-white rounded-xl p-8 border border-dashed border-slate-300">
+            <div class="w-12 h-12 rounded-full bg-slate-100 flex items-center justify-center mx-auto mb-2 text-slate-400">
+              ${getIcon('search', { class: 'w-6 h-6' })}
+            </div>
+            <h3 class="text-sm font-bold text-slate-800 mb-1">No listings found</h3>
+            <p class="text-xs text-slate-500 mb-4">Try clearing filters or searching for another neighborhood like "Baneshwor" or "Jhamsikhel".</p>
+            <button id="reset-filters-btn" class="btn-interactive px-4 py-2 rounded-lg bg-primary hover:bg-primary-hover text-white text-xs font-semibold shadow-xs">Clear Filters</button>
           </div>
         `;
         document.getElementById('reset-filters-btn')?.addEventListener('click', () => {
           currentCategory = 'all';
           currentQuery = '';
           currentPrice = 'any';
-          document.getElementById('search-input').value = '';
-          document.getElementById('category-select').value = 'all';
-          document.getElementById('price-select').value = 'any';
+          const searchInput = document.getElementById('search-input');
+          const catSelect = document.getElementById('category-select');
+          const priceSelect = document.getElementById('price-select');
+          if (searchInput) searchInput.value = '';
+          if (catSelect) catSelect.value = 'all';
+          if (priceSelect) priceSelect.value = 'any';
           updatePillsUI();
           loadListings();
         });
@@ -243,26 +281,28 @@ export const BrowseView = {
         other: '🏡 Property'
       };
 
-      grid.innerHTML = listings.map(item => {
+      grid.innerHTML = listings.map((item, index) => {
         const photo = item.photos?.[0] || 'https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?auto=format&fit=crop&w=1200&q=80';
         const formattedPrice = Number(item.price).toLocaleString('en-IN');
         const badge = categoryBadges[item.category] || '🏡 Rental';
         const cleanPhone = (item.contact_phone || '').replace(/[^0-9]/g, '');
         const waUrl = `https://wa.me/977${cleanPhone}?text=${encodeURIComponent(`Namaste, I am interested in your listing "${item.title}" on GharBhada.`)}`;
+        const staggerDelay = Math.min(index * 45, 360);
 
         return `
-          <article class="group flex flex-col bg-surface-container-lowest rounded-xl overflow-hidden border border-slate-200/80 shadow-[0_1px_3px_rgba(0,0,0,0.03)] hover:shadow-[0_8px_20px_-4px_rgba(0,0,0,0.08)] hover:border-slate-300 transition-all duration-200">
+          <article class="card-hover stagger-card group flex flex-col bg-white rounded-xl overflow-hidden border border-slate-200/80 shadow-xs" style="animation-delay: ${staggerDelay}ms;">
             <!-- Media Container -->
             <a href="#/listing/${item.id}" class="relative aspect-[4/3] w-full overflow-hidden bg-slate-100 block cursor-pointer">
-              <img class="w-full h-full object-cover group-hover:scale-103 transition-transform duration-300" src="${photo}" alt="${item.title}" loading="lazy"/>
-              <span class="absolute top-2.5 left-2.5 px-2.5 py-0.5 rounded-full bg-white/95 backdrop-blur-sm text-secondary text-[11px] font-semibold tracking-wide shadow-xs border border-slate-100">
+              <img class="w-full h-full object-cover group-hover:scale-102 transition-transform duration-300" src="${photo}" alt="${item.title}" loading="lazy"/>
+              
+              <span class="absolute top-2.5 left-2.5 px-2.5 py-0.5 rounded-full bg-white/95 backdrop-blur-sm text-slate-800 text-[11px] font-semibold tracking-wide shadow-xs border border-slate-100">
                 ${badge}
               </span>
               
               <!-- Floating Price Badge -->
-              <div class="absolute bottom-2.5 left-2.5 px-3 py-1 rounded-full bg-primary text-on-primary text-xs font-bold shadow-xs flex items-baseline gap-0.5">
+              <div class="absolute bottom-2.5 left-2.5 px-2.5 py-1 rounded-lg bg-primary text-white text-xs font-bold shadow-xs flex items-baseline gap-0.5">
                 <span class="text-sm font-bold">रु ${formattedPrice}</span>
-                <span class="text-[10px] font-normal text-white/85">/ mo</span>
+                <span class="text-[10px] font-normal text-white/90">/ mo</span>
               </div>
             </a>
 
@@ -270,26 +310,26 @@ export const BrowseView = {
             <div class="p-3.5 flex flex-col flex-grow justify-between gap-2.5">
               <div>
                 <a href="#/listing/${item.id}" class="block group-hover:text-primary transition-colors cursor-pointer">
-                  <h3 class="text-sm font-semibold text-on-surface line-clamp-1 leading-snug">
+                  <h3 class="text-sm font-semibold text-slate-900 line-clamp-1 leading-snug">
                     ${item.title}
                   </h3>
                 </a>
-                <p class="text-xs text-on-surface-variant flex items-center gap-1 mt-1">
-                  <span class="material-symbols-outlined text-primary text-[15px] shrink-0">pin_drop</span>
+                <p class="text-xs text-slate-500 flex items-center gap-1 mt-1">
+                  ${getIcon('map-pin', { class: 'w-3.5 h-3.5 text-primary shrink-0' })}
                   <span class="truncate">${item.location_area}, ${item.location_city}</span>
                 </p>
 
                 <!-- Feature Badges -->
-                <div class="flex flex-wrap gap-1 mt-2.5">
-                  <span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-md bg-surface-container text-on-surface-variant text-[11px] font-medium">
-                    <span class="material-symbols-outlined text-[12px] text-primary">verified</span> Verified
+                <div class="flex flex-wrap gap-1 mt-2">
+                  <span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-md bg-slate-100 text-slate-600 text-[11px] font-medium">
+                    ${getIcon('check-circle', { class: 'w-3 h-3 text-emerald-600' })} Verified
                   </span>
-                  <span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-md bg-secondary-container/40 text-on-secondary-container text-[11px] font-medium">
-                    <span class="material-symbols-outlined text-[12px]">water_drop</span> ${item.water_facility || '24/7 Water'}
+                  <span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-md bg-slate-100 text-slate-600 text-[11px] font-medium">
+                    ${getIcon('droplet', { class: 'w-3 h-3 text-sky-600' })} ${item.water_facility || '24/7 Water'}
                   </span>
                   ${item.is_negotiable ? `
-                    <span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-md bg-surface-container text-on-surface-variant text-[11px] font-medium">
-                      <span class="material-symbols-outlined text-[12px]">handshake</span> Negotiable
+                    <span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-md bg-slate-100 text-slate-600 text-[11px] font-medium">
+                      Negotiable
                     </span>
                   ` : ''}
                 </div>
@@ -297,12 +337,12 @@ export const BrowseView = {
 
               <!-- Quick Action Bar -->
               <div class="pt-2.5 border-t border-slate-100 flex items-center gap-2">
-                <a class="flex-1 inline-flex items-center justify-center gap-1 py-1.5 px-2.5 rounded-lg bg-surface-container-low hover:bg-surface-container text-on-surface text-xs font-medium transition-colors border border-slate-200/50" href="${waUrl}" target="_blank" rel="noopener noreferrer">
-                  <span class="material-symbols-outlined text-[15px] text-[#25D366]">chat</span>
+                <a class="btn-interactive flex-1 inline-flex items-center justify-center gap-1.5 py-1.5 px-2.5 rounded-lg bg-slate-100 hover:bg-slate-200 text-slate-800 text-xs font-medium transition-colors border border-slate-200/60" href="${waUrl}" target="_blank" rel="noopener noreferrer">
+                  ${getIcon('message-circle', { class: 'w-3.5 h-3.5 text-[#25D366]' })}
                   <span>WhatsApp</span>
                 </a>
-                <a class="flex-1 inline-flex items-center justify-center gap-1 py-1.5 px-2.5 rounded-lg bg-primary hover:bg-primary/90 text-on-primary text-xs font-medium shadow-xs transition-all" href="tel:${cleanPhone}">
-                  <span class="material-symbols-outlined text-[15px]">call</span>
+                <a class="btn-interactive flex-1 inline-flex items-center justify-center gap-1.5 py-1.5 px-2.5 rounded-lg bg-primary hover:bg-primary-hover text-white text-xs font-semibold shadow-xs transition-all" href="tel:${cleanPhone}">
+                  ${getIcon('phone', { class: 'w-3.5 h-3.5' })}
                   <span>Call Now</span>
                 </a>
               </div>
@@ -317,9 +357,9 @@ export const BrowseView = {
       pills.forEach(pill => {
         const cat = pill.getAttribute('data-cat');
         if (cat === currentCategory) {
-          pill.className = 'category-pill-btn shrink-0 inline-flex items-center gap-space-xs px-space-md py-space-xs rounded-full font-label-md text-label-md transition-all cursor-pointer bg-primary text-on-primary shadow-[0_2px_8px_rgba(163,61,35,0.25)]';
+          pill.className = 'category-pill-btn btn-interactive shrink-0 inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-medium transition-all cursor-pointer bg-primary text-white shadow-xs';
         } else {
-          pill.className = 'category-pill-btn shrink-0 inline-flex items-center gap-space-xs px-space-md py-space-xs rounded-full font-label-md text-label-md transition-all cursor-pointer bg-surface-container-lowest hover:bg-surface-container text-on-surface shadow-[0_1px_4px_rgba(38,70,83,0.06)]';
+          pill.className = 'category-pill-btn btn-interactive shrink-0 inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-medium transition-all cursor-pointer bg-white hover:bg-slate-100 text-slate-700 border border-slate-200/80';
         }
       });
     }

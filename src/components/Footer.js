@@ -1,9 +1,11 @@
+import { getIcon } from '../lib/icons.js';
+
 export function renderFooter() {
   const container = document.getElementById('footer-container');
   if (!container) return;
 
   container.innerHTML = `
-    <footer class="bg-surface-container-low border-t border-slate-200/60 py-10 mt-12">
+    <footer class="bg-white border-t border-slate-200/80 py-10 mt-12">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 flex flex-col md:flex-row justify-between gap-8">
         <div class="max-w-sm">
           <div class="flex items-center gap-2 mb-2">
@@ -14,8 +16,8 @@ export function renderFooter() {
           <p class="text-xs text-slate-500 leading-relaxed mb-3">
             Nepal's direct rental marketplace connecting tenants and verified property owners across Kathmandu Valley, Pokhara, Chitwan, and beyond with 100% Zero Broker Commission.
           </p>
-          <div class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-secondary-container text-on-secondary-container text-[11px] font-medium">
-            <span class="material-symbols-outlined text-[14px]">verified</span>
+          <div class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-emerald-50 text-emerald-700 text-[11px] font-semibold border border-emerald-200/60">
+            ${getIcon('check-circle', { class: 'w-3 h-3 text-emerald-600' })}
             <span>Zero Brokerage Guarantee</span>
           </div>
         </div>
@@ -47,15 +49,15 @@ export function renderFooter() {
             <h4 class="text-xs font-bold uppercase tracking-wider text-slate-800 mb-2.5">Direct Contact</h4>
             <ul class="space-y-1.5 text-xs text-slate-500">
               <li class="flex items-center gap-1.5">
-                <span class="material-symbols-outlined text-[15px] text-primary">support_agent</span>
+                ${getIcon('headphones', { class: 'w-3.5 h-3.5 text-primary' })}
                 <span>Support: namaste@gharbhada.np</span>
               </li>
               <li class="flex items-center gap-1.5">
-                <span class="material-symbols-outlined text-[15px] text-[#25D366]">chat</span>
+                ${getIcon('message-circle', { class: 'w-3.5 h-3.5 text-[#25D366]' })}
                 <span>WhatsApp Helpline</span>
               </li>
               <li class="flex items-center gap-1.5">
-                <span class="material-symbols-outlined text-[15px] text-secondary">security</span>
+                ${getIcon('shield-check', { class: 'w-3.5 h-3.5 text-secondary' })}
                 <span>Verified Landlords Only</span>
               </li>
             </ul>

@@ -2,6 +2,7 @@ import { supabase } from '../lib/supabase.js';
 import { getCurrentUser } from '../lib/auth.js';
 import { showToast } from '../lib/toast.js';
 import { navigateTo } from '../lib/router.js';
+import { getIcon } from '../lib/icons.js';
 
 export const PostView = {
   protected: true,
@@ -38,11 +39,11 @@ export const PostView = {
       <div class="max-w-3xl mx-auto px-4 sm:px-6 py-6 animate-fade-in">
         <!-- Header -->
         <div class="mb-6">
-          <div class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-primary/10 text-primary text-[11px] font-semibold mb-2">
+          <div class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-primary-light text-primary text-[11px] font-semibold mb-2 border border-primary/20">
             <span>🇳🇵</span>
             <span>${editId ? 'Edit Your Rental Listing (लिस्टिङ सम्पादन)' : 'Direct Owner Listing • Zero Broker Commission'}</span>
           </div>
-          <h1 class="text-xl sm:text-2xl font-bold tracking-tight text-on-surface">
+          <h1 class="text-xl sm:text-2xl font-bold tracking-tight text-slate-900">
             ${editId ? 'Edit Rental Listing' : 'Post a Rental Property (घरभाडा पोस्ट गर्नुहोस्)'}
           </h1>
           <p class="text-xs sm:text-sm text-slate-500 mt-1">
@@ -54,7 +55,7 @@ export const PostView = {
         <form id="post-rental-form" class="flex flex-col gap-5">
           
           <!-- 1. Category Selection -->
-          <section class="bg-surface-container-lowest p-5 rounded-xl border border-slate-200/80 shadow-xs flex flex-col gap-3.5">
+          <section class="bg-white p-5 rounded-xl border border-slate-200/80 shadow-xs flex flex-col gap-3.5">
             <div class="flex items-center gap-2">
               <span class="w-2.5 h-2.5 rounded-full bg-primary"></span>
               <h2 class="text-sm font-bold text-slate-800">1. Property Category (सम्पत्तिको प्रकार)</h2>
@@ -73,9 +74,9 @@ export const PostView = {
                 return `
                   <label class="group relative cursor-pointer">
                     <input type="radio" name="category" value="${cat.id}" class="peer sr-only" ${isChecked ? 'checked' : ''}/>
-                    <div class="p-2.5 rounded-lg bg-surface-container-low peer-checked:bg-primary/5 peer-checked:border-primary peer-checked:text-primary border border-slate-200/80 hover:border-slate-300 transition-all flex flex-col items-center text-center gap-1 hover:bg-surface-container">
+                    <div class="p-2.5 rounded-lg bg-slate-50 peer-checked:bg-primary-light peer-checked:border-primary peer-checked:text-primary border border-slate-200/80 hover:border-slate-300 transition-all flex flex-col items-center text-center gap-1 hover:bg-slate-100">
                       <span class="text-xl">${cat.emoji}</span>
-                      <span class="text-xs font-semibold text-on-surface">${cat.label}</span>
+                      <span class="text-xs font-semibold text-slate-800">${cat.label}</span>
                     </div>
                   </label>
                 `;
@@ -84,7 +85,7 @@ export const PostView = {
           </section>
 
           <!-- 2. Listing Title & Description -->
-          <section class="bg-surface-container-lowest p-5 rounded-xl border border-slate-200/80 shadow-xs flex flex-col gap-3.5">
+          <section class="bg-white p-5 rounded-xl border border-slate-200/80 shadow-xs flex flex-col gap-3.5">
             <div class="flex items-center gap-2">
               <span class="w-2.5 h-2.5 rounded-full bg-primary"></span>
               <h2 class="text-sm font-bold text-slate-800">2. Title & Narrative (शीर्षक र विवरण)</h2>
@@ -94,19 +95,19 @@ export const PostView = {
               <label class="text-xs font-semibold text-slate-700" for="listing-title">
                 Catchy Listing Title <span class="text-primary">*</span>
               </label>
-              <input id="listing-title" required maxlength="100" class="w-full px-3.5 py-2 rounded-lg bg-surface-container-low border border-slate-200/80 text-on-surface placeholder:text-slate-400 focus:bg-surface-container-lowest focus:border-primary focus:ring-1 focus:ring-primary focus:outline-none transition-all text-xs sm:text-sm" placeholder="e.g., 2 BHK Sunny Flat near Shankhamul Bridge with Car Parking" value="${existingListing?.title || ''}"/>
+              <input id="listing-title" required maxlength="100" class="input-interactive w-full px-3.5 py-2 rounded-lg bg-slate-50 border border-slate-200/80 text-slate-900 placeholder:text-slate-400 text-xs sm:text-sm" placeholder="e.g., 2 BHK Sunny Flat near Shankhamul Bridge with Car Parking" value="${existingListing?.title || ''}"/>
             </div>
 
             <div class="flex flex-col gap-1.5">
               <label class="text-xs font-semibold text-slate-700" for="listing-description">
                 Comprehensive Description (नेपाली वा English मा लेख्नुहोस्)
               </label>
-              <textarea id="listing-description" rows="4" class="w-full p-3 rounded-lg bg-surface-container-low border border-slate-200/80 text-on-surface placeholder:text-slate-400 focus:bg-surface-container-lowest focus:border-primary focus:ring-1 focus:ring-primary focus:outline-none transition-all text-xs sm:text-sm leading-relaxed" placeholder="Mention floor details, sunlight, water facility (Melamchi/Boring), electricity sub-meter, preferred tenant (family/bachelor), and nearby landmarks...">${existingListing?.description || ''}</textarea>
+              <textarea id="listing-description" rows="4" class="input-interactive w-full p-3 rounded-lg bg-slate-50 border border-slate-200/80 text-slate-900 placeholder:text-slate-400 text-xs sm:text-sm leading-relaxed" placeholder="Mention floor details, sunlight, water facility (Melamchi/Boring), electricity sub-meter, preferred tenant (family/bachelor), and nearby landmarks...">${existingListing?.description || ''}</textarea>
             </div>
           </section>
 
           <!-- 3. Location -->
-          <section class="bg-surface-container-lowest p-5 rounded-xl border border-slate-200/80 shadow-xs flex flex-col gap-3.5">
+          <section class="bg-white p-5 rounded-xl border border-slate-200/80 shadow-xs flex flex-col gap-3.5">
             <div class="flex items-center gap-2">
               <span class="w-2.5 h-2.5 rounded-full bg-primary"></span>
               <h2 class="text-sm font-bold text-slate-800">3. Location (स्थान / ठेगाना)</h2>
@@ -117,7 +118,7 @@ export const PostView = {
                 <label class="text-xs font-semibold text-slate-700" for="location-city">
                   District / City <span class="text-primary">*</span>
                 </label>
-                <select id="location-city" required class="w-full px-3.5 py-2 rounded-lg bg-surface-container-low border border-slate-200/80 text-on-surface focus:bg-surface-container-lowest focus:border-primary focus:ring-1 focus:ring-primary focus:outline-none text-xs sm:text-sm cursor-pointer">
+                <select id="location-city" required class="input-interactive w-full px-3.5 py-2 rounded-lg bg-slate-50 border border-slate-200/80 text-slate-900 text-xs sm:text-sm cursor-pointer">
                   ${['Kathmandu', 'Lalitpur', 'Bhaktapur', 'Pokhara', 'Chitwan', 'Butwal', 'Dharan', 'Other'].map(city => `
                     <option value="${city}" ${(existingListing?.location_city || 'Kathmandu') === city ? 'selected' : ''}>${city}</option>
                   `).join('')}
@@ -128,7 +129,7 @@ export const PostView = {
                 <label class="text-xs font-semibold text-slate-700" for="location-area">
                   Neighborhood / Area (टोल / ठाउँ) <span class="text-primary">*</span>
                 </label>
-                <input id="location-area" required class="w-full px-3.5 py-2 rounded-lg bg-surface-container-low border border-slate-200/80 text-on-surface placeholder:text-slate-400 focus:bg-surface-container-lowest focus:border-primary focus:ring-1 focus:ring-primary focus:outline-none text-xs sm:text-sm" placeholder="e.g. New Baneshwor, Jhamsikhel, Pulchowk" value="${existingListing?.location_area || ''}"/>
+                <input id="location-area" required class="input-interactive w-full px-3.5 py-2 rounded-lg bg-slate-50 border border-slate-200/80 text-slate-900 placeholder:text-slate-400 text-xs sm:text-sm" placeholder="e.g. New Baneshwor, Jhamsikhel, Pulchowk" value="${existingListing?.location_area || ''}"/>
               </div>
             </div>
 
@@ -136,12 +137,12 @@ export const PostView = {
               <label class="text-xs font-semibold text-slate-700" for="location-landmark">
                 Nearby Landmark / Street Access
               </label>
-              <input id="location-landmark" class="w-full px-3.5 py-2 rounded-lg bg-surface-container-low border border-slate-200/80 text-on-surface placeholder:text-slate-400 focus:bg-surface-container-lowest focus:border-primary focus:ring-1 focus:ring-primary focus:outline-none text-xs sm:text-sm" placeholder="e.g. Near Shankhamul Bridge, 50m inside ring road" value="${existingListing?.landmark || ''}"/>
+              <input id="location-landmark" class="input-interactive w-full px-3.5 py-2 rounded-lg bg-slate-50 border border-slate-200/80 text-slate-900 placeholder:text-slate-400 text-xs sm:text-sm" placeholder="e.g. Near Shankhamul Bridge, 50m inside ring road" value="${existingListing?.landmark || ''}"/>
             </div>
           </section>
 
           <!-- 4. Pricing & Specs -->
-          <section class="bg-surface-container-lowest p-5 rounded-xl border border-slate-200/80 shadow-xs flex flex-col gap-3.5">
+          <section class="bg-white p-5 rounded-xl border border-slate-200/80 shadow-xs flex flex-col gap-3.5">
             <div class="flex items-center gap-2">
               <span class="w-2.5 h-2.5 rounded-full bg-primary"></span>
               <h2 class="text-sm font-bold text-slate-800">4. Pricing & Details (भाडा र विवरण)</h2>
@@ -152,9 +153,9 @@ export const PostView = {
                 <label class="text-xs font-semibold text-slate-700" for="rental-price">
                   Monthly Rent in NPR (नेपाली रुपैयाँ) <span class="text-primary">*</span>
                 </label>
-                <div class="flex items-center bg-surface-container-low rounded-lg border border-slate-200/80 px-3 py-2 focus-within:bg-surface-container-lowest focus-within:border-primary focus-within:ring-1 focus-within:ring-primary transition-all">
+                <div class="flex items-center bg-slate-50 rounded-lg border border-slate-200/80 px-3 py-2 focus-within:bg-white focus-within:border-primary focus-within:ring-2 focus-within:ring-primary/20 transition-all">
                   <span class="font-bold text-primary mr-2 text-xs">रु (Rs.)</span>
-                  <input id="rental-price" required type="number" min="0" step="500" class="w-full bg-transparent text-on-surface font-bold text-sm focus:outline-none" placeholder="25000" value="${existingListing?.price || ''}"/>
+                  <input id="rental-price" required type="number" min="0" step="500" class="w-full bg-transparent text-slate-900 font-bold text-sm focus:outline-none" placeholder="25000" value="${existingListing?.price || ''}"/>
                 </div>
               </div>
 
@@ -162,19 +163,19 @@ export const PostView = {
                 <label class="text-xs font-semibold text-slate-700" for="water-facility">
                   Water Facility (खानेपानी)
                 </label>
-                <input id="water-facility" class="w-full px-3.5 py-2 rounded-lg bg-surface-container-low border border-slate-200/80 text-on-surface focus:bg-surface-container-lowest focus:border-primary focus:ring-1 focus:ring-primary focus:outline-none text-xs sm:text-sm" placeholder="e.g. 24/7 Melamchi + Deep Boring" value="${existingListing?.water_facility || '24/7 Supply'}"/>
+                <input id="water-facility" class="input-interactive w-full px-3.5 py-2 rounded-lg bg-slate-50 border border-slate-200/80 text-slate-900 text-xs sm:text-sm" placeholder="e.g. 24/7 Melamchi + Deep Boring" value="${existingListing?.water_facility || '24/7 Supply'}"/>
               </div>
             </div>
 
             <div class="grid grid-cols-3 gap-3">
               <div class="flex flex-col gap-1.5">
                 <label class="text-xs font-semibold text-slate-700" for="bedrooms-input">Bedrooms</label>
-                <input id="bedrooms-input" type="number" min="0" max="20" class="w-full px-3 py-2 rounded-lg bg-surface-container-low border border-slate-200/80 text-on-surface focus:bg-surface-container-lowest focus:border-primary focus:ring-1 focus:ring-primary focus:outline-none text-xs sm:text-sm" value="${existingListing?.bedrooms || 1}"/>
+                <input id="bedrooms-input" type="number" min="0" max="20" class="input-interactive w-full px-3 py-2 rounded-lg bg-slate-50 border border-slate-200/80 text-slate-900 text-xs sm:text-sm" value="${existingListing?.bedrooms || 1}"/>
               </div>
 
               <div class="flex flex-col gap-1.5">
                 <label class="text-xs font-semibold text-slate-700" for="bathrooms-input">Bathrooms</label>
-                <input id="bathrooms-input" type="number" min="0" max="10" class="w-full px-3 py-2 rounded-lg bg-surface-container-low border border-slate-200/80 text-on-surface focus:bg-surface-container-lowest focus:border-primary focus:ring-1 focus:ring-primary focus:outline-none text-xs sm:text-sm" value="${existingListing?.bathrooms || 1}"/>
+                <input id="bathrooms-input" type="number" min="0" max="10" class="input-interactive w-full px-3 py-2 rounded-lg bg-slate-50 border border-slate-200/80 text-slate-900 text-xs sm:text-sm" value="${existingListing?.bathrooms || 1}"/>
               </div>
 
               <div class="flex items-center pt-5">
@@ -187,7 +188,7 @@ export const PostView = {
           </section>
 
           <!-- 5. Property Photos (Supabase Storage) -->
-          <section class="bg-surface-container-lowest p-5 rounded-xl border border-slate-200/80 shadow-xs flex flex-col gap-3.5">
+          <section class="bg-white p-5 rounded-xl border border-slate-200/80 shadow-xs flex flex-col gap-3.5">
             <div class="flex items-center justify-between">
               <div class="flex items-center gap-2">
                 <span class="w-2.5 h-2.5 rounded-full bg-primary"></span>
@@ -197,9 +198,11 @@ export const PostView = {
             </div>
 
             <!-- Upload Dropzone -->
-            <div id="dropzone" class="border border-dashed border-primary/40 hover:border-primary rounded-xl p-5 text-center cursor-pointer bg-primary/[0.02] hover:bg-primary/[0.05] transition-all">
+            <div id="dropzone" class="border border-dashed border-primary/40 hover:border-primary rounded-xl p-6 text-center cursor-pointer bg-primary-light/40 hover:bg-primary-light/80 transition-all">
               <input type="file" id="photo-file-input" multiple accept="image/*" class="hidden"/>
-              <span class="material-symbols-outlined text-3xl text-primary mb-1">cloud_upload</span>
+              <div class="text-primary mb-1">
+                ${getIcon('upload-cloud', { class: 'w-8 h-8 mx-auto' })}
+              </div>
               <p class="text-xs sm:text-sm font-semibold text-slate-800">Click or Drag & Drop Property Images</p>
               <p class="text-[11px] text-slate-500 mt-0.5">Upload JPG, PNG, or WebP photos (Max 10MB each)</p>
             </div>
@@ -217,7 +220,7 @@ export const PostView = {
           </section>
 
           <!-- 6. Direct Contact Channels -->
-          <section class="bg-surface-container-lowest p-5 rounded-xl border border-slate-200/80 shadow-xs flex flex-col gap-3.5">
+          <section class="bg-white p-5 rounded-xl border border-slate-200/80 shadow-xs flex flex-col gap-3.5">
             <div class="flex items-center justify-between">
               <div class="flex items-center gap-2">
                 <span class="w-2.5 h-2.5 rounded-full bg-primary"></span>
@@ -231,16 +234,16 @@ export const PostView = {
                 <label class="text-xs font-semibold text-slate-700" for="contact-name">
                   Contact Person / Owner Name <span class="text-primary">*</span>
                 </label>
-                <input id="contact-name" required class="w-full px-3.5 py-2 rounded-lg bg-surface-container-low border border-slate-200/80 text-on-surface focus:bg-surface-container-lowest focus:border-primary focus:ring-1 focus:ring-primary focus:outline-none text-xs sm:text-sm" placeholder="e.g. Rameshwor Karki" value="${defaultContactName}"/>
+                <input id="contact-name" required class="input-interactive w-full px-3.5 py-2 rounded-lg bg-slate-50 border border-slate-200/80 text-slate-900 text-xs sm:text-sm" placeholder="e.g. Rameshwor Karki" value="${defaultContactName}"/>
               </div>
 
               <div class="flex flex-col gap-1.5">
                 <label class="text-xs font-semibold text-slate-700" for="contact-phone">
                   Primary Mobile Number <span class="text-primary">*</span>
                 </label>
-                <div class="flex items-center bg-surface-container-low rounded-lg border border-slate-200/80 px-3 py-2 focus-within:bg-surface-container-lowest focus-within:border-primary focus-within:ring-1 focus-within:ring-primary transition-all">
-                  <span class="font-bold text-slate-600 mr-2 text-xs">+977</span>
-                  <input id="contact-phone" required type="tel" maxlength="10" class="w-full bg-transparent text-on-surface text-xs sm:text-sm focus:outline-none" placeholder="98XXXXXXXX" value="${defaultPhone}"/>
+                <div class="flex items-center bg-slate-50 rounded-lg border border-slate-200/80 px-3 py-2 focus-within:bg-white focus-within:border-primary focus-within:ring-2 focus-within:ring-primary/20 transition-all">
+                  <span class="font-bold text-slate-500 mr-2 text-xs">+977</span>
+                  <input id="contact-phone" required type="tel" maxlength="10" class="w-full bg-transparent text-slate-900 text-xs sm:text-sm focus:outline-none" placeholder="98XXXXXXXX" value="${defaultPhone}"/>
                 </div>
               </div>
             </div>
@@ -265,7 +268,7 @@ export const PostView = {
           </section>
 
           <!-- 7. Confirmation & Submit -->
-          <section class="bg-surface-container-lowest p-5 rounded-xl border border-slate-200/80 shadow-xs flex flex-col gap-3.5">
+          <section class="bg-white p-5 rounded-xl border border-slate-200/80 shadow-xs flex flex-col gap-3.5">
             <label class="flex items-start gap-2.5 cursor-pointer select-none">
               <input type="checkbox" required class="mt-0.5 w-4 h-4 accent-primary rounded cursor-pointer" checked/>
               <span class="text-xs text-slate-600 leading-relaxed">
@@ -274,11 +277,11 @@ export const PostView = {
             </label>
 
             <div class="flex flex-col sm:flex-row items-center justify-between gap-3 pt-3 border-t border-slate-100">
-              <a href="#/my-listings" class="w-full sm:w-auto px-4 py-2 rounded-lg bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-semibold text-center transition-colors">
+              <a href="#/my-listings" class="btn-interactive w-full sm:w-auto px-4 py-2 rounded-lg bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-semibold text-center transition-colors">
                 Cancel
               </a>
-              <button id="submit-btn" type="submit" class="w-full sm:w-auto px-6 py-2.5 rounded-lg bg-primary hover:bg-surface-tint text-on-primary text-xs sm:text-sm font-semibold shadow-xs hover:shadow transition-all flex items-center justify-center gap-1.5">
-                <span class="material-symbols-outlined text-[18px]">rocket_launch</span>
+              <button id="submit-btn" type="submit" class="btn-interactive w-full sm:w-auto px-6 py-2.5 rounded-lg bg-primary hover:bg-primary-hover text-white text-xs sm:text-sm font-semibold shadow-xs hover:shadow transition-all flex items-center justify-center gap-1.5 cursor-pointer">
+                ${getIcon('send', { class: 'w-4 h-4' })}
                 <span>${editId ? 'Save Changes (अपडेट गर्नुहोस्)' : 'Publish Listing Now (पोस्ट गर्नुहोस्)'}</span>
               </button>
             </div>
@@ -298,12 +301,12 @@ export const PostView = {
       }
 
       grid.innerHTML = uploadedPhotoUrls.map((url, idx) => `
-        <div class="relative group aspect-[4/3] rounded-DEFAULT overflow-hidden bg-surface-container shadow-sm">
+        <div class="relative group aspect-[4/3] rounded-lg overflow-hidden bg-slate-100 shadow-xs border border-slate-200/80">
           <img src="${url}" class="w-full h-full object-cover"/>
-          <button type="button" class="remove-photo-btn absolute top-1.5 right-1.5 w-7 h-7 rounded-full bg-error text-on-error flex items-center justify-center text-xs opacity-90 hover:opacity-100 shadow transition-opacity" data-index="${idx}" title="Remove photo">
-            ✕
+          <button type="button" class="remove-photo-btn btn-interactive absolute top-1.5 right-1.5 w-6 h-6 rounded-full bg-slate-900/80 hover:bg-rose-600 text-white flex items-center justify-center text-xs opacity-90 hover:opacity-100 shadow-xs transition-colors" data-index="${idx}" title="Remove photo">
+            ${getIcon('x', { class: 'w-3 h-3' })}
           </button>
-          ${idx === 0 ? '<span class="absolute bottom-1.5 left-1.5 px-2 py-0.5 rounded-full bg-surface-container-lowest/90 text-primary font-bold text-[10px]">Cover</span>' : ''}
+          ${idx === 0 ? '<span class="absolute bottom-1.5 left-1.5 px-2 py-0.5 rounded-md bg-white/90 text-primary font-bold text-[10px] shadow-xs">Cover</span>' : ''}
         </div>
       `).join('');
 

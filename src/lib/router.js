@@ -77,6 +77,10 @@ export async function handleRoute() {
   }
 
   window.scrollTo({ top: 0, behavior: 'instant' });
+  appEl.classList.remove('page-transition');
+  void appEl.offsetWidth; // trigger reflow
+  appEl.classList.add('page-transition');
+
   try {
     await matchedHandler.render(appEl, { params, queryParams });
   } catch (err) {
