@@ -22,14 +22,14 @@ export const MyListingsView = {
         <!-- Landlord Summary Banner -->
         <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6 bg-white p-6 rounded-2xl shadow-card border border-slate-200/80">
           <div class="flex items-center gap-4">
-            <div class="w-12 h-12 rounded-xl bg-gradient-to-tr from-[#F04D36] to-[#FB923C] text-white flex items-center justify-center font-extrabold text-lg shrink-0 shadow-xs">
+            <div class="w-12 h-12 rounded-xl bg-[#1E40AF] text-white flex items-center justify-center font-extrabold text-lg shrink-0 shadow-xs">
               ${(userName[0] || 'L').toUpperCase()}
             </div>
             <div>
               <div class="flex items-center gap-2">
                 <h1 class="text-lg font-bold text-slate-900">${userName}</h1>
-                <span class="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-emerald-50 text-emerald-700 border border-emerald-200/80 text-[11px] font-bold">
-                  ${getIcon('check-circle', { class: 'w-3 h-3 text-emerald-600' })} Verified Landlord
+                <span class="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-blue-50 text-[#1E40AF] border border-blue-200/80 text-[11px] font-bold">
+                  ${getIcon('check-circle', { class: 'w-3 h-3 text-[#1E40AF]' })} Verified Landlord
                 </span>
               </div>
               <p class="text-xs text-slate-500 mt-0.5 font-medium">${user.email}</p>
@@ -37,9 +37,9 @@ export const MyListingsView = {
           </div>
 
           <div class="flex items-center gap-2">
-            <a href="#/post" class="btn-modern inline-flex items-center gap-1.5 px-4 py-2.5 rounded-xl bg-gradient-to-r from-[#F04D36] to-[#E03A22] hover:from-[#E03A22] hover:to-[#C82B15] text-white text-xs font-bold shadow-sm hover:shadow-glow transition-all">
-              ${getIcon('plus', { class: 'w-4 h-4' })}
-              <span>Post Another Rental</span>
+            <a href="#/post" class="btn-brand inline-flex items-center gap-1.5 px-4 py-2.5 rounded-xl text-xs font-bold shadow-xs">
+              ${getIcon('plus', { class: 'w-4 h-4 text-white' })}
+              <span>+ Post Another Rental</span>
             </a>
           </div>
         </div>
@@ -49,7 +49,7 @@ export const MyListingsView = {
           <div class="p-5 rounded-2xl bg-white shadow-card border border-slate-200/80 flex flex-col justify-between">
             <span class="text-xs font-bold text-slate-500">Active Listings (सक्रिय घरभाडा)</span>
             <div class="mt-2 flex items-baseline gap-2">
-              <span id="active-count" class="text-3xl font-extrabold text-[#F04D36]">...</span>
+              <span id="active-count" class="price-dominant text-3xl font-extrabold text-slate-900">...</span>
               <span class="text-xs text-slate-400 font-medium">live on marketplace</span>
             </div>
           </div>
@@ -57,7 +57,7 @@ export const MyListingsView = {
           <div class="p-5 rounded-2xl bg-white shadow-card border border-slate-200/80 flex flex-col justify-between">
             <span class="text-xs font-bold text-slate-500">Commission Saved</span>
             <div class="mt-2 flex items-baseline gap-2">
-              <span class="text-3xl font-extrabold text-emerald-600">रु ०</span>
+              <span class="price-dominant text-3xl font-extrabold text-emerald-600">रु ०</span>
               <span class="text-xs text-slate-400 font-medium">100% Direct to Tenant</span>
             </div>
           </div>
@@ -67,7 +67,7 @@ export const MyListingsView = {
             <div class="mt-3 flex items-center gap-3 text-slate-800 text-xs font-semibold">
               <span class="flex items-center gap-1 text-emerald-600">${getIcon('message-circle', { class: 'w-4 h-4' })} WhatsApp</span>
               <span class="flex items-center gap-1 text-purple-600">${getIcon('phone', { class: 'w-4 h-4' })} Viber</span>
-              <span class="flex items-center gap-1 text-[#F04D36]">${getIcon('phone-call', { class: 'w-4 h-4' })} Call</span>
+              <span class="flex items-center gap-1 text-[#1E40AF]">${getIcon('phone-call', { class: 'w-4 h-4' })} Call</span>
             </div>
           </div>
         </div>
@@ -75,7 +75,7 @@ export const MyListingsView = {
         <!-- Listings Section -->
         <div class="flex items-center justify-between mb-4">
           <h2 class="text-lg font-bold text-slate-900">Your Properties (तपाईंका लिस्टिङहरू)</h2>
-          <span class="text-xs text-slate-500">Manage, edit, or remove listings</span>
+          <span class="text-xs text-slate-500 font-medium">Manage, edit, or remove listings</span>
         </div>
 
         <div id="my-listings-container" class="flex flex-col gap-4">
@@ -108,7 +108,7 @@ export const MyListingsView = {
 
       if (error) {
         containerEl.innerHTML = `
-          <div class="p-5 bg-red-50 border border-red-200 text-red-600 rounded-2xl text-center text-xs font-medium">
+          <div class="p-5 bg-rose-50 border border-rose-200 text-rose-600 rounded-2xl text-center text-xs font-medium">
             Failed to load listings: ${error.message}
           </div>
         `;
@@ -122,13 +122,13 @@ export const MyListingsView = {
       if (!listings || listings.length === 0) {
         containerEl.innerHTML = `
           <div class="p-12 text-center bg-white rounded-2xl border border-dashed border-slate-200 shadow-card">
-            <div class="w-14 h-14 rounded-2xl bg-slate-50 border border-slate-200 flex items-center justify-center mx-auto mb-3 text-slate-500">
-              ${getIcon('home', { class: 'w-7 h-7 text-[#F04D36]' })}
+            <div class="w-14 h-14 rounded-2xl bg-blue-50 border border-blue-100 flex items-center justify-center mx-auto mb-3 text-[#1E40AF]">
+              ${getIcon('home', { class: 'w-7 h-7 text-[#1E40AF]' })}
             </div>
             <h3 class="text-base font-bold text-slate-900 mb-1">You have no listings posted yet</h3>
             <p class="text-xs sm:text-sm text-slate-500 mb-6 max-w-sm mx-auto">Start connecting with verified tenants by listing your room, flat, shutter, or land.</p>
-            <a href="#/post" class="btn-modern inline-flex items-center gap-1.5 px-5 py-2.5 rounded-xl bg-gradient-to-r from-[#F04D36] to-[#E03A22] text-white text-xs font-bold shadow-md">
-              ${getIcon('plus', { class: 'w-4 h-4' })}
+            <a href="#/post" class="btn-brand inline-flex items-center gap-1.5 px-5 py-2.5 rounded-xl text-xs font-bold shadow-sm">
+              ${getIcon('plus', { class: 'w-4 h-4 text-white' })}
               <span>Post Your First Rental (+ पोस्ट गर्नुहोस्)</span>
             </a>
           </div>
@@ -156,22 +156,22 @@ export const MyListingsView = {
               <div>
                 <div class="flex flex-col sm:flex-row sm:items-start justify-between gap-2">
                   <div>
-                    <div class="inline-flex items-center gap-1 text-teal-600 text-xs font-semibold mb-1">
-                      ${getIcon('map-pin', { class: 'w-3 h-3 text-[#F04D36]' })}
+                    <div class="inline-flex items-center gap-1 text-[#1E40AF] text-xs font-semibold mb-1">
+                      ${getIcon('map-pin', { class: 'w-3 h-3 text-[#1E40AF]' })}
                       <span>${item.location_area}, ${item.location_city}</span>
                     </div>
-                    <a href="#/listing/${item.id}" class="hover:text-[#F04D36] transition-colors">
+                    <a href="#/listing/${item.id}" class="hover:text-[#1E40AF] transition-colors">
                       <h3 class="text-base text-slate-900 font-bold truncate">${item.title}</h3>
                     </a>
                   </div>
                   <div class="text-left sm:text-right shrink-0">
-                    <span class="text-xl font-extrabold text-[#F04D36] block">रु ${formattedPrice}</span>
+                    <span class="price-dominant text-xl sm:text-2xl font-extrabold text-slate-900 block">रु ${formattedPrice}</span>
                     <span class="text-[10px] text-slate-400 font-semibold">/ month</span>
                   </div>
                 </div>
 
                 <div class="flex flex-wrap items-center gap-2 mt-3 text-xs">
-                  <span class="px-2.5 py-1 rounded-lg bg-slate-100 text-slate-800 font-bold uppercase text-[10px]">${item.category}</span>
+                  <span class="px-2.5 py-1 rounded-lg bg-blue-50 text-[#1E40AF] font-bold uppercase text-[10px]">${item.category}</span>
                   <span class="px-2.5 py-1 rounded-lg bg-slate-100 text-slate-700 font-medium">${item.bedrooms || 1} Bed / ${item.bathrooms || 1} Bath</span>
                   <span class="px-2.5 py-1 rounded-lg bg-slate-100 text-slate-700 font-medium">${item.water_facility || '24/7 Water'}</span>
                   <span class="text-slate-500 font-medium ml-1">Contact: ${item.contact_phone}</span>
@@ -195,8 +195,8 @@ export const MyListingsView = {
                   <span>View</span>
                 </a>
 
-                <button type="button" class="delete-listing-btn btn-press inline-flex items-center gap-1 px-3 py-1.5 rounded-xl hover:bg-red-50 text-red-600 text-xs font-bold transition-all ml-auto cursor-pointer" data-id="${item.id}" data-title="${item.title}">
-                  ${getIcon('trash-2', { class: 'w-3.5 h-3.5 text-red-500' })}
+                <button type="button" class="delete-listing-btn btn-press inline-flex items-center gap-1 px-3 py-1.5 rounded-xl hover:bg-rose-50 text-rose-600 text-xs font-bold transition-all ml-auto cursor-pointer" data-id="${item.id}" data-title="${item.title}">
+                  ${getIcon('trash-2', { class: 'w-3.5 h-3.5 text-rose-500' })}
                   <span>Delete</span>
                 </button>
               </div>

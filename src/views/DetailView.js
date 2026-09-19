@@ -11,8 +11,8 @@ export const DetailView = {
     if (!listingId) {
       container.innerHTML = `
         <div class="max-w-xl mx-auto my-16 p-8 text-center bg-white rounded-2xl shadow-card border border-slate-200">
-          <p class="text-red-500 font-bold mb-4">No listing specified.</p>
-          <a href="#/" class="btn-modern inline-flex items-center px-5 py-2.5 bg-[#F04D36] text-white rounded-xl text-xs font-bold shadow-md">Back to Browse</a>
+          <p class="text-rose-500 font-bold mb-4">No listing specified.</p>
+          <a href="#/" class="btn-brand inline-flex items-center px-5 py-2.5 rounded-xl text-xs font-bold">Back to Browse</a>
         </div>
       `;
       return;
@@ -46,12 +46,12 @@ export const DetailView = {
     if (error || !listing) {
       container.innerHTML = `
         <div class="max-w-xl mx-auto my-16 p-8 text-center bg-white rounded-2xl shadow-card border border-slate-200">
-          <div class="w-12 h-12 rounded-full bg-red-50 text-red-500 flex items-center justify-center mx-auto mb-3">
+          <div class="w-12 h-12 rounded-full bg-rose-50 text-rose-500 flex items-center justify-center mx-auto mb-3">
             ${getIcon('alert-triangle', { class: 'w-6 h-6' })}
           </div>
           <h2 class="text-base font-bold text-slate-900 mb-1">Listing Not Found</h2>
           <p class="text-xs text-slate-500 mb-6">This listing may have been rented out or removed by the landlord.</p>
-          <a href="#/" class="btn-modern inline-flex items-center px-5 py-2.5 bg-[#F04D36] text-white rounded-xl text-xs font-bold shadow-md">Browse All Rentals</a>
+          <a href="#/" class="btn-brand inline-flex items-center px-5 py-2.5 rounded-xl text-xs font-bold">Browse All Rentals</a>
         </div>
       `;
       return;
@@ -91,9 +91,9 @@ export const DetailView = {
         <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-6 pb-4">
           <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 text-xs">
             <nav class="flex items-center gap-2 text-slate-500 font-medium">
-              <a href="#/" class="hover:text-[#F04D36] transition-colors">Home (गृहपृष्ठ)</a>
+              <a href="#/" class="hover:text-[#1E40AF] transition-colors">Home (गृहपृष्ठ)</a>
               ${getIcon('chevron-right', { class: 'w-3 h-3 text-slate-300' })}
-              <a href="#/?cat=${listing.category}" class="hover:text-[#F04D36] transition-colors">${categoryLabels[listing.category] || listing.category}</a>
+              <a href="#/?cat=${listing.category}" class="hover:text-[#1E40AF] transition-colors">${categoryLabels[listing.category] || listing.category}</a>
               ${getIcon('chevron-right', { class: 'w-3 h-3 text-slate-300' })}
               <span class="text-slate-900 font-bold truncate max-w-[200px]">${listing.location_area}</span>
             </nav>
@@ -112,27 +112,27 @@ export const DetailView = {
             </div>
           </div>
 
-          <!-- Title & Price Header -->
+          <!-- Title & Dominant Price Header -->
           <div class="mt-4 flex flex-col md:flex-row md:items-center justify-between gap-4">
             <div>
-              <div class="flex items-center gap-2 mb-2">
-                <span class="px-3 py-1 rounded-full bg-orange-50 text-[#F04D36] text-[11px] font-bold border border-orange-200/80">
+              <div class="flex items-center gap-2 mb-2 flex-wrap">
+                <span class="px-3 py-1 rounded-full bg-blue-50 text-[#1E40AF] text-[11px] font-bold border border-blue-200/80">
                   ${categoryLabels[listing.category] || 'Rental Space'}
                 </span>
                 <span class="inline-flex items-center gap-1 px-3 py-1 rounded-full bg-emerald-50 text-emerald-700 border border-emerald-200/80 text-[11px] font-bold">
                   ${getIcon('shield-check', { class: 'w-3.5 h-3.5 text-emerald-600' })} ${t('verifiedLandlord')}
                 </span>
                 <span class="text-slate-400 text-[11px] flex items-center gap-1 font-medium ml-1">
-                  ${getIcon('clock', { class: 'w-3 h-3 text-[#F04D36]' })} ${getRelativeTime(listing.created_at, lang)}
+                  ${getIcon('clock', { class: 'w-3 h-3 text-[#1E40AF]' })} ${getRelativeTime(listing.created_at, lang)}
                 </span>
               </div>
               <h1 class="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight leading-tight">
                 ${listing.title}
               </h1>
-              <p class="text-xs sm:text-sm text-slate-500 flex items-center gap-1.5 mt-1.5 font-medium">
-                ${getIcon('map-pin', { class: 'w-4 h-4 text-[#F04D36] shrink-0' })}
+              <p class="text-xs sm:text-sm text-slate-600 flex items-center gap-1.5 mt-1.5 font-medium">
+                ${getIcon('map-pin', { class: 'w-4 h-4 text-[#1E40AF] shrink-0' })}
                 <span>${listing.location_area}, ${listing.location_city}</span>
-                ${listing.landmark ? `<span class="text-slate-300">•</span> <span class="text-teal-600 font-bold">${listing.landmark}</span>` : ''}
+                ${listing.landmark ? `<span class="text-slate-300">•</span> <span class="text-[#1E40AF] font-bold">${listing.landmark}</span>` : ''}
               </p>
             </div>
 
@@ -140,15 +140,15 @@ export const DetailView = {
             <div class="hidden md:flex flex-col items-end bg-white p-4 px-6 rounded-2xl border border-slate-200 shadow-card">
               <span class="text-[10px] uppercase font-bold text-slate-400 tracking-wider">${t('rentAmount')}</span>
               <div class="flex items-baseline gap-1.5">
-                <span class="text-3xl font-extrabold text-[#F04D36] tracking-tight">${formattedPrice}</span>
-                <span class="text-xs text-slate-400 font-semibold">${t('perMonth')}</span>
+                <span class="price-dominant text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">${formattedPrice}</span>
+                <span class="text-xs text-slate-500 font-semibold">${t('perMonth')}</span>
               </div>
-              ${listing.is_negotiable ? `<span class="text-[11px] text-emerald-600 font-bold mt-0.5">${t('negotiable')}</span>` : ''}
+              ${listing.is_negotiable ? `<span class="text-[11px] text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded-full font-bold mt-1 border border-emerald-100">${t('negotiable')}</span>` : ''}
             </div>
           </div>
         </section>
 
-        <!-- Interactive Image Carousel with Smooth Transition -->
+        <!-- Full-Width Image Carousel at Top -->
         <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-8">
           <div class="relative rounded-2xl overflow-hidden border border-slate-200 shadow-card bg-slate-900 group select-none">
             
@@ -190,7 +190,7 @@ export const DetailView = {
           ${photos.length > 1 ? `
             <div class="flex items-center gap-3 mt-3 overflow-x-auto pb-1 no-scrollbar" id="thumbnail-strip">
               ${photos.map((src, idx) => `
-                <button type="button" class="thumbnail-item shrink-0 w-20 h-14 rounded-xl overflow-hidden border-2 transition-all cursor-pointer ${idx === 0 ? 'border-[#F04D36] shadow-sm scale-102' : 'border-transparent opacity-60 hover:opacity-100'}" data-thumb-target="${idx}">
+                <button type="button" class="thumbnail-item shrink-0 w-20 h-14 rounded-xl overflow-hidden border-2 transition-all cursor-pointer ${idx === 0 ? 'border-[#1E40AF] shadow-sm scale-102' : 'border-transparent opacity-60 hover:opacity-100'}" data-thumb-target="${idx}">
                   <img src="${src}" class="w-full h-full object-cover" alt="Thumb ${idx + 1}"/>
                 </button>
               `).join('')}
@@ -202,16 +202,16 @@ export const DetailView = {
         <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
             
-            <!-- Left 8 Columns: Details, Description, Specs -->
+            <!-- Left 8 Columns: Details, Description, Specs, Map -->
             <div class="lg:col-span-8 flex flex-col gap-6 min-w-0">
               
-              <!-- Quick Overview Bento Bar -->
+              <!-- Clean Specs Icon Grid Directly Below -->
               <div class="bg-white rounded-2xl p-6 border border-slate-200/80 shadow-card">
-                <p class="text-xs font-bold text-[#F04D36] uppercase tracking-wider mb-4">${t('propertyOverview')}</p>
+                <p class="text-xs font-bold text-[#1E40AF] uppercase tracking-wider mb-4">${t('propertyOverview')}</p>
                 <div class="grid grid-cols-2 sm:grid-cols-4 gap-4">
                   
-                  <div class="flex items-center gap-3 p-3 rounded-xl bg-orange-50/60 border border-orange-100/70">
-                    <div class="w-10 h-10 rounded-xl bg-orange-100 text-[#F04D36] flex items-center justify-center shrink-0">
+                  <div class="flex items-center gap-3 p-3.5 rounded-xl bg-blue-50/50 border border-blue-100/70">
+                    <div class="w-10 h-10 rounded-xl bg-blue-100/80 text-[#1E40AF] flex items-center justify-center shrink-0">
                       ${getIcon('bed', { class: 'w-5 h-5' })}
                     </div>
                     <div>
@@ -220,8 +220,8 @@ export const DetailView = {
                     </div>
                   </div>
 
-                  <div class="flex items-center gap-3 p-3 rounded-xl bg-emerald-50/60 border border-emerald-100/70">
-                    <div class="w-10 h-10 rounded-xl bg-emerald-100 text-emerald-600 flex items-center justify-center shrink-0">
+                  <div class="flex items-center gap-3 p-3.5 rounded-xl bg-slate-50 border border-slate-100">
+                    <div class="w-10 h-10 rounded-xl bg-slate-200 text-slate-700 flex items-center justify-center shrink-0">
                       ${getIcon('bath', { class: 'w-5 h-5' })}
                     </div>
                     <div>
@@ -230,8 +230,8 @@ export const DetailView = {
                     </div>
                   </div>
 
-                  <div class="flex items-center gap-3 p-3 rounded-xl bg-teal-50/60 border border-teal-100/70">
-                    <div class="w-10 h-10 rounded-xl bg-teal-100 text-teal-600 flex items-center justify-center shrink-0">
+                  <div class="flex items-center gap-3 p-3.5 rounded-xl bg-slate-50 border border-slate-100">
+                    <div class="w-10 h-10 rounded-xl bg-slate-200 text-slate-700 flex items-center justify-center shrink-0">
                       ${getIcon('droplet', { class: 'w-5 h-5' })}
                     </div>
                     <div>
@@ -240,8 +240,8 @@ export const DetailView = {
                     </div>
                   </div>
 
-                  <div class="flex items-center gap-3 p-3 rounded-xl bg-indigo-50/60 border border-indigo-100/70">
-                    <div class="w-10 h-10 rounded-xl bg-indigo-100 text-indigo-600 flex items-center justify-center shrink-0">
+                  <div class="flex items-center gap-3 p-3.5 rounded-xl bg-slate-50 border border-slate-100">
+                    <div class="w-10 h-10 rounded-xl bg-slate-200 text-slate-700 flex items-center justify-center shrink-0">
                       ${getIcon('handshake', { class: 'w-5 h-5' })}
                     </div>
                     <div>
@@ -257,8 +257,8 @@ export const DetailView = {
               <div class="bg-white rounded-2xl p-6 border border-slate-200/80 shadow-card flex flex-col gap-4">
                 <div class="flex items-center justify-between border-b border-slate-100 pb-3.5">
                   <h2 class="text-lg font-bold text-slate-900">${t('aboutSpace')}</h2>
-                  <span class="text-xs text-emerald-700 bg-emerald-50 border border-emerald-200/80 px-2.5 py-1 rounded-full font-bold flex items-center gap-1">
-                    ${getIcon('check-circle', { class: 'w-3.5 h-3.5 text-emerald-600' })} Direct Landlord
+                  <span class="text-xs text-[#1E40AF] bg-blue-50 border border-blue-200/80 px-2.5 py-1 rounded-full font-bold flex items-center gap-1">
+                    ${getIcon('check-circle', { class: 'w-3.5 h-3.5 text-[#1E40AF]' })} Verified Direct Landlord
                   </span>
                 </div>
                 
@@ -271,18 +271,18 @@ export const DetailView = {
               <div class="bg-white rounded-2xl p-6 border border-slate-200/80 shadow-card flex flex-col gap-4">
                 <div class="flex items-center justify-between border-b border-slate-100 pb-3.5">
                   <h2 class="text-lg font-bold text-slate-900">${t('amenitiesTitle')}</h2>
-                  <span class="text-xs text-teal-600 font-bold">Verified Highlights</span>
+                  <span class="text-xs text-[#1E40AF] font-bold">Key Inclusions</span>
                 </div>
 
                 <div class="grid grid-cols-2 sm:grid-cols-4 gap-3.5">
                   <div class="flex flex-col items-center text-center p-4 rounded-xl bg-slate-50 border border-slate-100">
-                    <div class="text-[#F04D36] mb-2">${getIcon('droplet', { class: 'w-5 h-5' })}</div>
+                    <div class="text-[#1E40AF] mb-2">${getIcon('droplet', { class: 'w-5 h-5' })}</div>
                     <span class="text-xs font-bold text-slate-900">24/7 Water</span>
                     <span class="text-[11px] text-slate-400 mt-0.5">मेलम्ची / बोरिङ</span>
                   </div>
 
                   <div class="flex flex-col items-center text-center p-4 rounded-xl bg-slate-50 border border-slate-100">
-                    <div class="text-teal-600 mb-2">${getIcon('shield', { class: 'w-5 h-5' })}</div>
+                    <div class="text-slate-700 mb-2">${getIcon('shield', { class: 'w-5 h-5' })}</div>
                     <span class="text-xs font-bold text-slate-900">Parking Space</span>
                     <span class="text-[11px] text-slate-400 mt-0.5">Bike / Car Slot</span>
                   </div>
@@ -294,7 +294,7 @@ export const DetailView = {
                   </div>
 
                   <div class="flex flex-col items-center text-center p-4 rounded-xl bg-slate-50 border border-slate-100">
-                    <div class="text-indigo-600 mb-2">${getIcon('wifi', { class: 'w-5 h-5' })}</div>
+                    <div class="text-slate-700 mb-2">${getIcon('wifi', { class: 'w-5 h-5' })}</div>
                     <span class="text-xs font-bold text-slate-900">Fiber Internet</span>
                     <span class="text-[11px] text-slate-400 mt-0.5">High Speed Ready</span>
                   </div>
@@ -305,15 +305,15 @@ export const DetailView = {
               <div class="bg-white rounded-2xl p-6 border border-slate-200/80 shadow-card">
                 <div class="flex items-center justify-between mb-3.5">
                   <h3 class="text-lg font-bold text-slate-900">${t('neighborhoodTitle')}</h3>
-                  <span class="text-xs text-[#F04D36] font-bold">${listing.location_area}</span>
+                  <span class="text-xs text-[#1E40AF] font-bold">${listing.location_area}</span>
                 </div>
-                <div class="w-full h-40 bg-slate-50 rounded-xl flex flex-col items-center justify-center p-4 text-center border border-slate-200">
-                  <div class="w-10 h-10 rounded-xl bg-orange-100 text-[#F04D36] flex items-center justify-center mb-2">
+                <div class="w-full h-44 bg-slate-50 rounded-xl flex flex-col items-center justify-center p-4 text-center border border-slate-200">
+                  <div class="w-10 h-10 rounded-xl bg-blue-50 text-[#1E40AF] flex items-center justify-center mb-2 border border-blue-100">
                     ${getIcon('map-pin', { class: 'w-5 h-5' })}
                   </div>
                   <p class="text-sm font-bold text-slate-900">${listing.location_area}, ${listing.location_city}</p>
                   ${listing.landmark ? `<p class="text-xs text-slate-500 mt-0.5 font-medium">Landmark: ${listing.landmark}</p>` : ''}
-                  <a href="https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(`${listing.location_area}, ${listing.location_city}, Nepal`)}" target="_blank" rel="noopener noreferrer" class="btn-press mt-3 inline-flex items-center gap-1.5 px-4 py-1.5 rounded-xl bg-white text-slate-800 text-xs font-bold hover:bg-slate-50 transition-all border border-slate-200 shadow-xs">
+                  <a href="https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(`${listing.location_area}, ${listing.location_city}, Nepal`)}" target="_blank" rel="noopener noreferrer" class="btn-press mt-3 inline-flex items-center gap-1.5 px-4 py-2 rounded-xl bg-white text-slate-800 text-xs font-bold hover:bg-slate-50 transition-all border border-slate-200 shadow-xs">
                     ${getIcon('external-link', { class: 'w-3.5 h-3.5 text-slate-500' })}
                     <span>${t('openMaps')}</span>
                   </a>
@@ -322,15 +322,15 @@ export const DetailView = {
 
             </div>
 
-            <!-- Right 4 Columns: Sticky Landlord Contact Card (Desktop) -->
-            <div class="lg:col-span-4 lg:sticky lg:top-24 hidden lg:flex flex-col gap-4">
+            <!-- Right 4 Columns: Sticky Landlord Contact Card (Desktop - Never scrolls out of view) -->
+            <div class="lg:col-span-4 lg:sticky lg:top-28 hidden lg:flex flex-col gap-4">
               <div class="bg-white rounded-2xl p-6 border border-slate-200/80 shadow-floating flex flex-col gap-5">
                 
-                <!-- Price Display -->
+                <!-- Dominant Price Display -->
                 <div class="flex items-center justify-between pb-4 border-b border-slate-100">
                   <div>
                     <span class="text-[10px] text-slate-400 uppercase tracking-wider block font-bold">${t('rentAmount')}</span>
-                    <span class="text-3xl font-extrabold text-[#F04D36] tracking-tight">${formattedPrice}</span>
+                    <span class="price-dominant text-3xl font-extrabold text-slate-900 tracking-tight">${formattedPrice}</span>
                   </div>
                   <span class="px-3 py-1 rounded-full bg-emerald-50 text-emerald-700 text-xs font-bold border border-emerald-200/80">
                     ${t('immediatelyAvailable')}
@@ -339,20 +339,20 @@ export const DetailView = {
 
                 <!-- Landlord Profile Summary -->
                 <div class="flex items-center gap-3.5">
-                  <div class="w-12 h-12 rounded-xl bg-emerald-100 text-emerald-800 flex items-center justify-center font-extrabold text-base shrink-0 border border-emerald-200/80">
+                  <div class="w-12 h-12 rounded-xl bg-blue-50 text-[#1E40AF] flex items-center justify-center font-extrabold text-base shrink-0 border border-blue-200/80">
                     ${contactName[0].toUpperCase()}
                   </div>
                   <div class="min-w-0 flex-1">
                     <h4 class="text-sm font-bold text-slate-900 truncate">${contactName}</h4>
-                    <p class="text-xs text-slate-500 font-medium">घरधनी (Property Owner)</p>
-                    <p class="text-[11px] text-emerald-600 flex items-center gap-1 mt-0.5 font-bold">
+                    <p class="text-xs text-slate-500 font-medium">घरधनी (Direct Property Owner)</p>
+                    <p class="text-[11px] text-emerald-700 flex items-center gap-1 mt-0.5 font-bold">
                       ${getIcon('shield-check', { class: 'w-3.5 h-3.5 text-emerald-600' })}
                       <span>${t('landlordVerified')}</span>
                     </p>
                   </div>
                 </div>
 
-                <!-- Direct Communication Channels -->
+                <!-- Direct Communication Channels (Inline Contact Panel) -->
                 <div class="flex flex-col gap-2.5 pt-1">
                   <a href="${waUrl}" target="_blank" rel="noopener noreferrer" class="btn-press w-full py-3 px-4 rounded-xl bg-[#25D366] hover:brightness-105 text-white text-xs font-bold flex items-center justify-center gap-2 shadow-xs min-touch-target">
                     ${getIcon('message-circle', { class: 'w-4 h-4' })}
@@ -364,15 +364,15 @@ export const DetailView = {
                     <span>Connect on Viber</span>
                   </a>
 
-                  <a href="${telUrl}" class="btn-modern w-full py-3 px-4 rounded-xl bg-gradient-to-r from-[#F04D36] to-[#E03A22] hover:from-[#E03A22] hover:to-[#C82B15] text-white text-xs font-bold flex items-center justify-center gap-2 shadow-sm hover:shadow-glow min-touch-target">
+                  <a href="${telUrl}" class="btn-brand w-full py-3 px-4 rounded-xl text-xs font-bold flex items-center justify-center gap-2 shadow-sm min-touch-target">
                     ${getIcon('phone-call', { class: 'w-4 h-4 text-white' })}
-                    <span>Call Now: ${listing.contact_phone}</span>
+                    <span>Call Directly: ${listing.contact_phone}</span>
                   </a>
                 </div>
 
-                <!-- Renter Safety Box -->
+                <!-- Broker-Free Renter Guarantee Box -->
                 <div class="p-4 rounded-xl bg-slate-50 text-slate-800 flex flex-col gap-1.5 text-[11px] border border-slate-200">
-                  <div class="flex items-center gap-1.5 text-[#F04D36] font-bold">
+                  <div class="flex items-center gap-1.5 text-[#1E40AF] font-bold">
                     <span>🇳🇵</span> ${t('renterSafetyTipTitle')}
                   </div>
                   <p class="text-slate-500 leading-relaxed">
@@ -385,13 +385,13 @@ export const DetailView = {
           </div>
         </section>
 
-        <!-- 6. Mobile Sticky Contact Bar (Always Visible While Scrolling on Mobile) -->
+        <!-- Mobile Sticky Contact Bar (Always Visible While Scrolling on Mobile) -->
         <div class="lg:hidden fixed bottom-0 left-0 right-0 z-40 bg-white/95 backdrop-blur-xl border-t border-slate-200 p-3.5 shadow-2xl">
           <div class="max-w-md mx-auto flex items-center gap-2.5">
             <!-- Price Summary -->
             <div class="shrink-0 pr-2">
               <span class="text-[10px] text-slate-400 block leading-none font-bold uppercase">Rent</span>
-              <span class="text-base font-extrabold text-[#F04D36]">${formattedPrice}</span>
+              <span class="price-dominant text-lg font-extrabold text-slate-900">${formattedPrice}</span>
             </div>
 
             <!-- WhatsApp -->
@@ -406,7 +406,7 @@ export const DetailView = {
             </a>
 
             <!-- Phone Call -->
-            <a href="${telUrl}" class="btn-modern flex-1 inline-flex items-center justify-center gap-1.5 py-2.5 px-3 rounded-xl bg-gradient-to-r from-[#F04D36] to-[#E03A22] text-white text-xs font-bold shadow-xs min-touch-target">
+            <a href="${telUrl}" class="btn-brand flex-1 inline-flex items-center justify-center gap-1.5 py-2.5 px-3 rounded-xl text-xs font-bold shadow-xs min-touch-target">
               ${getIcon('phone-call', { class: 'w-4 h-4 text-white' })}
               <span>Call</span>
             </a>
@@ -448,7 +448,7 @@ export const DetailView = {
 
       thumbs.forEach((thumb, idx) => {
         if (idx === activeIndex) {
-          thumb.className = 'thumbnail-item shrink-0 w-20 h-14 rounded-xl overflow-hidden border-2 border-[#F04D36] shadow-sm scale-102 transition-all cursor-pointer';
+          thumb.className = 'thumbnail-item shrink-0 w-20 h-14 rounded-xl overflow-hidden border-2 border-[#1E40AF] shadow-sm scale-102 transition-all cursor-pointer';
           thumb.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
         } else {
           thumb.className = 'thumbnail-item shrink-0 w-20 h-14 rounded-xl overflow-hidden border-2 border-transparent opacity-60 hover:opacity-100 transition-all cursor-pointer';

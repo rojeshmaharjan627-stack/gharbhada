@@ -44,7 +44,7 @@ export const PostView = {
         if (!stepEl || !panelEl) continue;
 
         if (i === currentStep) {
-          stepEl.className = 'flex items-center justify-center gap-2 text-xs font-bold text-[#F04D36] border-b-2 border-[#F04D36] pb-3';
+          stepEl.className = 'flex items-center justify-center gap-2 text-xs font-bold text-[#1E40AF] border-b-2 border-[#1E40AF] pb-3';
           panelEl.classList.remove('hidden');
         } else if (i < currentStep) {
           stepEl.className = 'flex items-center justify-center gap-2 text-xs font-semibold text-emerald-600 border-b-2 border-emerald-500 pb-3 cursor-pointer';
@@ -63,7 +63,7 @@ export const PostView = {
         
         <!-- Header -->
         <div class="mb-6">
-          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-orange-50 text-[#F04D36] text-xs font-bold mb-2 border border-orange-200/80 shadow-xs">
+          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-50 text-[#1E40AF] text-xs font-bold mb-2 border border-blue-200/80 shadow-xs">
             <span>🇳🇵</span>
             <span>${editId ? 'Edit Rental Listing (सम्पादन)' : '०% ब्रोकर शुल्क • Zero Broker Commission'}</span>
           </div>
@@ -77,8 +77,8 @@ export const PostView = {
 
         <!-- 4-Step Progress Stepper -->
         <div class="grid grid-cols-4 gap-2 mb-7 border-b border-slate-200 select-none text-center">
-          <div id="step-item-1" class="flex items-center justify-center gap-1.5 text-xs font-bold text-[#F04D36] border-b-2 border-[#F04D36] pb-3">
-            <span class="w-5 h-5 rounded-full bg-[#F04D36] text-white flex items-center justify-center text-[10px] font-bold">1</span>
+          <div id="step-item-1" class="flex items-center justify-center gap-1.5 text-xs font-bold text-[#1E40AF] border-b-2 border-[#1E40AF] pb-3">
+            <span class="w-5 h-5 rounded-full bg-[#1E40AF] text-white flex items-center justify-center text-[10px] font-bold">1</span>
             <span class="hidden sm:inline">Type & Info</span>
           </div>
           <div id="step-item-2" class="flex items-center justify-center gap-1.5 text-xs font-medium text-slate-400 border-b-2 border-transparent pb-3">
@@ -102,28 +102,28 @@ export const PostView = {
           <div id="wizard-step-panel-1" class="flex flex-col gap-4">
             <div class="bg-white p-6 rounded-2xl border border-slate-200/80 shadow-card flex flex-col gap-5">
               <div>
-                <h3 class="text-sm font-bold text-slate-900 mb-1">Select Property Type (सम्पत्तिको प्रकार) <span class="text-[#F04D36]">*</span></h3>
+                <h3 class="text-sm font-bold text-slate-900 mb-1">Select Property Type (सम्पत्तिको प्रकार) <span class="text-[#1E40AF]">*</span></h3>
                 <p class="text-xs text-slate-500">Choose the rental category that best describes your space.</p>
               </div>
 
               <div class="grid grid-cols-2 sm:grid-cols-3 gap-3">
                 ${[
-                  { id: 'room', label: 'Room (कोठा)', icon: 'bed', desc: '1 BHK or Single Room', bg: 'bg-orange-50', color: 'text-[#F04D36]' },
+                  { id: 'room', label: 'Room (कोठा)', icon: 'bed', desc: '1 BHK or Single Room', bg: 'bg-blue-50', color: 'text-[#1E40AF]' },
                   { id: 'flat', label: 'Flat (फ्ल्याट)', icon: 'building-2', desc: '2-3 BHK Full Apartment', bg: 'bg-indigo-50', color: 'text-indigo-600' },
                   { id: 'house', label: 'House (घर)', icon: 'home', desc: 'Independent House', bg: 'bg-emerald-50', color: 'text-emerald-600' },
                   { id: 'commercial', label: 'Shutter (सटर)', icon: 'store', desc: 'Shop or Office Space', bg: 'bg-amber-50', color: 'text-amber-600' },
                   { id: 'land', label: 'Land (जग्गा)', icon: 'trees', desc: 'Open Plot for Lease', bg: 'bg-teal-50', color: 'text-teal-600' },
-                  { id: 'vehicle', label: 'Vehicle (सवारी)', icon: 'car', desc: 'Bike, Scooter or Car', bg: 'bg-blue-50', color: 'text-blue-600' }
+                  { id: 'vehicle', label: 'Vehicle (सवारी)', icon: 'car', desc: 'Bike, Scooter or Car', bg: 'bg-slate-100', color: 'text-slate-700' }
                 ].map(cat => {
                   const isChecked = (existingListing?.category || 'flat') === cat.id;
                   return `
                     <label class="group relative cursor-pointer">
                       <input type="radio" name="category" value="${cat.id}" class="peer sr-only" ${isChecked ? 'checked' : ''}/>
-                      <div class="p-4 rounded-xl bg-slate-50 peer-checked:bg-orange-50 peer-checked:border-[#F04D36] peer-checked:ring-2 peer-checked:ring-[#F04D36]/20 border border-slate-200 hover:border-slate-300 transition-all flex flex-col items-center text-center gap-1.5 shadow-2xs min-touch-target">
+                      <div class="p-4 rounded-xl bg-slate-50 peer-checked:bg-blue-50/70 peer-checked:border-[#1E40AF] peer-checked:ring-2 peer-checked:ring-[#1E40AF]/20 border border-slate-200 hover:border-slate-300 transition-all flex flex-col items-center text-center gap-1.5 shadow-2xs min-touch-target">
                         <div class="w-9 h-9 rounded-lg ${cat.bg} ${cat.color} flex items-center justify-center mb-1">
                           ${getIcon(cat.icon, { class: 'w-5 h-5' })}
                         </div>
-                        <span class="text-xs font-bold text-slate-900 peer-checked:text-[#F04D36]">${cat.label}</span>
+                        <span class="text-xs font-bold text-slate-900 peer-checked:text-[#1E40AF]">${cat.label}</span>
                         <span class="text-[10px] text-slate-400 line-clamp-1 font-medium">${cat.desc}</span>
                       </div>
                     </label>
@@ -133,7 +133,7 @@ export const PostView = {
 
               <div class="flex flex-col gap-1.5 pt-2 border-t border-slate-100">
                 <label class="text-xs font-bold text-slate-700" for="listing-title">
-                  Listing Title (शीर्षक) <span class="text-[#F04D36]">*</span>
+                  Listing Title (शीर्षक) <span class="text-[#1E40AF]">*</span>
                 </label>
                 <input id="listing-title" required maxlength="100" class="input-focus w-full px-4 py-2.5 text-slate-900 placeholder:text-slate-400 text-sm font-medium min-touch-target" placeholder="e.g. 2 BHK Sunny Flat near Shankhamul Bridge with Car Parking" value="${existingListing?.title || ''}"/>
                 <span class="text-[11px] text-slate-400 font-medium">Include key highlights like sunlight, floor, or parking.</span>
@@ -147,7 +147,7 @@ export const PostView = {
               </div>
 
               <div class="flex justify-end pt-3">
-                <button type="button" id="next-step-1" class="btn-modern px-7 py-2.5 rounded-xl bg-gradient-to-r from-[#F04D36] to-[#E03A22] text-white text-xs font-bold shadow-md flex items-center gap-1.5 min-touch-target cursor-pointer">
+                <button type="button" id="next-step-1" class="btn-brand px-7 py-2.5 rounded-xl text-xs font-bold flex items-center gap-1.5 min-touch-target cursor-pointer">
                   <span>${t('nextBtn')}</span>
                   ${getIcon('arrow-right', { class: 'w-3.5 h-3.5 text-white' })}
                 </button>
@@ -166,7 +166,7 @@ export const PostView = {
               <div class="grid grid-cols-1 md:grid-cols-2 gap-3.5">
                 <div class="flex flex-col gap-1.5">
                   <label class="text-xs font-bold text-slate-700" for="location-city">
-                    District / City <span class="text-[#F04D36]">*</span>
+                    District / City <span class="text-[#1E40AF]">*</span>
                   </label>
                   <select id="location-city" required class="input-focus w-full px-4 py-2.5 text-slate-900 text-sm cursor-pointer min-touch-target font-semibold">
                     ${['Kathmandu', 'Lalitpur', 'Bhaktapur', 'Pokhara', 'Chitwan', 'Butwal', 'Dharan', 'Other'].map(city => `
@@ -177,7 +177,7 @@ export const PostView = {
 
                 <div class="flex flex-col gap-1.5">
                   <label class="text-xs font-bold text-slate-700" for="location-area">
-                    Neighborhood / Area (टोल / ठाउँ) <span class="text-[#F04D36]">*</span>
+                    Neighborhood / Area (टोल / ठाउँ) <span class="text-[#1E40AF]">*</span>
                   </label>
                   <input id="location-area" required class="input-focus w-full px-4 py-2.5 text-slate-900 placeholder:text-slate-400 text-sm font-medium min-touch-target" placeholder="e.g. New Baneshwor, Jhamsikhel, Pulchowk" value="${existingListing?.location_area || ''}"/>
                 </div>
@@ -192,17 +192,17 @@ export const PostView = {
 
               <div class="flex flex-col gap-1.5 pt-2 border-t border-slate-100">
                 <label class="text-xs font-bold text-slate-700" for="rental-price">
-                  Monthly Rent in NPR (मासिक भाडा रु) <span class="text-[#F04D36]">*</span>
+                  Monthly Rent in NPR (मासिक भाडा रु) <span class="text-[#1E40AF]">*</span>
                 </label>
-                <div class="flex items-center bg-slate-50 rounded-xl border border-slate-200 px-4 py-2.5 focus-within:border-[#F04D36] focus-within:bg-white focus-within:ring-2 focus-within:ring-[#F04D36]/15 transition-all min-touch-target">
-                  <span class="font-extrabold text-[#F04D36] mr-2 text-sm">रु (NPR)</span>
+                <div class="flex items-center bg-slate-50 rounded-xl border border-slate-200 px-4 py-2.5 focus-within:border-[#1E40AF] focus-within:bg-white focus-within:ring-2 focus-within:ring-[#1E40AF]/15 transition-all min-touch-target">
+                  <span class="font-extrabold text-[#1E40AF] mr-2 text-sm">रु (NPR)</span>
                   <input id="rental-price" required type="number" min="0" step="500" class="w-full bg-transparent text-slate-900 font-extrabold text-base focus:outline-none" placeholder="25000" value="${existingListing?.price || ''}"/>
                 </div>
               </div>
 
               <div class="flex items-center pt-1">
                 <label class="flex items-center gap-2.5 cursor-pointer select-none">
-                  <input id="is-negotiable" type="checkbox" class="w-4 h-4 accent-[#F04D36] rounded cursor-pointer" ${existingListing?.is_negotiable !== false ? 'checked' : ''}/>
+                  <input id="is-negotiable" type="checkbox" class="w-4 h-4 accent-[#1E40AF] rounded cursor-pointer" ${existingListing?.is_negotiable !== false ? 'checked' : ''}/>
                   <span class="text-xs font-bold text-slate-800">Price Negotiable (भाडामा छलफल गर्न सकिने)</span>
                 </label>
               </div>
@@ -211,7 +211,7 @@ export const PostView = {
                 <button type="button" id="prev-step-2" class="btn-press px-5 py-2.5 rounded-xl bg-slate-100 text-slate-700 text-xs font-bold min-touch-target cursor-pointer hover:bg-slate-200">
                   <span>${t('backBtn')}</span>
                 </button>
-                <button type="button" id="next-step-2" class="btn-modern px-7 py-2.5 rounded-xl bg-gradient-to-r from-[#F04D36] to-[#E03A22] text-white text-xs font-bold shadow-md flex items-center gap-1.5 min-touch-target cursor-pointer">
+                <button type="button" id="next-step-2" class="btn-brand px-7 py-2.5 rounded-xl text-xs font-bold flex items-center gap-1.5 min-touch-target cursor-pointer">
                   <span>${t('nextBtn')}</span>
                   ${getIcon('arrow-right', { class: 'w-3.5 h-3.5 text-white' })}
                 </button>
@@ -246,9 +246,9 @@ export const PostView = {
 
               <!-- Upload Dropzone -->
               <div class="pt-2 border-t border-slate-100">
-                <div id="dropzone" class="border-2 border-dashed border-orange-200 hover:border-[#F04D36] rounded-2xl p-7 text-center cursor-pointer bg-orange-50/30 hover:bg-orange-50/60 transition-all">
+                <div id="dropzone" class="border-2 border-dashed border-blue-200 hover:border-[#1E40AF] rounded-2xl p-7 text-center cursor-pointer bg-blue-50/20 hover:bg-blue-50/40 transition-all">
                   <input type="file" id="photo-file-input" multiple accept="image/*" class="hidden"/>
-                  <div class="w-12 h-12 rounded-xl bg-orange-100 text-[#F04D36] flex items-center justify-center mx-auto mb-2">
+                  <div class="w-12 h-12 rounded-xl bg-blue-50 text-[#1E40AF] flex items-center justify-center mx-auto mb-2 border border-blue-100">
                     ${getIcon('camera', { class: 'w-6 h-6' })}
                   </div>
                   <p class="text-sm font-bold text-slate-900">Tap to Select or Drag Photos Here</p>
@@ -256,8 +256,8 @@ export const PostView = {
                 </div>
 
                 <!-- Upload progress bar -->
-                <div id="upload-status" class="hidden text-xs text-[#F04D36] font-bold flex items-center gap-2 mt-3">
-                  <div class="w-4 h-4 border-2 border-[#F04D36] border-t-transparent rounded-full animate-spin"></div>
+                <div id="upload-status" class="hidden text-xs text-[#1E40AF] font-bold flex items-center gap-2 mt-3">
+                  <div class="w-4 h-4 border-2 border-[#1E40AF] border-t-transparent rounded-full animate-spin"></div>
                   <span id="upload-status-text">Uploading photos to Supabase Storage...</span>
                 </div>
 
@@ -271,7 +271,7 @@ export const PostView = {
                 <button type="button" id="prev-step-3" class="btn-press px-5 py-2.5 rounded-xl bg-slate-100 text-slate-700 text-xs font-bold min-touch-target cursor-pointer hover:bg-slate-200">
                   <span>${t('backBtn')}</span>
                 </button>
-                <button type="button" id="next-step-3" class="btn-modern px-7 py-2.5 rounded-xl bg-gradient-to-r from-[#F04D36] to-[#E03A22] text-white text-xs font-bold shadow-md flex items-center gap-1.5 min-touch-target cursor-pointer">
+                <button type="button" id="next-step-3" class="btn-brand px-7 py-2.5 rounded-xl text-xs font-bold flex items-center gap-1.5 min-touch-target cursor-pointer">
                   <span>${t('nextBtn')}</span>
                   ${getIcon('arrow-right', { class: 'w-3.5 h-3.5 text-white' })}
                 </button>
@@ -290,16 +290,16 @@ export const PostView = {
               <div class="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
                 <div class="flex flex-col gap-1.5">
                   <label class="text-xs font-bold text-slate-700" for="contact-name">
-                    Contact Person / Owner Name <span class="text-[#F04D36]">*</span>
+                    Contact Person / Owner Name <span class="text-[#1E40AF]">*</span>
                   </label>
                   <input id="contact-name" required class="input-focus w-full px-4 py-2.5 text-slate-900 text-sm font-medium min-touch-target" placeholder="e.g. Rameshwor Karki" value="${defaultContactName}"/>
                 </div>
 
                 <div class="flex flex-col gap-1.5">
                   <label class="text-xs font-bold text-slate-700" for="contact-phone">
-                    Primary Mobile Number <span class="text-[#F04D36]">*</span>
+                    Primary Mobile Number <span class="text-[#1E40AF]">*</span>
                   </label>
-                  <div class="flex items-center bg-slate-50 rounded-xl border border-slate-200 px-3.5 py-2.5 focus-within:border-[#F04D36] focus-within:bg-white focus-within:ring-2 focus-within:ring-[#F04D36]/15 transition-all min-touch-target">
+                  <div class="flex items-center bg-slate-50 rounded-xl border border-slate-200 px-3.5 py-2.5 focus-within:border-[#1E40AF] focus-within:bg-white focus-within:ring-2 focus-within:ring-[#1E40AF]/15 transition-all min-touch-target">
                     <span class="font-bold text-slate-500 mr-2 text-xs">🇳🇵 +977</span>
                     <input id="contact-phone" required type="tel" maxlength="10" class="w-full bg-transparent text-slate-900 text-sm font-bold focus:outline-none" placeholder="98XXXXXXXX" value="${defaultPhone}"/>
                   </div>
@@ -309,8 +309,8 @@ export const PostView = {
               <div class="flex flex-col gap-2 pt-2 border-t border-slate-100">
                 <label class="text-xs font-bold text-slate-700">Preferred Contact Method</label>
                 <div class="grid grid-cols-3 gap-3">
-                  <label class="p-3 rounded-xl bg-slate-50 border border-slate-200 flex items-center justify-center gap-2 cursor-pointer has-[:checked]:bg-orange-50 has-[:checked]:border-[#F04D36] has-[:checked]:text-[#F04D36] transition-all">
-                    <input type="radio" name="contact_method" value="call" class="accent-[#F04D36]" ${(existingListing?.contact_method || 'call') === 'call' ? 'checked' : ''}/>
+                  <label class="p-3 rounded-xl bg-slate-50 border border-slate-200 flex items-center justify-center gap-2 cursor-pointer has-[:checked]:bg-blue-50/70 has-[:checked]:border-[#1E40AF] has-[:checked]:text-[#1E40AF] transition-all">
+                    <input type="radio" name="contact_method" value="call" class="accent-[#1E40AF]" ${(existingListing?.contact_method || 'call') === 'call' ? 'checked' : ''}/>
                     <span class="text-xs font-bold">Phone Call</span>
                   </label>
                   <label class="p-3 rounded-xl bg-slate-50 border border-slate-200 flex items-center justify-center gap-2 cursor-pointer has-[:checked]:bg-emerald-50 has-[:checked]:border-emerald-500 has-[:checked]:text-emerald-700 transition-all">
@@ -326,7 +326,7 @@ export const PostView = {
 
               <div class="pt-2">
                 <label class="flex items-start gap-2.5 cursor-pointer select-none">
-                  <input type="checkbox" required class="mt-0.5 w-4 h-4 accent-[#F04D36] rounded cursor-pointer" checked/>
+                  <input type="checkbox" required class="mt-0.5 w-4 h-4 accent-[#1E40AF] rounded cursor-pointer" checked/>
                   <span class="text-xs text-slate-500 leading-relaxed font-medium">
                     ${t('authorizedOwnerCheck')}
                   </span>
@@ -337,7 +337,7 @@ export const PostView = {
                 <button type="button" id="prev-step-4" class="btn-press px-5 py-2.5 rounded-xl bg-slate-100 text-slate-700 text-xs font-bold min-touch-target cursor-pointer hover:bg-slate-200">
                   <span>${t('backBtn')}</span>
                 </button>
-                <button id="submit-btn" type="submit" class="btn-modern px-7 py-3 rounded-xl bg-gradient-to-r from-[#F04D36] to-[#E03A22] hover:from-[#E03A22] hover:to-[#C82B15] text-white text-sm font-bold shadow-md hover:shadow-glow flex items-center gap-2 cursor-pointer min-touch-target">
+                <button id="submit-btn" type="submit" class="btn-brand px-7 py-3 rounded-xl text-white text-sm font-bold shadow-md flex items-center gap-2 cursor-pointer min-touch-target">
                   ${getIcon('send', { class: 'w-4 h-4 text-white' })}
                   <span>${editId ? 'Save Changes' : t('publishBtn')}</span>
                 </button>
@@ -362,10 +362,10 @@ export const PostView = {
       grid.innerHTML = uploadedPhotoUrls.map((url, idx) => `
         <div class="relative group aspect-[4/3] rounded-xl overflow-hidden bg-slate-100 shadow-2xs border border-slate-200">
           <img src="${url}" class="w-full h-full object-cover" alt="Photo ${idx + 1}"/>
-          <button type="button" class="remove-photo-btn btn-press absolute top-2 right-2 w-6 h-6 rounded-full bg-slate-900/80 hover:bg-red-600 text-white flex items-center justify-center text-xs opacity-90 hover:opacity-100 shadow-xs transition-colors cursor-pointer" data-index="${idx}" title="Remove photo">
+          <button type="button" class="remove-photo-btn btn-press absolute top-2 right-2 w-6 h-6 rounded-full bg-slate-900/80 hover:bg-rose-600 text-white flex items-center justify-center text-xs opacity-90 hover:opacity-100 shadow-xs transition-colors cursor-pointer" data-index="${idx}" title="Remove photo">
             ${getIcon('x', { class: 'w-3 h-3' })}
           </button>
-          ${idx === 0 ? '<span class="absolute bottom-2 left-2 px-2.5 py-0.5 rounded-md bg-white/95 text-[#F04D36] font-bold text-[10px] shadow-xs">Cover</span>' : ''}
+          ${idx === 0 ? '<span class="absolute bottom-2 left-2 px-2.5 py-0.5 rounded-md bg-white/95 text-[#1E40AF] font-bold text-[10px] shadow-xs">Cover</span>' : ''}
         </div>
       `).join('');
 
@@ -440,16 +440,16 @@ export const PostView = {
 
     dropzone?.addEventListener('dragover', (e) => {
       e.preventDefault();
-      dropzone.classList.add('border-[#F04D36]', 'bg-orange-50/60');
+      dropzone.classList.add('border-[#1E40AF]', 'bg-blue-50/40');
     });
 
     dropzone?.addEventListener('dragleave', () => {
-      dropzone.classList.remove('border-[#F04D36]', 'bg-orange-50/60');
+      dropzone.classList.remove('border-[#1E40AF]', 'bg-blue-50/40');
     });
 
     dropzone?.addEventListener('drop', (e) => {
       e.preventDefault();
-      dropzone.classList.remove('border-[#F04D36]', 'bg-orange-50/60');
+      dropzone.classList.remove('border-[#1E40AF]', 'bg-blue-50/40');
       if (e.dataTransfer.files?.length) {
         handleFileUpload(e.dataTransfer.files);
       }

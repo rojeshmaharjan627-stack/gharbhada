@@ -22,7 +22,7 @@ export const LoginView = {
             
             <!-- Brand Badge -->
             <div class="text-center mb-6">
-              <div class="w-12 h-12 rounded-xl bg-gradient-to-tr from-[#F04D36] to-[#FB923C] text-white flex items-center justify-center mx-auto mb-3 shadow-sm">
+              <div class="w-12 h-12 rounded-xl bg-[#1E40AF] text-white flex items-center justify-center mx-auto mb-3 shadow-xs">
                 ${getIcon('home', { class: 'w-6 h-6 text-white' })}
               </div>
               <h1 class="text-xl sm:text-2xl font-extrabold tracking-tight text-slate-900">
@@ -44,14 +44,14 @@ export const LoginView = {
             </div>
 
             <!-- Error Banner -->
-            <div id="auth-error-banner" class="hidden p-3.5 rounded-xl bg-red-50 border border-red-200 text-red-600 text-xs mb-5 font-medium"></div>
+            <div id="auth-error-banner" class="hidden p-3.5 rounded-xl bg-rose-50 border border-rose-200 text-rose-600 text-xs mb-5 font-medium"></div>
 
             <!-- Auth Form -->
             <form id="auth-form" class="flex flex-col gap-4">
               ${activeTab === 'signup' ? `
                 <div class="flex flex-col gap-1.5">
                   <label class="text-xs font-bold text-slate-700" for="name-input">
-                    Full Name (पुरा नाम) <span class="text-[#F04D36]">*</span>
+                    Full Name (पुरा नाम) <span class="text-[#1E40AF]">*</span>
                   </label>
                   <div class="relative flex items-center">
                     <span class="absolute left-3.5 text-slate-400">
@@ -76,7 +76,7 @@ export const LoginView = {
 
               <div class="flex flex-col gap-1.5">
                 <label class="text-xs font-bold text-slate-700" for="email-input">
-                  Email Address (इमेल) <span class="text-[#F04D36]">*</span>
+                  Email Address (इमेल) <span class="text-[#1E40AF]">*</span>
                 </label>
                 <div class="relative flex items-center">
                   <span class="absolute left-3.5 text-slate-400">
@@ -88,7 +88,7 @@ export const LoginView = {
 
               <div class="flex flex-col gap-1.5">
                 <label class="text-xs font-bold text-slate-700" for="password-input">
-                  Password (पासवर्ड) <span class="text-[#F04D36]">*</span>
+                  Password (पासवर्ड) <span class="text-[#1E40AF]">*</span>
                 </label>
                 <div class="relative flex items-center">
                   <span class="absolute left-3.5 text-slate-400">
@@ -103,7 +103,7 @@ export const LoginView = {
                 </div>
               </div>
 
-              <button id="auth-submit-btn" type="submit" class="btn-modern w-full mt-2 py-3 rounded-xl bg-gradient-to-r from-[#F04D36] to-[#E03A22] hover:from-[#E03A22] hover:to-[#C82B15] text-white text-sm font-bold shadow-md hover:shadow-glow transition-all flex items-center justify-center gap-2 cursor-pointer">
+              <button id="auth-submit-btn" type="submit" class="btn-brand w-full mt-2 py-3 rounded-xl text-white text-sm font-bold shadow-md transition-all flex items-center justify-center gap-2 cursor-pointer">
                 <span>${activeTab === 'signin' ? 'Sign In (लगइन)' : 'Create Account (खाता खोल्नुहोस्)'}</span>
               </button>
             </form>
