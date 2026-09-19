@@ -40,7 +40,13 @@ import {
   RotateCcw,
   AlertTriangle,
   Circle,
-  LayoutGrid
+  LayoutGrid,
+  Filter,
+  Clock,
+  ArrowRight,
+  ArrowLeft,
+  Camera,
+  Sparkles
 } from 'lucide';
 
 const iconMap = {
@@ -85,7 +91,13 @@ const iconMap = {
   RotateCcw,
   AlertTriangle,
   Circle,
-  LayoutGrid
+  LayoutGrid,
+  Filter,
+  Clock,
+  ArrowRight,
+  ArrowLeft,
+  Camera,
+  Sparkles
 };
 
 function toPascalCase(str) {

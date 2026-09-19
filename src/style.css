@@ -10,7 +10,7 @@
   html, body {
     margin: 0;
     padding: 0;
-    font-family: 'Plus Jakarta Sans', 'Inter', system-ui, -apple-system, sans-serif;
+    font-family: 'Plus Jakarta Sans', 'Noto Sans Devanagari', 'Inter', system-ui, -apple-system, sans-serif;
     font-size: 15px;
     line-height: 1.5;
     -webkit-font-smoothing: antialiased;
@@ -20,9 +20,9 @@
   }
 
   h1, h2, h3, h4, h5, h6 {
-    font-family: 'Plus Jakarta Sans', 'Inter', system-ui, -apple-system, sans-serif;
+    font-family: 'Plus Jakarta Sans', 'Noto Sans Devanagari', 'Inter', system-ui, -apple-system, sans-serif;
     letter-spacing: -0.02em;
-    line-height: 1.2;
+    line-height: 1.25;
     color: #1F1B16;
   }
 }
@@ -125,6 +125,12 @@
   100% {
     background-position: -200% 0;
   }
+}
+
+/* Mobile Touch Target Standards (minimum 44px) */
+.min-touch-target {
+  min-height: 44px;
+  min-width: 44px;
 }
 
 /* Utilities */
