@@ -1,5 +1,6 @@
 import { getCurrentUser } from './auth.js';
 import { showToast } from './toast.js';
+import { getIcon } from './icons.js';
 
 let routes = {};
 
@@ -86,11 +87,13 @@ export async function handleRoute() {
   } catch (err) {
     console.error('Route render error:', err);
     appEl.innerHTML = `
-      <div class="max-w-xl mx-auto my-16 p-8 bg-surface-container-lowest rounded-DEFAULT text-center shadow-sm">
-        <span class="material-symbols-outlined text-4xl text-error mb-2">error</span>
-        <h2 class="text-xl font-bold mb-2">Something went wrong</h2>
-        <p class="text-on-surface-variant mb-6">${err.message || 'Error rendering page'}</p>
-        <a href="#/" class="px-6 py-2 bg-primary text-on-primary rounded-full font-bold">Back to Browse</a>
+      <div class="max-w-xl mx-auto my-16 p-8 bg-white rounded-2xl text-center shadow-card border border-slate-200">
+        <div class="w-12 h-12 rounded-full bg-red-50 text-red-500 flex items-center justify-center mx-auto mb-3">
+          ${getIcon('alert-triangle', { class: 'w-6 h-6' })}
+        </div>
+        <h2 class="text-lg font-bold text-slate-900 mb-2">Something went wrong</h2>
+        <p class="text-slate-600 text-sm mb-6">${err.message || 'Error rendering page'}</p>
+        <a href="#/" class="btn-modern inline-flex items-center px-6 py-2.5 bg-primary text-white rounded-xl font-bold text-sm shadow-md">Back to Browse</a>
       </div>
     `;
   }

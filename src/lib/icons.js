@@ -46,7 +46,14 @@ import {
   ArrowRight,
   ArrowLeft,
   Camera,
-  Sparkles
+  Sparkles,
+  Heart,
+  Trees,
+  Store,
+  Car,
+  Compass,
+  Info,
+  Building2
 } from 'lucide';
 
 const iconMap = {
@@ -72,6 +79,7 @@ const iconMap = {
   PlusCircle,
   User,
   Building,
+  Building2,
   LogOut,
   Edit,
   Share2,
@@ -97,7 +105,13 @@ const iconMap = {
   ArrowRight,
   ArrowLeft,
   Camera,
-  Sparkles
+  Sparkles,
+  Heart,
+  Trees,
+  Store,
+  Car,
+  Compass,
+  Info
 };
 
 function toPascalCase(str) {

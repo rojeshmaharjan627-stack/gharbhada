@@ -16,86 +16,86 @@ export const LoginView = {
 
     function updateView() {
       container.innerHTML = `
-        <div class="max-w-sm mx-auto my-12 px-4 page-transition">
+        <div class="max-w-md mx-auto my-14 px-4 page-transition">
           <!-- Card Shell -->
-          <div class="bg-white rounded-[12px] shadow-card p-6 sm:p-7 border border-[#F0EBE3]">
+          <div class="bg-white rounded-2xl shadow-floating p-7 sm:p-8 border border-slate-200/80">
             
             <!-- Brand Badge -->
             <div class="text-center mb-6">
-              <div class="w-10 h-10 rounded-full bg-[#FDF0EC] text-[#D97757] flex items-center justify-center text-xl mx-auto mb-2.5 border border-[#D97757]/20">
-                🏠
+              <div class="w-12 h-12 rounded-xl bg-gradient-to-tr from-[#F04D36] to-[#FB923C] text-white flex items-center justify-center mx-auto mb-3 shadow-sm">
+                ${getIcon('home', { class: 'w-6 h-6 text-white' })}
               </div>
-              <h1 class="text-lg sm:text-xl font-semibold tracking-tight text-[#1F1B16]">
+              <h1 class="text-xl sm:text-2xl font-extrabold tracking-tight text-slate-900">
                 ${activeTab === 'signin' ? 'Welcome Back (पुन: स्वागतम्)' : 'Join GharBhada Nepal (दर्ता गर्नुहोस्)'}
               </h1>
-              <p class="text-xs text-[#6B6258] mt-1">
+              <p class="text-xs text-slate-500 mt-1.5 font-medium">
                 ${activeTab === 'signin' ? 'Sign in to manage your rentals or post spaces' : 'Create an account to list properties across Nepal for free'}
               </p>
             </div>
 
             <!-- Tab Switcher -->
-            <div class="flex items-center p-1 bg-[#FDFBF7] rounded-[8px] mb-5 border border-[#F0EBE3]">
-              <button id="tab-signin-btn" class="btn-press flex-1 py-1.5 rounded-[6px] text-xs font-semibold transition-all ${activeTab === 'signin' ? 'bg-white text-[#D97757] shadow-card' : 'text-[#6B6258] hover:text-[#1F1B16]'}">
+            <div class="flex items-center p-1 bg-slate-100 rounded-xl mb-6 border border-slate-200/60">
+              <button id="tab-signin-btn" class="btn-press flex-1 py-2 rounded-lg text-xs font-bold transition-all cursor-pointer ${activeTab === 'signin' ? 'bg-white text-slate-900 shadow-xs' : 'text-slate-500 hover:text-slate-900'}">
                 Sign In (लगइन)
               </button>
-              <button id="tab-signup-btn" class="btn-press flex-1 py-1.5 rounded-[6px] text-xs font-semibold transition-all ${activeTab === 'signup' ? 'bg-white text-[#D97757] shadow-card' : 'text-[#6B6258] hover:text-[#1F1B16]'}">
+              <button id="tab-signup-btn" class="btn-press flex-1 py-2 rounded-lg text-xs font-bold transition-all cursor-pointer ${activeTab === 'signup' ? 'bg-white text-slate-900 shadow-xs' : 'text-slate-500 hover:text-slate-900'}">
                 Sign Up (नयाँ खाता)
               </button>
             </div>
 
             <!-- Error Banner -->
-            <div id="auth-error-banner" class="hidden p-3 rounded-[8px] bg-[#FDF0EC] border border-[#C1543D]/30 text-[#C1543D] text-xs mb-4"></div>
+            <div id="auth-error-banner" class="hidden p-3.5 rounded-xl bg-red-50 border border-red-200 text-red-600 text-xs mb-5 font-medium"></div>
 
             <!-- Auth Form -->
-            <form id="auth-form" class="flex flex-col gap-3.5">
+            <form id="auth-form" class="flex flex-col gap-4">
               ${activeTab === 'signup' ? `
-                <div class="flex flex-col gap-1">
-                  <label class="text-xs font-semibold text-[#1F1B16]" for="name-input">
-                    Full Name (पुरा नाम) <span class="text-[#D97757]">*</span>
+                <div class="flex flex-col gap-1.5">
+                  <label class="text-xs font-bold text-slate-700" for="name-input">
+                    Full Name (पुरा नाम) <span class="text-[#F04D36]">*</span>
                   </label>
                   <div class="relative flex items-center">
-                    <span class="absolute left-3 text-[#6B6258]/60">
+                    <span class="absolute left-3.5 text-slate-400">
                       ${getIcon('user', { class: 'w-4 h-4' })}
                     </span>
-                    <input id="name-input" required type="text" class="input-focus w-full pl-9 pr-3 py-2 text-sm text-[#1F1B16] placeholder:text-[#6B6258]/60" placeholder="e.g. Sita Sharma"/>
+                    <input id="name-input" required type="text" class="input-focus w-full pl-10 pr-3.5 py-2.5 text-sm text-slate-900 placeholder:text-slate-400 font-medium" placeholder="e.g. Sita Sharma"/>
                   </div>
                 </div>
 
-                <div class="flex flex-col gap-1">
-                  <label class="text-xs font-semibold text-[#1F1B16]" for="phone-input">
+                <div class="flex flex-col gap-1.5">
+                  <label class="text-xs font-bold text-slate-700" for="phone-input">
                     Mobile Number (फोन नम्बर)
                   </label>
                   <div class="flex items-center gap-2">
-                    <div class="px-2.5 py-2 rounded-[8px] bg-[#FDFBF7] border border-[#F0EBE3] text-[#6B6258] font-medium text-xs shrink-0">
+                    <div class="px-3 py-2.5 rounded-xl bg-slate-50 border border-slate-200 text-slate-600 font-semibold text-xs shrink-0">
                       🇳🇵 +977
                     </div>
-                    <input id="phone-input" type="tel" maxlength="10" class="input-focus w-full px-3 py-2 text-sm text-[#1F1B16] placeholder:text-[#6B6258]/60" placeholder="98XXXXXXXX"/>
+                    <input id="phone-input" type="tel" maxlength="10" class="input-focus w-full px-3.5 py-2.5 text-sm text-slate-900 placeholder:text-slate-400 font-medium" placeholder="98XXXXXXXX"/>
                   </div>
                 </div>
               ` : ''}
 
-              <div class="flex flex-col gap-1">
-                <label class="text-xs font-semibold text-[#1F1B16]" for="email-input">
-                  Email Address (इमेल) <span class="text-[#D97757]">*</span>
+              <div class="flex flex-col gap-1.5">
+                <label class="text-xs font-bold text-slate-700" for="email-input">
+                  Email Address (इमेल) <span class="text-[#F04D36]">*</span>
                 </label>
                 <div class="relative flex items-center">
-                  <span class="absolute left-3 text-[#6B6258]/60">
+                  <span class="absolute left-3.5 text-slate-400">
                     ${getIcon('mail', { class: 'w-4 h-4' })}
                   </span>
-                  <input id="email-input" required type="email" class="input-focus w-full pl-9 pr-3 py-2 text-sm text-[#1F1B16] placeholder:text-[#6B6258]/60" placeholder="you@example.com"/>
+                  <input id="email-input" required type="email" class="input-focus w-full pl-10 pr-3.5 py-2.5 text-sm text-slate-900 placeholder:text-slate-400 font-medium" placeholder="you@example.com"/>
                 </div>
               </div>
 
-              <div class="flex flex-col gap-1">
-                <label class="text-xs font-semibold text-[#1F1B16]" for="password-input">
-                  Password (पासवर्ड) <span class="text-[#D97757]">*</span>
+              <div class="flex flex-col gap-1.5">
+                <label class="text-xs font-bold text-slate-700" for="password-input">
+                  Password (पासवर्ड) <span class="text-[#F04D36]">*</span>
                 </label>
                 <div class="relative flex items-center">
-                  <span class="absolute left-3 text-[#6B6258]/60">
+                  <span class="absolute left-3.5 text-slate-400">
                     ${getIcon('lock', { class: 'w-4 h-4' })}
                   </span>
-                  <input id="password-input" required minlength="6" type="password" class="input-focus w-full pl-9 pr-9 py-2 text-sm text-[#1F1B16] placeholder:text-[#6B6258]/60" placeholder="At least 6 characters"/>
-                  <button type="button" id="toggle-pwd-btn" class="absolute right-3 text-[#6B6258]/60 hover:text-[#1F1B16]">
+                  <input id="password-input" required minlength="6" type="password" class="input-focus w-full pl-10 pr-10 py-2.5 text-sm text-slate-900 placeholder:text-slate-400 font-medium" placeholder="At least 6 characters"/>
+                  <button type="button" id="toggle-pwd-btn" class="absolute right-3.5 text-slate-400 hover:text-slate-600 cursor-pointer">
                     <span id="toggle-pwd-icon">
                       ${getIcon('eye', { class: 'w-4 h-4' })}
                     </span>
@@ -103,15 +103,15 @@ export const LoginView = {
                 </div>
               </div>
 
-              <button id="auth-submit-btn" type="submit" class="btn-press w-full mt-2 py-2.5 rounded-[8px] bg-[#D97757] hover:bg-[#c66849] text-white text-sm font-semibold shadow-card transition-all flex items-center justify-center gap-1.5 cursor-pointer">
+              <button id="auth-submit-btn" type="submit" class="btn-modern w-full mt-2 py-3 rounded-xl bg-gradient-to-r from-[#F04D36] to-[#E03A22] hover:from-[#E03A22] hover:to-[#C82B15] text-white text-sm font-bold shadow-md hover:shadow-glow transition-all flex items-center justify-center gap-2 cursor-pointer">
                 <span>${activeTab === 'signin' ? 'Sign In (लगइन)' : 'Create Account (खाता खोल्नुहोस्)'}</span>
               </button>
             </form>
 
             <!-- Demo Account Quick Fill Helper -->
-            <div class="mt-5 pt-3.5 border-t border-[#F0EBE3] text-center">
-              <p class="text-[11px] text-[#6B6258] mb-1.5">Need a quick test account?</p>
-              <button id="quick-demo-btn" type="button" class="btn-press text-xs px-3 py-1.5 rounded-[8px] bg-[#FDFBF7] hover:bg-[#F7F3EC] text-[#6B6258] font-medium border border-[#F0EBE3] transition-colors cursor-pointer">
+            <div class="mt-6 pt-4 border-t border-slate-100 text-center">
+              <p class="text-[11px] text-slate-400 mb-2 font-medium">Need a quick test account?</p>
+              <button id="quick-demo-btn" type="button" class="btn-press text-xs px-3.5 py-2 rounded-xl bg-slate-50 hover:bg-slate-100 text-slate-700 font-semibold border border-slate-200 transition-colors cursor-pointer">
                 ⚡ Fill Demo Landlord Credentials
               </button>
             </div>

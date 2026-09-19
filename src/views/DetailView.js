@@ -10,29 +10,29 @@ export const DetailView = {
 
     if (!listingId) {
       container.innerHTML = `
-        <div class="max-w-xl mx-auto my-16 p-8 text-center bg-white rounded-[12px] shadow-card border border-[#F0EBE3]">
-          <p class="text-[#C1543D] font-bold mb-4">No listing specified.</p>
-          <a href="#/" class="btn-press inline-flex items-center px-4 py-2 bg-[#D97757] text-white rounded-[8px] text-xs font-bold">Back to Browse</a>
+        <div class="max-w-xl mx-auto my-16 p-8 text-center bg-white rounded-2xl shadow-card border border-slate-200">
+          <p class="text-red-500 font-bold mb-4">No listing specified.</p>
+          <a href="#/" class="btn-modern inline-flex items-center px-5 py-2.5 bg-[#F04D36] text-white rounded-xl text-xs font-bold shadow-md">Back to Browse</a>
         </div>
       `;
       return;
     }
 
-    // Warm Shimmer Skeleton
+    // Modern Neutral Skeleton
     container.innerHTML = `
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 w-full page-transition">
-        <div class="flex flex-col gap-2.5 mb-6">
-          <div class="h-4 w-48 skeleton-shimmer rounded-[6px]"></div>
-          <div class="h-8 w-2/3 skeleton-shimmer rounded-[8px]"></div>
-          <div class="h-4 w-1/3 skeleton-shimmer rounded-[6px]"></div>
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 w-full page-transition">
+        <div class="flex flex-col gap-3 mb-6">
+          <div class="h-4 w-48 skeleton-shimmer rounded-lg"></div>
+          <div class="h-8 w-2/3 skeleton-shimmer rounded-xl"></div>
+          <div class="h-4 w-1/3 skeleton-shimmer rounded-lg"></div>
         </div>
-        <div class="w-full h-72 sm:h-[420px] skeleton-shimmer rounded-[12px] mb-6"></div>
+        <div class="w-full h-72 sm:h-[440px] skeleton-shimmer rounded-2xl mb-6"></div>
         <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
           <div class="lg:col-span-8 flex flex-col gap-4">
-            <div class="h-28 w-full skeleton-shimmer rounded-[12px]"></div>
-            <div class="h-44 w-full skeleton-shimmer rounded-[12px]"></div>
+            <div class="h-32 w-full skeleton-shimmer rounded-2xl"></div>
+            <div class="h-48 w-full skeleton-shimmer rounded-2xl"></div>
           </div>
-          <div class="lg:col-span-4 h-72 skeleton-shimmer rounded-[12px]"></div>
+          <div class="lg:col-span-4 h-80 skeleton-shimmer rounded-2xl"></div>
         </div>
       </div>
     `;
@@ -45,13 +45,13 @@ export const DetailView = {
 
     if (error || !listing) {
       container.innerHTML = `
-        <div class="max-w-xl mx-auto my-16 p-8 text-center bg-white rounded-[12px] shadow-card border border-[#F0EBE3]">
-          <div class="w-12 h-12 rounded-full bg-[#FDF0EC] text-[#C1543D] flex items-center justify-center mx-auto mb-3">
+        <div class="max-w-xl mx-auto my-16 p-8 text-center bg-white rounded-2xl shadow-card border border-slate-200">
+          <div class="w-12 h-12 rounded-full bg-red-50 text-red-500 flex items-center justify-center mx-auto mb-3">
             ${getIcon('alert-triangle', { class: 'w-6 h-6' })}
           </div>
-          <h2 class="text-base font-bold text-[#1F1B16] mb-1">Listing Not Found</h2>
-          <p class="text-xs text-[#6B6258] mb-5">This listing may have been rented out or removed by the landlord.</p>
-          <a href="#/" class="btn-press inline-flex items-center px-4 py-2 bg-[#D97757] hover:bg-[#c66849] text-white rounded-[8px] text-xs font-bold">Browse All Rentals</a>
+          <h2 class="text-base font-bold text-slate-900 mb-1">Listing Not Found</h2>
+          <p class="text-xs text-slate-500 mb-6">This listing may have been rented out or removed by the landlord.</p>
+          <a href="#/" class="btn-modern inline-flex items-center px-5 py-2.5 bg-[#F04D36] text-white rounded-xl text-xs font-bold shadow-md">Browse All Rentals</a>
         </div>
       `;
       return;
@@ -85,76 +85,76 @@ export const DetailView = {
     };
 
     container.innerHTML = `
-      <div class="w-full min-h-screen pb-24 page-transition">
+      <div class="w-full min-h-screen pb-28 page-transition">
         
         <!-- Top Breadcrumbs & Actions -->
-        <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-5 pb-3">
+        <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-6 pb-4">
           <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 text-xs">
-            <nav class="flex items-center gap-1.5 text-[#6B6258]">
-              <a href="#/" class="hover:text-[#D97757] transition-colors">Home (गृहपृष्ठ)</a>
-              ${getIcon('chevron-right', { class: 'w-3 h-3 text-[#6B6258]/60' })}
-              <a href="#/?cat=${listing.category}" class="hover:text-[#D97757] transition-colors">${categoryLabels[listing.category] || listing.category}</a>
-              ${getIcon('chevron-right', { class: 'w-3 h-3 text-[#6B6258]/60' })}
-              <span class="text-[#1F1B16] font-bold truncate max-w-[200px]">${listing.location_area}</span>
+            <nav class="flex items-center gap-2 text-slate-500 font-medium">
+              <a href="#/" class="hover:text-[#F04D36] transition-colors">Home (गृहपृष्ठ)</a>
+              ${getIcon('chevron-right', { class: 'w-3 h-3 text-slate-300' })}
+              <a href="#/?cat=${listing.category}" class="hover:text-[#F04D36] transition-colors">${categoryLabels[listing.category] || listing.category}</a>
+              ${getIcon('chevron-right', { class: 'w-3 h-3 text-slate-300' })}
+              <span class="text-slate-900 font-bold truncate max-w-[200px]">${listing.location_area}</span>
             </nav>
 
             <div class="flex items-center gap-2">
               ${isOwner ? `
-                <a href="#/edit/${listing.id}" class="btn-press inline-flex items-center gap-1.5 px-3 py-1.5 rounded-[8px] bg-white hover:bg-[#FDFBF7] text-[#1F1B16] text-xs font-bold transition-colors border border-[#F0EBE3] shadow-card">
-                  ${getIcon('edit', { class: 'w-3.5 h-3.5 text-[#6B6258]' })}
+                <a href="#/edit/${listing.id}" class="btn-press inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-xl bg-white hover:bg-slate-50 text-slate-800 text-xs font-bold transition-all border border-slate-200 shadow-xs">
+                  ${getIcon('edit', { class: 'w-3.5 h-3.5 text-slate-600' })}
                   <span>Edit Listing</span>
                 </a>
               ` : ''}
-              <button id="detail-share-btn" class="btn-press inline-flex items-center gap-1.5 px-3 py-1.5 rounded-[8px] bg-white hover:bg-[#FDFBF7] text-[#1F1B16] text-xs font-bold transition-colors border border-[#F0EBE3] shadow-card">
-                ${getIcon('share-2', { class: 'w-3.5 h-3.5 text-[#6B6258]' })}
+              <button id="detail-share-btn" class="btn-press inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-xl bg-white hover:bg-slate-50 text-slate-800 text-xs font-bold transition-all border border-slate-200 shadow-xs cursor-pointer">
+                ${getIcon('share-2', { class: 'w-3.5 h-3.5 text-slate-600' })}
                 <span>Share</span>
               </button>
             </div>
           </div>
 
-          <!-- Title & Area Header -->
-          <div class="mt-3 flex flex-col md:flex-row md:items-center justify-between gap-4">
+          <!-- Title & Price Header -->
+          <div class="mt-4 flex flex-col md:flex-row md:items-center justify-between gap-4">
             <div>
-              <div class="flex items-center gap-2 mb-1.5">
-                <span class="px-2.5 py-0.5 rounded-[8px] bg-[#FDF0EC] text-[#D97757] text-[11px] font-bold border border-[#D97757]/20">
+              <div class="flex items-center gap-2 mb-2">
+                <span class="px-3 py-1 rounded-full bg-orange-50 text-[#F04D36] text-[11px] font-bold border border-orange-200/80">
                   ${categoryLabels[listing.category] || 'Rental Space'}
                 </span>
-                <span class="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-[8px] bg-[#EEF4F0] text-[#5B8266] border border-[#5B8266]/20 text-[11px] font-bold">
-                  ${getIcon('shield-check', { class: 'w-3.5 h-3.5 text-[#5B8266]' })} ${t('verifiedLandlord')}
+                <span class="inline-flex items-center gap-1 px-3 py-1 rounded-full bg-emerald-50 text-emerald-700 border border-emerald-200/80 text-[11px] font-bold">
+                  ${getIcon('shield-check', { class: 'w-3.5 h-3.5 text-emerald-600' })} ${t('verifiedLandlord')}
                 </span>
-                <span class="text-[#6B6258] text-[11px] flex items-center gap-1">
-                  ${getIcon('clock', { class: 'w-3 h-3 text-[#D97757]' })} ${getRelativeTime(listing.created_at, lang)}
+                <span class="text-slate-400 text-[11px] flex items-center gap-1 font-medium ml-1">
+                  ${getIcon('clock', { class: 'w-3 h-3 text-[#F04D36]' })} ${getRelativeTime(listing.created_at, lang)}
                 </span>
               </div>
-              <h1 class="text-xl sm:text-2xl font-bold text-[#1F1B16] tracking-tight leading-tight">
+              <h1 class="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight leading-tight">
                 ${listing.title}
               </h1>
-              <p class="text-xs sm:text-sm text-[#6B6258] flex items-center gap-1 mt-1">
-                ${getIcon('map-pin', { class: 'w-3.5 h-3.5 text-[#D97757] shrink-0' })}
-                <span class="font-medium">${listing.location_area}, ${listing.location_city}</span>
-                ${listing.landmark ? `<span class="text-[#F0EBE3]">•</span> <span class="text-[#7C9885] font-semibold">${listing.landmark}</span>` : ''}
+              <p class="text-xs sm:text-sm text-slate-500 flex items-center gap-1.5 mt-1.5 font-medium">
+                ${getIcon('map-pin', { class: 'w-4 h-4 text-[#F04D36] shrink-0' })}
+                <span>${listing.location_area}, ${listing.location_city}</span>
+                ${listing.landmark ? `<span class="text-slate-300">•</span> <span class="text-teal-600 font-bold">${listing.landmark}</span>` : ''}
               </p>
             </div>
 
             <!-- Price Card Header (Desktop) -->
-            <div class="hidden md:flex flex-col items-end bg-white p-3.5 px-5 rounded-[12px] border border-[#F0EBE3] shadow-card">
-              <span class="text-[10px] uppercase font-bold text-[#6B6258] tracking-wider">${t('rentAmount')}</span>
-              <div class="flex items-baseline gap-1">
-                <span class="text-2xl font-bold text-[#D97757]">${formattedPrice}</span>
-                <span class="text-xs text-[#6B6258] font-medium">${t('perMonth')}</span>
+            <div class="hidden md:flex flex-col items-end bg-white p-4 px-6 rounded-2xl border border-slate-200 shadow-card">
+              <span class="text-[10px] uppercase font-bold text-slate-400 tracking-wider">${t('rentAmount')}</span>
+              <div class="flex items-baseline gap-1.5">
+                <span class="text-3xl font-extrabold text-[#F04D36] tracking-tight">${formattedPrice}</span>
+                <span class="text-xs text-slate-400 font-semibold">${t('perMonth')}</span>
               </div>
-              ${listing.is_negotiable ? `<span class="text-[11px] text-[#7C9885] font-bold">${t('negotiable')}</span>` : ''}
+              ${listing.is_negotiable ? `<span class="text-[11px] text-emerald-600 font-bold mt-0.5">${t('negotiable')}</span>` : ''}
             </div>
           </div>
         </section>
 
-        <!-- Interactive Image Carousel with Smooth Slide -->
-        <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-6">
-          <div class="relative rounded-[12px] overflow-hidden border border-[#F0EBE3] shadow-card bg-[#1F1B16] group select-none">
+        <!-- Interactive Image Carousel with Smooth Transition -->
+        <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-8">
+          <div class="relative rounded-2xl overflow-hidden border border-slate-200 shadow-card bg-slate-900 group select-none">
             
-            <div id="carousel-viewport" class="relative w-full h-[280px] sm:h-[400px] md:h-[480px] overflow-hidden">
+            <div id="carousel-viewport" class="relative w-full h-[280px] sm:h-[420px] md:h-[500px] overflow-hidden">
               ${photos.map((src, idx) => `
-                <div class="carousel-slide absolute inset-0 transition-opacity duration-200 ease-out ${idx === 0 ? 'opacity-100 z-10' : 'opacity-0 z-0 pointer-events-none'}" data-slide-index="${idx}">
+                <div class="carousel-slide absolute inset-0 transition-opacity duration-300 ease-out ${idx === 0 ? 'opacity-100 z-10' : 'opacity-0 z-0 pointer-events-none'}" data-slide-index="${idx}">
                   <img src="${src}" class="w-full h-full object-cover" alt="${listing.title} - photo ${idx + 1}"/>
                   <div class="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent pointer-events-none"></div>
                 </div>
@@ -163,24 +163,24 @@ export const DetailView = {
 
             <!-- Arrow Controls -->
             ${photos.length > 1 ? `
-              <button id="carousel-prev-btn" class="btn-press absolute left-3 top-1/2 -translate-y-1/2 z-20 w-10 h-10 rounded-full bg-white/95 hover:bg-white text-[#1F1B16] flex items-center justify-center shadow-md transition-transform min-touch-target" aria-label="Previous photo">
+              <button id="carousel-prev-btn" class="btn-press absolute left-4 top-1/2 -translate-y-1/2 z-20 w-11 h-11 rounded-full bg-white/90 hover:bg-white text-slate-800 flex items-center justify-center shadow-lg transition-transform min-touch-target cursor-pointer backdrop-blur-xs" aria-label="Previous photo">
                 ${getIcon('chevron-left', { class: 'w-5 h-5' })}
               </button>
-              <button id="carousel-next-btn" class="btn-press absolute right-3 top-1/2 -translate-y-1/2 z-20 w-10 h-10 rounded-full bg-white/95 hover:bg-white text-[#1F1B16] flex items-center justify-center shadow-md transition-transform min-touch-target" aria-label="Next photo">
+              <button id="carousel-next-btn" class="btn-press absolute right-4 top-1/2 -translate-y-1/2 z-20 w-11 h-11 rounded-full bg-white/90 hover:bg-white text-slate-800 flex items-center justify-center shadow-lg transition-transform min-touch-target cursor-pointer backdrop-blur-xs" aria-label="Next photo">
                 ${getIcon('chevron-right', { class: 'w-5 h-5' })}
               </button>
             ` : ''}
 
             <!-- Slide Counter Badge -->
-            <div class="absolute bottom-3 right-3 z-20 px-2.5 py-1 rounded-[6px] bg-black/60 backdrop-blur-xs text-white text-xs font-bold">
+            <div class="absolute bottom-4 right-4 z-20 px-3 py-1 rounded-full bg-slate-900/70 backdrop-blur-md text-white text-xs font-bold">
               <span id="carousel-active-index">1</span> / ${photos.length} ${t('photosCount')}
             </div>
 
             <!-- Dot Indicators -->
             ${photos.length > 1 ? `
-              <div class="absolute bottom-3 left-1/2 -translate-x-1/2 z-20 flex items-center gap-1.5">
+              <div class="absolute bottom-4 left-1/2 -translate-x-1/2 z-20 flex items-center gap-2">
                 ${photos.map((_, idx) => `
-                  <button type="button" class="carousel-dot w-2.5 h-2.5 rounded-full transition-all ${idx === 0 ? 'bg-white scale-125' : 'bg-white/50 hover:bg-white/75'}" data-slide-target="${idx}" aria-label="Slide ${idx + 1}"></button>
+                  <button type="button" class="carousel-dot w-2.5 h-2.5 rounded-full transition-all ${idx === 0 ? 'bg-white scale-125' : 'bg-white/50 hover:bg-white/80'}" data-slide-target="${idx}" aria-label="Slide ${idx + 1}"></button>
                 `).join('')}
               </div>
             ` : ''}
@@ -188,9 +188,9 @@ export const DetailView = {
 
           <!-- Thumbnail Strip (Desktop) -->
           ${photos.length > 1 ? `
-            <div class="flex items-center gap-2 mt-2.5 overflow-x-auto pb-1 no-scrollbar" id="thumbnail-strip">
+            <div class="flex items-center gap-3 mt-3 overflow-x-auto pb-1 no-scrollbar" id="thumbnail-strip">
               ${photos.map((src, idx) => `
-                <button type="button" class="thumbnail-item shrink-0 w-16 h-12 rounded-[8px] overflow-hidden border-2 transition-all cursor-pointer ${idx === 0 ? 'border-[#D97757] shadow-card' : 'border-transparent opacity-70 hover:opacity-100'}" data-thumb-target="${idx}">
+                <button type="button" class="thumbnail-item shrink-0 w-20 h-14 rounded-xl overflow-hidden border-2 transition-all cursor-pointer ${idx === 0 ? 'border-[#F04D36] shadow-sm scale-102' : 'border-transparent opacity-60 hover:opacity-100'}" data-thumb-target="${idx}">
                   <img src="${src}" class="w-full h-full object-cover" alt="Thumb ${idx + 1}"/>
                 </button>
               `).join('')}
@@ -200,53 +200,53 @@ export const DetailView = {
 
         <!-- Main Content 2-Column Grid -->
         <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
+          <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
             
             <!-- Left 8 Columns: Details, Description, Specs -->
-            <div class="lg:col-span-8 flex flex-col gap-5 min-w-0">
+            <div class="lg:col-span-8 flex flex-col gap-6 min-w-0">
               
               <!-- Quick Overview Bento Bar -->
-              <div class="bg-white rounded-[12px] p-5 border border-[#F0EBE3] shadow-card">
-                <p class="text-[11px] font-bold text-[#D97757] uppercase tracking-wider mb-3.5">${t('propertyOverview')}</p>
-                <div class="grid grid-cols-2 sm:grid-cols-4 gap-3">
+              <div class="bg-white rounded-2xl p-6 border border-slate-200/80 shadow-card">
+                <p class="text-xs font-bold text-[#F04D36] uppercase tracking-wider mb-4">${t('propertyOverview')}</p>
+                <div class="grid grid-cols-2 sm:grid-cols-4 gap-4">
                   
-                  <div class="flex items-center gap-2.5">
-                    <div class="w-9 h-9 rounded-[8px] bg-[#FDF0EC] flex items-center justify-center text-[#D97757]">
-                      ${getIcon('bed', { class: 'w-4 h-4' })}
+                  <div class="flex items-center gap-3 p-3 rounded-xl bg-orange-50/60 border border-orange-100/70">
+                    <div class="w-10 h-10 rounded-xl bg-orange-100 text-[#F04D36] flex items-center justify-center shrink-0">
+                      ${getIcon('bed', { class: 'w-5 h-5' })}
                     </div>
                     <div>
-                      <span class="text-[11px] text-[#6B6258] block font-medium">${t('bedrooms')}</span>
-                      <span class="text-sm font-bold text-[#1F1B16]">${listing.bedrooms || 1} Bed${(listing.bedrooms || 1) > 1 ? 's' : ''}</span>
+                      <span class="text-[11px] text-slate-500 block font-semibold">${t('bedrooms')}</span>
+                      <span class="text-sm font-extrabold text-slate-900">${listing.bedrooms || 1} Bed${(listing.bedrooms || 1) > 1 ? 's' : ''}</span>
                     </div>
                   </div>
 
-                  <div class="flex items-center gap-2.5">
-                    <div class="w-9 h-9 rounded-[8px] bg-[#EEF4F0] flex items-center justify-center text-[#5B8266]">
-                      ${getIcon('bath', { class: 'w-4 h-4' })}
+                  <div class="flex items-center gap-3 p-3 rounded-xl bg-emerald-50/60 border border-emerald-100/70">
+                    <div class="w-10 h-10 rounded-xl bg-emerald-100 text-emerald-600 flex items-center justify-center shrink-0">
+                      ${getIcon('bath', { class: 'w-5 h-5' })}
                     </div>
                     <div>
-                      <span class="text-[11px] text-[#6B6258] block font-medium">${t('bathrooms')}</span>
-                      <span class="text-sm font-bold text-[#1F1B16]">${listing.bathrooms || 1} Bath</span>
+                      <span class="text-[11px] text-slate-500 block font-semibold">${t('bathrooms')}</span>
+                      <span class="text-sm font-extrabold text-slate-900">${listing.bathrooms || 1} Bath</span>
                     </div>
                   </div>
 
-                  <div class="flex items-center gap-2.5">
-                    <div class="w-9 h-9 rounded-[8px] bg-[#FDFBF7] border border-[#F0EBE3] flex items-center justify-center text-[#7C9885]">
-                      ${getIcon('droplet', { class: 'w-4 h-4' })}
+                  <div class="flex items-center gap-3 p-3 rounded-xl bg-teal-50/60 border border-teal-100/70">
+                    <div class="w-10 h-10 rounded-xl bg-teal-100 text-teal-600 flex items-center justify-center shrink-0">
+                      ${getIcon('droplet', { class: 'w-5 h-5' })}
                     </div>
                     <div>
-                      <span class="text-[11px] text-[#6B6258] block font-medium">${t('waterSupply')}</span>
-                      <span class="text-sm font-bold text-[#1F1B16] truncate">${listing.water_facility || '24/7 Supply'}</span>
+                      <span class="text-[11px] text-slate-500 block font-semibold">${t('waterSupply')}</span>
+                      <span class="text-sm font-extrabold text-slate-900 truncate">${listing.water_facility || '24/7 Supply'}</span>
                     </div>
                   </div>
 
-                  <div class="flex items-center gap-2.5">
-                    <div class="w-9 h-9 rounded-[8px] bg-[#FDF0EC] flex items-center justify-center text-[#D97757]">
-                      ${getIcon('handshake', { class: 'w-4 h-4' })}
+                  <div class="flex items-center gap-3 p-3 rounded-xl bg-indigo-50/60 border border-indigo-100/70">
+                    <div class="w-10 h-10 rounded-xl bg-indigo-100 text-indigo-600 flex items-center justify-center shrink-0">
+                      ${getIcon('handshake', { class: 'w-5 h-5' })}
                     </div>
                     <div>
-                      <span class="text-[11px] text-[#6B6258] block font-medium">Pricing</span>
-                      <span class="text-sm font-bold text-[#1F1B16]">${listing.is_negotiable ? t('negotiable') : t('fixedPrice')}</span>
+                      <span class="text-[11px] text-slate-500 block font-semibold">Pricing</span>
+                      <span class="text-sm font-extrabold text-slate-900">${listing.is_negotiable ? t('negotiable') : t('fixedPrice')}</span>
                     </div>
                   </div>
 
@@ -254,65 +254,67 @@ export const DetailView = {
               </div>
 
               <!-- Description Narrative -->
-              <div class="bg-white rounded-[12px] p-5 border border-[#F0EBE3] shadow-card flex flex-col gap-3">
-                <div class="flex items-center justify-between border-b border-[#F0EBE3] pb-3">
-                  <h2 class="text-base font-bold text-[#1F1B16]">${t('aboutSpace')}</h2>
-                  <span class="text-xs text-[#5B8266] font-bold flex items-center gap-1">
-                    ${getIcon('check-circle', { class: 'w-3 h-3 text-[#5B8266]' })} Direct Landlord
+              <div class="bg-white rounded-2xl p-6 border border-slate-200/80 shadow-card flex flex-col gap-4">
+                <div class="flex items-center justify-between border-b border-slate-100 pb-3.5">
+                  <h2 class="text-lg font-bold text-slate-900">${t('aboutSpace')}</h2>
+                  <span class="text-xs text-emerald-700 bg-emerald-50 border border-emerald-200/80 px-2.5 py-1 rounded-full font-bold flex items-center gap-1">
+                    ${getIcon('check-circle', { class: 'w-3.5 h-3.5 text-emerald-600' })} Direct Landlord
                   </span>
                 </div>
                 
-                <div class="text-sm text-[#1F1B16] leading-relaxed whitespace-pre-line font-normal">
+                <div class="text-sm text-slate-700 leading-relaxed whitespace-pre-line font-normal">
                   ${listing.description || 'No detailed description provided.'}
                 </div>
               </div>
 
               <!-- Amenities Grid -->
-              <div class="bg-white rounded-[12px] p-5 border border-[#F0EBE3] shadow-card flex flex-col gap-3.5">
-                <div class="flex items-center justify-between border-b border-[#F0EBE3] pb-3">
-                  <h2 class="text-base font-bold text-[#1F1B16]">${t('amenitiesTitle')}</h2>
-                  <span class="text-xs text-[#7C9885] font-bold">Verified Highlights</span>
+              <div class="bg-white rounded-2xl p-6 border border-slate-200/80 shadow-card flex flex-col gap-4">
+                <div class="flex items-center justify-between border-b border-slate-100 pb-3.5">
+                  <h2 class="text-lg font-bold text-slate-900">${t('amenitiesTitle')}</h2>
+                  <span class="text-xs text-teal-600 font-bold">Verified Highlights</span>
                 </div>
 
-                <div class="grid grid-cols-2 sm:grid-cols-4 gap-3">
-                  <div class="flex flex-col items-center text-center p-3 rounded-[8px] bg-[#FDFBF7] border border-[#F0EBE3]">
-                    <div class="text-[#D97757] mb-1.5">${getIcon('droplet', { class: 'w-4 h-4' })}</div>
-                    <span class="text-xs font-bold text-[#1F1B16]">24/7 Water</span>
-                    <span class="text-[10px] text-[#6B6258]">मेलम्ची / बोरिङ</span>
+                <div class="grid grid-cols-2 sm:grid-cols-4 gap-3.5">
+                  <div class="flex flex-col items-center text-center p-4 rounded-xl bg-slate-50 border border-slate-100">
+                    <div class="text-[#F04D36] mb-2">${getIcon('droplet', { class: 'w-5 h-5' })}</div>
+                    <span class="text-xs font-bold text-slate-900">24/7 Water</span>
+                    <span class="text-[11px] text-slate-400 mt-0.5">मेलम्ची / बोरिङ</span>
                   </div>
 
-                  <div class="flex flex-col items-center text-center p-3 rounded-[8px] bg-[#FDFBF7] border border-[#F0EBE3]">
-                    <div class="text-[#7C9885] mb-1.5">${getIcon('shield', { class: 'w-4 h-4' })}</div>
-                    <span class="text-xs font-bold text-[#1F1B16]">Parking Space</span>
-                    <span class="text-[10px] text-[#6B6258]">Bike / Car Slot</span>
+                  <div class="flex flex-col items-center text-center p-4 rounded-xl bg-slate-50 border border-slate-100">
+                    <div class="text-teal-600 mb-2">${getIcon('shield', { class: 'w-5 h-5' })}</div>
+                    <span class="text-xs font-bold text-slate-900">Parking Space</span>
+                    <span class="text-[11px] text-slate-400 mt-0.5">Bike / Car Slot</span>
                   </div>
 
-                  <div class="flex flex-col items-center text-center p-3 rounded-[8px] bg-[#FDFBF7] border border-[#F0EBE3]">
-                    <div class="text-[#D97757] mb-1.5">${getIcon('sun', { class: 'w-4 h-4' })}</div>
-                    <span class="text-xs font-bold text-[#1F1B16]">Solar Hot Water</span>
-                    <span class="text-[10px] text-[#6B6258]">तातो पानी सुविधा</span>
+                  <div class="flex flex-col items-center text-center p-4 rounded-xl bg-slate-50 border border-slate-100">
+                    <div class="text-amber-500 mb-2">${getIcon('sun', { class: 'w-5 h-5' })}</div>
+                    <span class="text-xs font-bold text-slate-900">Solar Hot Water</span>
+                    <span class="text-[11px] text-slate-400 mt-0.5">तातो पानी सुविधा</span>
                   </div>
 
-                  <div class="flex flex-col items-center text-center p-3 rounded-[8px] bg-[#FDFBF7] border border-[#F0EBE3]">
-                    <div class="text-[#5B8266] mb-1.5">${getIcon('wifi', { class: 'w-4 h-4' })}</div>
-                    <span class="text-xs font-bold text-[#1F1B16]">Fiber Internet</span>
-                    <span class="text-[10px] text-[#6B6258]">High Speed Ready</span>
+                  <div class="flex flex-col items-center text-center p-4 rounded-xl bg-slate-50 border border-slate-100">
+                    <div class="text-indigo-600 mb-2">${getIcon('wifi', { class: 'w-5 h-5' })}</div>
+                    <span class="text-xs font-bold text-slate-900">Fiber Internet</span>
+                    <span class="text-[11px] text-slate-400 mt-0.5">High Speed Ready</span>
                   </div>
                 </div>
               </div>
 
               <!-- Location Neighborhood Map -->
-              <div class="bg-white rounded-[12px] p-5 border border-[#F0EBE3] shadow-card">
-                <div class="flex items-center justify-between mb-3">
-                  <h3 class="text-base font-bold text-[#1F1B16]">${t('neighborhoodTitle')}</h3>
-                  <span class="text-xs text-[#D97757] font-bold">${listing.location_area}</span>
+              <div class="bg-white rounded-2xl p-6 border border-slate-200/80 shadow-card">
+                <div class="flex items-center justify-between mb-3.5">
+                  <h3 class="text-lg font-bold text-slate-900">${t('neighborhoodTitle')}</h3>
+                  <span class="text-xs text-[#F04D36] font-bold">${listing.location_area}</span>
                 </div>
-                <div class="w-full h-36 bg-[#FDFBF7] rounded-[12px] flex flex-col items-center justify-center p-4 text-center border border-[#F0EBE3]">
-                  ${getIcon('map-pin', { class: 'w-6 h-6 text-[#D97757] mb-1.5' })}
-                  <p class="text-sm font-bold text-[#1F1B16]">${listing.location_area}, ${listing.location_city}</p>
-                  ${listing.landmark ? `<p class="text-xs text-[#6B6258] mt-0.5">Landmark: ${listing.landmark}</p>` : ''}
-                  <a href="https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(`${listing.location_area}, ${listing.location_city}, Nepal`)}" target="_blank" rel="noopener noreferrer" class="btn-press mt-3 inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-[8px] bg-white text-[#1F1B16] text-xs font-bold hover:bg-[#FDFBF7] transition-colors border border-[#F0EBE3] shadow-card">
-                    ${getIcon('external-link', { class: 'w-3.5 h-3.5 text-[#6B6258]' })}
+                <div class="w-full h-40 bg-slate-50 rounded-xl flex flex-col items-center justify-center p-4 text-center border border-slate-200">
+                  <div class="w-10 h-10 rounded-xl bg-orange-100 text-[#F04D36] flex items-center justify-center mb-2">
+                    ${getIcon('map-pin', { class: 'w-5 h-5' })}
+                  </div>
+                  <p class="text-sm font-bold text-slate-900">${listing.location_area}, ${listing.location_city}</p>
+                  ${listing.landmark ? `<p class="text-xs text-slate-500 mt-0.5 font-medium">Landmark: ${listing.landmark}</p>` : ''}
+                  <a href="https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(`${listing.location_area}, ${listing.location_city}, Nepal`)}" target="_blank" rel="noopener noreferrer" class="btn-press mt-3 inline-flex items-center gap-1.5 px-4 py-1.5 rounded-xl bg-white text-slate-800 text-xs font-bold hover:bg-slate-50 transition-all border border-slate-200 shadow-xs">
+                    ${getIcon('external-link', { class: 'w-3.5 h-3.5 text-slate-500' })}
                     <span>${t('openMaps')}</span>
                   </a>
                 </div>
@@ -321,59 +323,59 @@ export const DetailView = {
             </div>
 
             <!-- Right 4 Columns: Sticky Landlord Contact Card (Desktop) -->
-            <div class="lg:col-span-4 lg:sticky lg:top-20 hidden lg:flex flex-col gap-4">
-              <div class="bg-white rounded-[12px] p-5 border border-[#F0EBE3] shadow-card flex flex-col gap-4">
+            <div class="lg:col-span-4 lg:sticky lg:top-24 hidden lg:flex flex-col gap-4">
+              <div class="bg-white rounded-2xl p-6 border border-slate-200/80 shadow-floating flex flex-col gap-5">
                 
                 <!-- Price Display -->
-                <div class="flex items-center justify-between pb-3 border-b border-[#F0EBE3]">
+                <div class="flex items-center justify-between pb-4 border-b border-slate-100">
                   <div>
-                    <span class="text-[10px] text-[#6B6258] uppercase tracking-wide block font-bold">${t('rentAmount')}</span>
-                    <span class="text-2xl font-bold text-[#D97757]">${formattedPrice}</span>
+                    <span class="text-[10px] text-slate-400 uppercase tracking-wider block font-bold">${t('rentAmount')}</span>
+                    <span class="text-3xl font-extrabold text-[#F04D36] tracking-tight">${formattedPrice}</span>
                   </div>
-                  <span class="px-2.5 py-1 rounded-[8px] bg-[#EEF4F0] text-[#5B8266] text-xs font-bold border border-[#5B8266]/20">
+                  <span class="px-3 py-1 rounded-full bg-emerald-50 text-emerald-700 text-xs font-bold border border-emerald-200/80">
                     ${t('immediatelyAvailable')}
                   </span>
                 </div>
 
                 <!-- Landlord Profile Summary -->
-                <div class="flex items-center gap-3">
-                  <div class="w-11 h-11 rounded-full bg-[#FDF0EC] text-[#D97757] flex items-center justify-center font-bold text-base shrink-0 border border-[#D97757]/20">
+                <div class="flex items-center gap-3.5">
+                  <div class="w-12 h-12 rounded-xl bg-emerald-100 text-emerald-800 flex items-center justify-center font-extrabold text-base shrink-0 border border-emerald-200/80">
                     ${contactName[0].toUpperCase()}
                   </div>
                   <div class="min-w-0 flex-1">
-                    <h4 class="text-sm font-bold text-[#1F1B16] truncate">${contactName}</h4>
-                    <p class="text-xs text-[#D97757] font-semibold">घरधनी (Property Owner)</p>
-                    <p class="text-[11px] text-[#5B8266] flex items-center gap-1 mt-0.5 font-bold">
-                      ${getIcon('shield-check', { class: 'w-3.5 h-3.5 text-[#5B8266]' })}
+                    <h4 class="text-sm font-bold text-slate-900 truncate">${contactName}</h4>
+                    <p class="text-xs text-slate-500 font-medium">घरधनी (Property Owner)</p>
+                    <p class="text-[11px] text-emerald-600 flex items-center gap-1 mt-0.5 font-bold">
+                      ${getIcon('shield-check', { class: 'w-3.5 h-3.5 text-emerald-600' })}
                       <span>${t('landlordVerified')}</span>
                     </p>
                   </div>
                 </div>
 
                 <!-- Direct Communication Channels -->
-                <div class="flex flex-col gap-2 pt-1">
-                  <a href="${waUrl}" target="_blank" rel="noopener noreferrer" class="btn-press w-full py-2.5 px-3 rounded-[8px] bg-[#25D366] hover:brightness-105 text-white text-xs font-bold flex items-center justify-center gap-2 shadow-card min-touch-target">
+                <div class="flex flex-col gap-2.5 pt-1">
+                  <a href="${waUrl}" target="_blank" rel="noopener noreferrer" class="btn-press w-full py-3 px-4 rounded-xl bg-[#25D366] hover:brightness-105 text-white text-xs font-bold flex items-center justify-center gap-2 shadow-xs min-touch-target">
                     ${getIcon('message-circle', { class: 'w-4 h-4' })}
                     <span>Chat on WhatsApp (${listing.contact_phone})</span>
                   </a>
 
-                  <a href="${viberUrl}" class="btn-press w-full py-2.5 px-3 rounded-[8px] bg-[#7360F2] hover:brightness-105 text-white text-xs font-bold flex items-center justify-center gap-2 shadow-card min-touch-target">
+                  <a href="${viberUrl}" class="btn-press w-full py-3 px-4 rounded-xl bg-[#7360F2] hover:brightness-105 text-white text-xs font-bold flex items-center justify-center gap-2 shadow-xs min-touch-target">
                     ${getIcon('phone', { class: 'w-4 h-4' })}
                     <span>Connect on Viber</span>
                   </a>
 
-                  <a href="${telUrl}" class="btn-press w-full py-2.5 px-3 rounded-[8px] bg-[#D97757] hover:bg-[#c66849] text-white text-xs font-bold flex items-center justify-center gap-2 shadow-card min-touch-target">
-                    ${getIcon('phone-call', { class: 'w-4 h-4' })}
+                  <a href="${telUrl}" class="btn-modern w-full py-3 px-4 rounded-xl bg-gradient-to-r from-[#F04D36] to-[#E03A22] hover:from-[#E03A22] hover:to-[#C82B15] text-white text-xs font-bold flex items-center justify-center gap-2 shadow-sm hover:shadow-glow min-touch-target">
+                    ${getIcon('phone-call', { class: 'w-4 h-4 text-white' })}
                     <span>Call Now: ${listing.contact_phone}</span>
                   </a>
                 </div>
 
                 <!-- Renter Safety Box -->
-                <div class="p-3.5 rounded-[8px] bg-[#FDFBF7] text-[#1F1B16] flex flex-col gap-1 text-[11px] border border-[#F0EBE3]">
-                  <div class="flex items-center gap-1 text-[#D97757] font-bold">
+                <div class="p-4 rounded-xl bg-slate-50 text-slate-800 flex flex-col gap-1.5 text-[11px] border border-slate-200">
+                  <div class="flex items-center gap-1.5 text-[#F04D36] font-bold">
                     <span>🇳🇵</span> ${t('renterSafetyTipTitle')}
                   </div>
-                  <p class="text-[#6B6258] leading-relaxed">
+                  <p class="text-slate-500 leading-relaxed">
                     ${t('renterSafetyTipBody')}
                   </p>
                 </div>
@@ -384,28 +386,28 @@ export const DetailView = {
         </section>
 
         <!-- 6. Mobile Sticky Contact Bar (Always Visible While Scrolling on Mobile) -->
-        <div class="lg:hidden fixed bottom-0 left-0 right-0 z-40 bg-white/95 backdrop-blur-md border-t border-[#F0EBE3] p-3 shadow-2xl">
-          <div class="max-w-md mx-auto flex items-center gap-2">
+        <div class="lg:hidden fixed bottom-0 left-0 right-0 z-40 bg-white/95 backdrop-blur-xl border-t border-slate-200 p-3.5 shadow-2xl">
+          <div class="max-w-md mx-auto flex items-center gap-2.5">
             <!-- Price Summary -->
             <div class="shrink-0 pr-2">
-              <span class="text-[10px] text-[#6B6258] block leading-none font-semibold">Rent</span>
-              <span class="text-sm font-bold text-[#D97757]">${formattedPrice}</span>
+              <span class="text-[10px] text-slate-400 block leading-none font-bold uppercase">Rent</span>
+              <span class="text-base font-extrabold text-[#F04D36]">${formattedPrice}</span>
             </div>
 
             <!-- WhatsApp -->
-            <a href="${waUrl}" target="_blank" rel="noopener noreferrer" class="btn-press flex-1 inline-flex items-center justify-center gap-1.5 py-2.5 px-3 rounded-[8px] bg-[#25D366] text-white text-xs font-bold shadow-card min-touch-target">
+            <a href="${waUrl}" target="_blank" rel="noopener noreferrer" class="btn-press flex-1 inline-flex items-center justify-center gap-1.5 py-2.5 px-3 rounded-xl bg-[#25D366] text-white text-xs font-bold shadow-xs min-touch-target">
               ${getIcon('message-circle', { class: 'w-4 h-4' })}
               <span>WhatsApp</span>
             </a>
 
             <!-- Viber -->
-            <a href="${viberUrl}" class="btn-press p-2.5 rounded-[8px] bg-[#7360F2] text-white flex items-center justify-center shadow-card min-touch-target" title="Viber">
+            <a href="${viberUrl}" class="btn-press p-2.5 rounded-xl bg-[#7360F2] text-white flex items-center justify-center shadow-xs min-touch-target" title="Viber">
               ${getIcon('phone', { class: 'w-4 h-4' })}
             </a>
 
             <!-- Phone Call -->
-            <a href="${telUrl}" class="btn-press flex-1 inline-flex items-center justify-center gap-1.5 py-2.5 px-3 rounded-[8px] bg-[#D97757] text-white text-xs font-bold shadow-card min-touch-target">
-              ${getIcon('phone-call', { class: 'w-4 h-4' })}
+            <a href="${telUrl}" class="btn-modern flex-1 inline-flex items-center justify-center gap-1.5 py-2.5 px-3 rounded-xl bg-gradient-to-r from-[#F04D36] to-[#E03A22] text-white text-xs font-bold shadow-xs min-touch-target">
+              ${getIcon('phone-call', { class: 'w-4 h-4 text-white' })}
               <span>Call</span>
             </a>
           </div>
@@ -440,16 +442,16 @@ export const DetailView = {
         if (idx === activeIndex) {
           dot.className = 'carousel-dot w-2.5 h-2.5 rounded-full transition-all bg-white scale-125';
         } else {
-          dot.className = 'carousel-dot w-2.5 h-2.5 rounded-full transition-all bg-white/50 hover:bg-white/75';
+          dot.className = 'carousel-dot w-2.5 h-2.5 rounded-full transition-all bg-white/50 hover:bg-white/80';
         }
       });
 
       thumbs.forEach((thumb, idx) => {
         if (idx === activeIndex) {
-          thumb.className = 'thumbnail-item shrink-0 w-16 h-12 rounded-[8px] overflow-hidden border-2 border-[#D97757] shadow-card transition-all cursor-pointer';
+          thumb.className = 'thumbnail-item shrink-0 w-20 h-14 rounded-xl overflow-hidden border-2 border-[#F04D36] shadow-sm scale-102 transition-all cursor-pointer';
           thumb.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
         } else {
-          thumb.className = 'thumbnail-item shrink-0 w-16 h-12 rounded-[8px] overflow-hidden border-2 border-transparent opacity-70 hover:opacity-100 transition-all cursor-pointer';
+          thumb.className = 'thumbnail-item shrink-0 w-20 h-14 rounded-xl overflow-hidden border-2 border-transparent opacity-60 hover:opacity-100 transition-all cursor-pointer';
         }
       });
 
